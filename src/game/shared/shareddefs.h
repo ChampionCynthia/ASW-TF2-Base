@@ -21,9 +21,11 @@
 #define ROUND_TO_TICKS( t )		( TICK_INTERVAL * TIME_TO_TICKS( t ) )
 #define TICK_NEVER_THINK		(-1)
 
-
+#if defined( TF_DLL )
+#define ANIMATION_CYCLE_BITS		10
+#else
 #define ANIMATION_CYCLE_BITS		15
-
+#endif
 #define ANIMATION_CYCLE_MINFRAC		(1.0f / (1<<ANIMATION_CYCLE_BITS))
 
 // Matching the high level concept is significantly better than other criteria
@@ -95,8 +97,11 @@ public:
 
 #define MAX_CLIMB_SPEED		200
 
-
+#if defined( TF_DLL )
+#define TIME_TO_DUCK_MSECS		200
+#else
 	#define TIME_TO_DUCK_MSECS		400
+#endif
  
 #define TIME_TO_UNDUCK_MSECS		200
 
@@ -815,7 +820,16 @@ enum
 //-----------------------------------------------------------------------------
 // Commentary Mode
 //-----------------------------------------------------------------------------
+#if defined( TF_DLL ) || defined( TF_CLIENT_DLL )
+#define GAME_HAS_NO_USE_KEY
 
+#if defined( SPROP_COORD )
+#undef SPROP_COORD
+#endif
+
+#define SPROP_COORD SPROP_COORD_MP
+
+#endif
 
 //-----------------------------------------------------------------------------
 // Cell origin values

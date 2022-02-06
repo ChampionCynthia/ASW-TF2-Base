@@ -30,7 +30,9 @@
 #include "fmtstr.h"
 #include "videocfg/videocfg.h"
 
-
+#if defined( TF_DLL )
+#include "tf_player.h"
+#endif
 
 #ifdef HL2_DLL
 #include "weapon_physcannon.h"
@@ -1549,7 +1551,9 @@ CON_COMMAND_F( setang_exact, "Snap player eyes and orientation to specified pitc
 	pPlayer->Teleport( NULL, &newang, NULL );
 	pPlayer->SnapEyeAngles( newang );
 
-
+#if defined( TF_DLL )
+	static_cast<CTFPlayer*>( pPlayer )->DoAnimationEvent( PLAYERANIMEVENT_SNAP_YAW );
+#endif
 }
 
 

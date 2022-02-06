@@ -70,7 +70,7 @@ static float WeightedAngle( Vector vec1, Vector vec2)
 	return a*a;	// vectors are facing opposite direction
 }
 
-
+#if !defined( TF_DLL )
 
 static CHLTVDirector s_HLTVDirector;	// singleton
 
@@ -86,7 +86,7 @@ IGameSystem* HLTVDirectorSystem()
 	return &s_HLTVDirector;
 }
 
-
+#endif
 
 
 

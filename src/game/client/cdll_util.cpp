@@ -1154,9 +1154,11 @@ bool UTIL_GetMapLoadCountFileName( int iController, const char *pszFilePrependNa
 	return true;
 }
 
-
+#if defined( TF_CLIENT_DLL )
+#define MAP_KEY_FILE "viewed.res"
+#else
 #define MAP_KEY_FILE "mapkeys.res"
-
+#endif
 
 void UTIL_IncrementMapKey( const char *pszCustomKey )
 {

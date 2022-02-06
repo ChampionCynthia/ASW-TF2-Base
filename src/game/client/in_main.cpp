@@ -1793,7 +1793,9 @@ static ConCommand startgrenade2( "+grenade2", IN_Grenade2Down );
 static ConCommand startlookspin("+lookspin", IN_LookSpinDown);
 static ConCommand endlookspin("-lookspin", IN_LookSpinUp);
 
-
+#if defined( TF_CLIENT_DLL )
+static ConCommand toggle_duck( "toggle_duck", IN_DuckToggle );
+#endif
 
 #ifdef INFESTED_DLL
 static ConCommand endprevability( "-prevability", IN_PrevAbilityUp );

@@ -145,7 +145,12 @@ bool CAchievementMgr::Init()
 	}
 #endif // CLIENT_DLL
 
-
+#if defined ( TF_CLIENT_DLL )
+	ListenForGameEvent( "localplayer_changeclass" );
+	ListenForGameEvent( "localplayer_changeteam" );
+	ListenForGameEvent( "teamplay_round_start" );	
+	ListenForGameEvent( "teamplay_round_win" );
+#endif
 
 	g_pMatchFramework->GetEventsSubscription()->Subscribe( this );
 
