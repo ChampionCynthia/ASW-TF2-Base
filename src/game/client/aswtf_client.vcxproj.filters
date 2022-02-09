@@ -64,17 +64,17 @@
     <Filter Include="game_controls Header Files">
       <UniqueIdentifier>{5caec501-032f-4296-8d92-0a6436dd8416}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK">
-      <UniqueIdentifier>{8f28da79-7e7d-49ea-9b8a-93c557876159}</UniqueIdentifier>
+    <Filter Include="Source Files\TF">
+      <UniqueIdentifier>{117f6e01-208a-4ee7-99fa-37b5750ffbbc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK\VGUI">
-      <UniqueIdentifier>{6cb7da86-3600-4b9d-acd3-8a75b1cb7317}</UniqueIdentifier>
+    <Filter Include="Source Files\TF\VGUI">
+      <UniqueIdentifier>{c971f439-47e8-49af-9647-5c2013f0ab47}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK\Shared">
-      <UniqueIdentifier>{e3d0df4f-dbde-49be-bd0b-c00c320fe26f}</UniqueIdentifier>
+    <Filter Include="Source Files\TF\Shared">
+      <UniqueIdentifier>{306d5b84-c91b-4b46-8c14-ec2c61714b70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SDK\game controls">
-      <UniqueIdentifier>{865d655e-7a45-4c85-95d9-240133f842cb}</UniqueIdentifier>
+    <Filter Include="Source Files\Multiplayer">
+      <UniqueIdentifier>{56e925f1-5c6f-4fd4-98d9-3fb4b168ecf0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1736,162 +1736,6 @@
     <ClCompile Include="toolframework_client.cpp">
       <Filter>Tool Framework</Filter>
     </ClCompile>
-    <ClCompile Include="sdk\c_sdk_env_sparkler.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\c_sdk_player.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\c_sdk_player_resource.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\c_sdk_team.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\c_te_firebullets.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\clientmode_sdk.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\hud_sdkdeathnotice.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_backgroundpanel.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_fx_impacts.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_fx_tracers.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_fx_weaponfx.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_ammo.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_armor.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_chat.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_damage.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_health.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_message.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_stamina.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_targetid.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_hud_weaponselection.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_in_main.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_prediction.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\sdk_scoreboard.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\sdk_classmenu.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\sdk_spectatorgui.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\sdk_teammenu.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\sdk_textwindow.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\sdkviewport.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vgui\vgui_rootpanel_sdk.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_basegrenade_projectile.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_fx_shared.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_gamemovement.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_gamerules.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_player_shared.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_playeranimstate.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_playerclass_info_parse.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_shareddefs.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_usermessages.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_weapon_melee.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\sdk_weapon_parse.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_basesdkgrenade.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_crowbar.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_grenade.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_mp5.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_pistol.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_shotgun.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_sdkbase.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\Multiplayer\multiplayer_animstate.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="game_controls\basemodelpanel.cpp">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClCompile>
-    <ClCompile Include="game_controls\buymenu.cpp">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClCompile>
-    <ClCompile Include="game_controls\buysubmenu.cpp">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClCompile>
-    <ClCompile Include="game_controls\classmenu.cpp">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClCompile>
     <ClCompile Include="swarm\vgui\nb_header_footer.cpp">
       <Filter>Source Files\Swarm\GameUI - Embedded</Filter>
     </ClCompile>
@@ -1907,20 +1751,8 @@
     <ClCompile Include="swarm\c_asw_lesson.cpp">
       <Filter>Source Files\Swarm</Filter>
     </ClCompile>
-    <ClCompile Include="hud_crosshair.cpp">
-      <Filter>Source Files\SDK</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\playerclass_info_parse.cpp">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="hud_basedeathnotice.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\shared\predicted_viewmodel.cpp">
       <Filter>Source Files\From HL2</Filter>
-    </ClCompile>
-    <ClCompile Include="sdk\vcreditspage.cpp">
-      <Filter>Source Files\SDK\VGUI</Filter>
     </ClCompile>
     <ClCompile Include="swarm\gameui\swarm\vkeyboard.cpp">
       <Filter>Source Files\Swarm\GameUI - Embedded\Swarm GameUI\Win32</Filter>
@@ -1930,6 +1762,429 @@
     </ClCompile>
     <ClCompile Include="hud_voicestatus.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_scope.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_stalemate.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_statpanel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_target_id.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_teamgoal.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_teamswitch.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_waitingforplayers_panel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_weaponselection.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_winpanel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_input_main.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_prediction.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_presence.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_steamstats.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_tips.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_viewrender.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_baseobject.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_func_capture_zone.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_func_respawnroom.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_obj_dispenser.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_obj_sapper.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_obj_sentrygun.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_obj_teleporter.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_playerattachedmodel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_ammo_pack.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_fx.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_objective_resource.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_player.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_playerresource.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_projectile_rocket.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_team.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\c_tf_weapon_builder.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\clientmode_tf.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\teammaterialproxy.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_blood.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_ejectbrass.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_explosions.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_impacts.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_muzzleflash.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_particleeffect.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_taunteffects.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_fx_tracers.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_account.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_ammostatus.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_building_status.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_chat.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_cloakmeter.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_damageindicator.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_deathnotice.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_demomancharge.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_demomanpipes.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_disguise_status.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_flagstatus.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_freezepanel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_mediccallers.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_mediccharge.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_menu_engy_build.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_menu_engy_destroy.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_menu_spy_disguise.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_notification_panel.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_objectivestatus.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\tf_hud_playerstatus.cpp">
+      <Filter>Source Files\TF</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_mapinfomenu.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_modelpanel.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_overview.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_roundinfo.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_spectatorgui.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_statsummary.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_teammenu.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_textwindow.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_vgui_video.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_viewport.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\vgui_pda_panel.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\vgui_rootpanel_tf.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\vgui_rotation_slider.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\backgroundpanel.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\ObjectControlPanel.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_classmenu.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_clientscoreboard.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_controls.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_imagepanel.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\vgui\tf_intromenu.cpp">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\achievements_tf.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\baseobject_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\entity_capture_flag.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_fx_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_gamemovement.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_gamerules.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_gamestats_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_item.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_obj_baseupgrade_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_player_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_playeranimstate.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_playerclass_info_parse.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_playerclass_shared.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_projectile_base.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_projectile_nail.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_shareddefs.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_usermessages.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_viewmodel.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_bat.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_bonesaw.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_bottle.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_club.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_crowbar.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_fireaxe.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_fists.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_flamethrower.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_grenade_pipebomb.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_grenadelauncher.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_invis.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_knife.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_medigun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_minigun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_nailgun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_parse.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_pda.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_pipebomblauncher.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_pistol.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_revolver.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_rocketlauncher.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_shotgun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_shovel.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_smg.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_sniperrifle.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_syringegun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_tranq.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weapon_wrench.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weaponbase.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weaponbase_grenadeproj.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weaponbase_gun.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weaponbase_melee.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\tf\tf_weaponbase_rocket.cpp">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="basepresence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="c_team_objectiveresource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\Multiplayer\multiplayer_animstate.cpp">
+      <Filter>Source Files\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\playerclass_info_parse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vcreditspage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hud_crosshair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hud_basedeathnotice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hud_controlpointicons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_controls\classmenu.cpp">
+      <Filter>Source Files\game_controls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4033,99 +4288,6 @@
     <ClInclude Include="game_controls\vguitextwindow.h">
       <Filter>game_controls Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\c_sdk_player.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\c_sdk_player_resource.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\c_sdk_team.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\clientmode_sdk.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\sdk_backgroundpanel.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\sdk_hud_chat.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\sdk_hud_stamina.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\sdk_scoreboard.h">
-      <Filter>Source Files\SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\sdk_classmenu.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\sdk_spectatorgui.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\sdk_teammenu.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\sdk_textwindow.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\sdkviewport.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="sdk\vgui\vgui_rootpanel_sdk.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_basegrenade_projectile.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_fx_shared.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_gamerules.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_player_shared.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_playeranimstate.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_playerclass_info_parse.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_shareddefs.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_weapon_melee.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\sdk_weapon_parse.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\weapon_basesdkgrenade.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\weapon_grenade.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\sdk\weapon_sdkbase.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="..\shared\Multiplayer\multiplayer_animstate.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="game_controls\basemodelpanel.h">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClInclude>
-    <ClInclude Include="game_controls\buymenu.h">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClInclude>
-    <ClInclude Include="game_controls\buysubmenu.h">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClInclude>
-    <ClInclude Include="game_controls\classmenu.h">
-      <Filter>Source Files\SDK\game controls</Filter>
-    </ClInclude>
     <ClInclude Include="swarm\vgui\nb_header_footer.h">
       <Filter>Source Files\Swarm\GameUI - Embedded</Filter>
     </ClInclude>
@@ -4138,20 +4300,341 @@
     <ClInclude Include="swarm\vgui\asw_vgui_music_importer.h">
       <Filter>Source Files\Swarm\GameUI - Embedded</Filter>
     </ClInclude>
-    <ClInclude Include="..\shared\playerclass_info_parse.h">
-      <Filter>Source Files\SDK\Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="hud_basedeathnotice.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
     <ClInclude Include="..\shared\predicted_viewmodel.h">
       <Filter>Source Files\From HL2</Filter>
     </ClInclude>
-    <ClInclude Include="sdk\vcreditspage.h">
-      <Filter>Source Files\SDK\VGUI</Filter>
-    </ClInclude>
     <ClInclude Include="swarm\gameui\swarm\vkeyboard.h">
       <Filter>Source Files\Swarm\GameUI - Embedded\Swarm GameUI\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_playerstatus.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_statpanel.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_target_id.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_winpanel.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_presence.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_steamstats.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_tips.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_viewrender.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_baseobject.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_obj_dispenser.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_obj_sapper.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_obj_sentrygun.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_obj_teleporter.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_playerattachedmodel.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_fx.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_objective_resource.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_player.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_playerclass.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_playerresource.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_projectile_rocket.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_team.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\c_tf_weapon_builder.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\clientmode_tf.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_fx_muzzleflash.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_ammostatus.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_building_status.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_chat.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_flagstatus.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_freezepanel.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_mediccallers.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_menu_engy_build.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_menu_engy_destroy.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_menu_spy_disguise.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_notification_panel.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\tf_hud_objectivestatus.h">
+      <Filter>Source Files\TF</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_intromenu.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_mapinfomenu.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_modelpanel.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_overview.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_roundinfo.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_spectatorgui.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_statsummary.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_teammenu.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_textwindow.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_vgui_video.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_viewport.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\vgui_rootpanel_tf.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\vgui_rotation_slider.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\backgroundpanel.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\ObjectControlPanel.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_classmenu.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_clientscoreboard.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_controls.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\vgui\tf_imagepanel.h">
+      <Filter>Source Files\TF\VGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\baseobject_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\entity_capture_flag.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\ihasbuildpoints.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_fx_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_gamerules.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_gamestats_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_item.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_obj_baseupgrade_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_player_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_playeranimstate.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_playerclass_shared.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_projectile_base.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_projectile_nail.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_shareddefs.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_viewmodel.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_bat.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_bonesaw.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_bottle.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_club.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_crowbar.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_fireaxe.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_fists.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_flamethrower.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_grenade_pipebomb.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_grenadelauncher.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_invis.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_knife.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_medigun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_minigun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_nailgun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_parse.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_pda.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_pipebomblauncher.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_pistol.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_revolver.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_rocketlauncher.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_shotgun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_shovel.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_smg.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_sniperrifle.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_syringegun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_tranq.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weapon_wrench.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weaponbase.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weaponbase_grenadeproj.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weaponbase_gun.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weaponbase_melee.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\tf\tf_weaponbase_rocket.h">
+      <Filter>Source Files\TF\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="ipresence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="basepresence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="c_team_objectiveresource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\Multiplayer\multiplayer_animstate.h">
+      <Filter>Source Files\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\playerclass_info_parse.h">
+      <Filter>Game Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vcreditspage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hud_controlpointicons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_controls\classmenu.h">
+      <Filter>Source Files\game_controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

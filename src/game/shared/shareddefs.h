@@ -415,6 +415,7 @@ enum {
 	OBS_ALLOW_ALL = 0,	// allow all modes, all targets
 	OBS_ALLOW_TEAM,		// allow only own team & first person, no PIP
 	OBS_ALLOW_NONE,		// don't allow any spectating after death (fixed & fade to black)
+	OBS_ALLOW_TEAM_ALL,	// allow only own team, but any mode (currently only used by TF2)
 
 	OBS_ALLOW_NUM_MODES,
 };
@@ -914,6 +915,8 @@ enum Class_T
 #define NUM_SHARED_FACTIONS			(FACTION_NONE + 1)
 
 // SDK template
+#if !defined( TF_DLL ) && !defined( TF_CLIENT_DLL )
 #include "sdk_shareddefs.h"
+#endif
 
 #endif // SHAREDDEFS_H

@@ -113,7 +113,9 @@
 #endif
 
 // Activate SDK gamerules
+#if !defined( TF_DLL )
 #include "sdk_gamerules.h"
+#endif
 
 #ifdef _WIN32
 #include "IGameUIFuncs.h"
@@ -1218,9 +1220,10 @@ void CServerGameDLL::ServerActivate( edict_t *pEdictList, int edictCount, int cl
 	TheNavMesh->Load();
 #endif
 
+#if !defined( TF_DLL )
 	// Activate SDK gamerules
 	SDKGameRules()->ServerActivate();
-
+#endif
 }
 
 //-----------------------------------------------------------------------------
