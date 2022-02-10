@@ -252,6 +252,7 @@ exit 1
     <ClCompile Include="..\shared\playerclass_info_parse.cpp" />
     <ClCompile Include="..\shared\predicted_viewmodel.cpp" />
     <ClCompile Include="..\shared\teamplayroundbased_gamerules.cpp" />
+    <ClCompile Include="..\shared\teamplay_round_timer.cpp" />
     <ClCompile Include="..\shared\tf\achievements_tf.cpp" />
     <ClCompile Include="..\shared\tf\baseobject_shared.cpp" />
     <ClCompile Include="..\shared\tf\entity_capture_flag.cpp" />
@@ -976,6 +977,7 @@ exit 1
     <ClInclude Include="..\shared\playerclass_info_parse.h" />
     <ClInclude Include="..\shared\predicted_viewmodel.h" />
     <ClInclude Include="..\shared\teamplayroundbased_gamerules.h" />
+    <ClInclude Include="..\shared\teamplay_round_timer.h" />
     <ClInclude Include="..\shared\tf\baseobject_shared.h" />
     <ClInclude Include="..\shared\tf\entity_capture_flag.h" />
     <ClInclude Include="..\shared\tf\ihasbuildpoints.h" />

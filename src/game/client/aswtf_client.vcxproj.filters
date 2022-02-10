@@ -2186,6 +2186,12 @@
     <ClCompile Include="game_controls\classmenu.cpp">
       <Filter>Source Files\game_controls</Filter>
     </ClCompile>
+    <ClCompile Include="c_team_train_watcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\teamplay_round_timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="achievement_notification_panel.h">
@@ -4635,6 +4641,12 @@
     </ClInclude>
     <ClInclude Include="game_controls\classmenu.h">
       <Filter>Source Files\game_controls</Filter>
+    </ClInclude>
+    <ClInclude Include="c_team_train_watcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\teamplay_round_timer.h">
+      <Filter>Game Shared Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

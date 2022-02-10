@@ -4,7 +4,7 @@
     <LocalDebuggerCommand>C:\Program Files (x86)\Steam\steamapps\common\alien swarm\swarm.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>-sw -dev -game ../../sourcemods/somme</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-allowdebug -override_vpk -sw -dev -game ../../sourcemods/aswtf</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerWorkingDirectory>C:\Program Files (x86)\Steam\steamapps\common\alien swarm</LocalDebuggerWorkingDirectory>

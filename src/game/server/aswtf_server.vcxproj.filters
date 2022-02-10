@@ -1790,6 +1790,9 @@
     <ClCompile Include="..\shared\playerclass_info_parse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\shared\teamplay_round_timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\shared\achievement_saverestore.h">
@@ -3698,6 +3701,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\shared\playerclass_info_parse.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\teamplay_round_timer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

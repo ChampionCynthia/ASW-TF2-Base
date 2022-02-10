@@ -7,6 +7,8 @@
 #include "cbase.h"
 #include "tf_shareddefs.h"
 #include "tf_gamerules.h"
+#include "c_func_brush.h"
+#include "c_triggers.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -14,10 +16,10 @@
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-class C_FuncRespawnRoom : public C_BaseEntity
+class C_FuncRespawnRoom : public C_BaseTrigger
 {
-	DECLARE_CLASS( C_FuncRespawnRoom, C_BaseEntity );
 public:
+	DECLARE_CLASS( C_FuncRespawnRoom, C_BaseTrigger );
 	DECLARE_CLIENTCLASS();
 };
 
@@ -27,10 +29,10 @@ END_RECV_TABLE()
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
-class C_FuncRespawnRoomVisualizer : public C_BaseEntity
+class C_FuncRespawnRoomVisualizer : public C_FuncBrush
 {
-	DECLARE_CLASS( C_FuncRespawnRoomVisualizer, C_BaseEntity );
 public:
+	DECLARE_CLASS( C_FuncRespawnRoomVisualizer, C_FuncBrush );
 	DECLARE_CLIENTCLASS();
 
 	virtual int DrawModel( int flags, const RenderableInstance_t &instance );

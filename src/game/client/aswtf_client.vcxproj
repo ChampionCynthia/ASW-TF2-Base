@@ -251,6 +251,7 @@ exit 1
     <ClCompile Include="..\shared\Multiplayer\multiplayer_animstate.cpp" />
     <ClCompile Include="..\shared\playerclass_info_parse.cpp" />
     <ClCompile Include="..\shared\predicted_viewmodel.cpp" />
+    <ClCompile Include="..\shared\teamplay_round_timer.cpp" />
     <ClCompile Include="..\shared\tf\achievements_tf.cpp" />
     <ClCompile Include="..\shared\tf\baseobject_shared.cpp" />
     <ClCompile Include="..\shared\tf\entity_capture_flag.cpp" />
@@ -371,6 +372,7 @@ exit 1
     <ClCompile Include="c_func_dust.cpp" />
     <ClCompile Include="c_func_lod.cpp" />
     <ClCompile Include="c_team_objectiveresource.cpp" />
+    <ClCompile Include="c_team_train_watcher.cpp" />
     <ClCompile Include="game_controls\classmenu.cpp" />
     <ClCompile Include="hl2\C_Func_Monitor.cpp" />
     <ClCompile Include="c_func_movelinear.cpp" />
@@ -1619,6 +1621,7 @@ exit 1
     <ClInclude Include="..\shared\Multiplayer\multiplayer_animstate.h" />
     <ClInclude Include="..\shared\playerclass_info_parse.h" />
     <ClInclude Include="..\shared\predicted_viewmodel.h" />
+    <ClInclude Include="..\shared\teamplay_round_timer.h" />
     <ClInclude Include="..\shared\tf\baseobject_shared.h" />
     <ClInclude Include="..\shared\tf\entity_capture_flag.h" />
     <ClInclude Include="..\shared\tf\ihasbuildpoints.h" />
@@ -1690,6 +1693,7 @@ exit 1
     <ClInclude Include="cdll_bounded_cvars.h" />
     <ClInclude Include="commentary_modelviewer.h" />
     <ClInclude Include="c_team_objectiveresource.h" />
+    <ClInclude Include="c_team_train_watcher.h" />
     <ClInclude Include="foundryhelpers_client.h" />
     <ClInclude Include="..\shared\game_timescale_shared.h" />
     <ClInclude Include="game_controls\classmenu.h" />

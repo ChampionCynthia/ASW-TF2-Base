@@ -169,7 +169,7 @@ void CTFHudWeaponAmmo::OnThink()
 {
 	// Get the player and active weapon.
 	C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
-	C_BaseCombatWeapon *pWeapon = pPlayer->GetActiveWeapon();
+	C_BaseCombatWeapon *pWeapon = ( pPlayer ? pPlayer->GetActiveWeapon() : NULL );
 
 	if ( m_flNextThink < gpGlobals->curtime )
 	{
