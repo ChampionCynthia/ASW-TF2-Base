@@ -29,22 +29,7 @@
 //	group name				name substring		substring	chan			sndlvl_min	sndlvl_max	priority Is Ducked	Ducking	Percent	 Threshold
 //  ---------				------------------	---------	-----------		----------	----------	-------- --------	-------	-------	 ---------
 	
-	"Vort_Dialog"			"/vort"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Alyx_Dialog"			"/alyx"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Alyx_Dialog"			"/al_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Citizen_Dialog"		"/citizen"			""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Citizen_Dialog"		"/female"			""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Citizen_Dialog"		"/male"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Monk_Dialog"			"/monk"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Eli_Dialog"			"/eli_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Kleiner_Dialog"		"/kl_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Breen_Dialog"			"/br_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Mossman_Dialog"		"/mo_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Barney_Dialog"			"/ba_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Gman_Dialog"			"/gman_"			""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Metrocop_Dialog"		"/mcop"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	"Soldier_Dialog"		"/cs_"				""			""				""			""			"60"		"0"		"1"		"100"	"20"
-	
+
 	"bullethit"				"impact_bullet"		""			""				""			""			"50"		"0"		"0"		"100"	"40"
 	"bulletmiss"			"nearmiss"			""			""				""			""			"50"		"0"		"0"		"100"	"40"
 	"Explosions"			"explo"				""			""				"120"		""			"50"		"0"		"1"		"100"	"40"
@@ -102,7 +87,28 @@
 	"VeryLoud"				""					""			""				"101"		"149"		"50"		"0"		"0"		"100"	"40"
 	"SuperLoud"				""					""			""				"150"		""			"50"		"0"		"0"		"100"	"40"
 
-	"All"					""					""			""				""			""			"50"		"0"		"0"		"100"	"40"
+	"FreezeCam"				"/freeze_cam"		""			""				""			""			"65"		"0"		"1"		"100"	"40"
+	"WinSounds"				"misc/your_team"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"FlagWarnings"				"vo/intel"			""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"CaptureWarnings"				"vo/announcer_last"	""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"PlayerVoice"				"?VoiceSfx"		""			""				""			""			"65"		"0"		"1"		"100"	"40"
+	"DemomanTaunts"				"vo/taunts/demoman"	""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"EngineerTaunts"				"vo/taunts/engineer"	""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"HeavyTaunts"				"vo/taunts/heavy"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"MedicTaunts"				"vo/taunts/medic"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"PyroTaunts"				"vo/taunts/pyro"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"ScoutTaunts"				"vo/taunts/scout"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"SniperTaunts"				"vo/taunts/snipe"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"SoldierTaunts"				"vo/taunts/soldier"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"SpyTaunts"				"vo/taunts/spy"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"Tf_music"				"misc/tf"			""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	
+	"Doors"					"doors/generic"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	"PlayerAnimations"			"player/taunt"		""			""				""			""			"65"		"0"		"0"		"100"	"40"
+	
+	
+	"All"					""			""			""				""			""			"50"		"0"		"0"		"100"	"40"
+
 }
 
 
@@ -207,3 +213,36 @@
 }
 
 // add new sound mixers here...ALWAYS use Default_Mix as a template.
+
+"FreezeCam_Only"
+{
+//	group name			mix value
+//  --------			---------
+
+	"FreezeCam"			"0.72"
+	"WinSounds"			"0.72"
+	"FlagWarnings"			"0.72"
+	"CaptureWarnings"			"0.72"
+	"PlayerVoice"			"0.72"
+	"DemomanTaunts"			"0.72"				
+	"EngineerTaunts"			"0.72"
+	"HeavyTaunts"			"0.72"
+	"MedicTaunts"			"0.72"
+	"PyroTaunts"			"0.72"
+	"ScoutTaunts"			"0.72"
+	"SniperTaunts"			"0.72"
+	"SoldierTaunts"			"0.72"
+	"SpyTaunts"			"0.72"
+	"Tf_music"			"0.72"
+	"All"				"0.01"
+}
+
+"Menu_Only"
+{
+//	group name			mix value
+//  --------			---------
+
+	"Doors"				"0.99"
+	"PlayerAnimations"		"0.99"
+	"All"				"0.01"
+}

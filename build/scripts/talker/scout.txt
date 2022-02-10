@@ -1,0 +1,770 @@
+//--------------------------------------------------------------------------------------------------------------
+// Scout Response Rule File
+//--------------------------------------------------------------------------------------------------------------
+
+Criterion "ScoutIsKillSpeechObject" "ScoutKillSpeechObject" "1" "required" weight 0
+Criterion "ScoutIsNotStillonFire" "ScoutOnFire" "!=1" "required" weight 0
+Criterion "ScoutIsStillonFire" "ScoutOnFire" "1" "required" weight 0
+Criterion "ScoutNotKillSpeech" "ScoutKillSpeech" "!=1" "required" weight 0
+Criterion "ScoutNotKillSpeechMelee" "ScoutKillSpeechMelee" "!=1" "required" weight 0
+Criterion "ScoutNotKillSpeechMeleeFat" "ScoutKillSpeechMeleeFat" "!=1" "required" weight 0
+Criterion "ScoutNotSaidHealThanks" "ScoutSaidHealThanks" "!=1" "required"
+Criterion "IsHelpCapScout" "ScoutHelpCap" "1" "required" weight 0
+Criterion "NotScoutGrabbedIntelligence" "ScoutGrabbedIntelligence" "!=1" "required"
+
+
+Response PlayerCloakedSpyDemomanScout
+{
+	scene "scenes/Player/Scout/low/386.vcd" 
+}
+Rule PlayerCloakedSpyDemomanScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnDemoman
+	Response PlayerCloakedSpyDemomanScout
+}
+
+Response PlayerCloakedSpyEngineerScout
+{
+	scene "scenes/Player/Scout/low/389.vcd" 
+}
+Rule PlayerCloakedSpyEngineerScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnEngineer
+	Response PlayerCloakedSpyEngineerScout
+}
+
+Response PlayerCloakedSpyHeavyScout
+{
+	scene "scenes/Player/Scout/low/384.vcd" 
+}
+Rule PlayerCloakedSpyHeavyScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnHeavy
+	Response PlayerCloakedSpyHeavyScout
+}
+
+Response PlayerCloakedSpyMedicScout
+{
+	scene "scenes/Player/Scout/low/388.vcd" 
+}
+Rule PlayerCloakedSpyMedicScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnMedic
+	Response PlayerCloakedSpyMedicScout
+}
+
+Response PlayerCloakedSpyPyroScout
+{
+	scene "scenes/Player/Scout/low/385.vcd" 
+}
+Rule PlayerCloakedSpyPyroScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnPyro
+	Response PlayerCloakedSpyPyroScout
+}
+
+Response PlayerCloakedSpySniperScout
+{
+	scene "scenes/Player/Scout/low/390.vcd" 
+}
+Rule PlayerCloakedSpySniperScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnSniper
+	Response PlayerCloakedSpySniperScout
+}
+
+Response PlayerCloakedSpySoldierScout
+{
+	scene "scenes/Player/Scout/low/383.vcd" 
+}
+Rule PlayerCloakedSpySoldierScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnSoldier
+	Response PlayerCloakedSpySoldierScout
+}
+
+Response PlayerCloakedSpySpyScout
+{
+	scene "scenes/Player/Scout/low/387.vcd" 
+}
+Rule PlayerCloakedSpySpyScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout IsOnSpy
+	Response PlayerCloakedSpySpyScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Auto Speech
+//--------------------------------------------------------------------------------------------------------------
+Response HealThanksScout
+{
+	scene "scenes/Player/Scout/low/510.vcd" 
+	scene "scenes/Player/Scout/low/511.vcd" 
+	scene "scenes/Player/Scout/low/512.vcd" 
+}
+Rule HealThanksScout
+{
+	criteria ConceptMedicChargeStopped IsScout SuperHighHealthContext ScoutNotSaidHealThanks 50PercentChance
+	ApplyContext "ScoutSaidHealThanks:1:20"
+	Response HealThanksScout
+}
+
+Response PlayerRoundStartScout
+{
+	scene "scenes/Player/Scout/low/367.vcd" predelay "1.0, 5.0"
+	scene "scenes/Player/Scout/low/369.vcd" predelay "1.0, 5.0"
+	scene "scenes/Player/Scout/low/370.vcd" predelay "1.0, 5.0"
+	scene "scenes/Player/Scout/low/371.vcd" predelay "1.0, 5.0"
+	scene "scenes/Player/Scout/low/368.vcd" predelay "1.0, 5.0"
+}
+Rule PlayerRoundStartScout
+{
+	criteria ConceptPlayerRoundStart IsScout
+	Response PlayerRoundStartScout
+}
+
+Response PlayerCappedIntelligenceScout
+{
+	scene "scenes/Player/Scout/low/359.vcd" 
+	scene "scenes/Player/Scout/low/360.vcd" 
+	scene "scenes/Player/Scout/low/361.vcd" 
+	scene "scenes/Player/Scout/low/1289.vcd" 
+}
+Rule PlayerCappedIntelligenceScout
+{
+	criteria ConceptPlayerCapturedIntelligence IsScout
+	Response PlayerCappedIntelligenceScout
+}
+
+Response PlayerCapturedPointScout
+{
+	scene "scenes/Player/Scout/low/356.vcd" 
+	scene "scenes/Player/Scout/low/1280.vcd" 
+	scene "scenes/Player/Scout/low/357.vcd" 
+	scene "scenes/Player/Scout/low/358.vcd" 
+}
+Rule PlayerCapturedPointScout
+{
+	criteria ConceptPlayerCapturedPoint IsScout
+	Response PlayerCapturedPointScout
+}
+
+Response PlayerGrabbedIntelligenceScout
+{
+	scene "scenes/Player/Scout/low/480.vcd" 
+}
+Rule PlayerGrabbedIntelligenceScout
+{
+	criteria ConceptPlayerGrabbedIntelligence IsScout NotScoutGrabbedIntelligence 10PercentChance
+	ApplyContext "ScoutGrabbedIntelligence:1:30"
+	Response PlayerGrabbedIntelligenceScout
+}
+
+Response PlayerSuddenDeathScout
+{
+	scene "scenes/Player/Scout/low/419.vcd" 
+	scene "scenes/Player/Scout/low/420.vcd" 
+	scene "scenes/Player/Scout/low/421.vcd" 
+	scene "scenes/Player/Scout/low/422.vcd" 
+	scene "scenes/Player/Scout/low/423.vcd" 
+	scene "scenes/Player/Scout/low/424.vcd" 
+	scene "scenes/Player/Scout/low/425.vcd" 
+	scene "scenes/Player/Scout/low/426.vcd" 
+	scene "scenes/Player/Scout/low/427.vcd" 
+	scene "scenes/Player/Scout/low/428.vcd" 
+	scene "scenes/Player/Scout/low/430.vcd" 
+}
+Rule PlayerSuddenDeathScout
+{
+	criteria ConceptPlayerSuddenDeathStart IsScout
+	Response PlayerSuddenDeathScout
+}
+
+Response PlayerStalemateScout
+{
+	scene "scenes/Player/Scout/low/362.vcd" 
+	scene "scenes/Player/Scout/low/1281.vcd" 
+	scene "scenes/Player/Scout/low/363.vcd" 
+	scene "scenes/Player/Scout/low/364.vcd" 
+}
+Rule PlayerStalemateScout
+{
+	criteria ConceptPlayerStalemate IsScout
+	Response PlayerStalemateScout
+}
+
+Response PlayerTeleporterThanksScout
+{
+	scene "scenes/Player/Scout/low/513.vcd" 
+	scene "scenes/Player/Scout/low/514.vcd" 
+	scene "scenes/Player/Scout/low/515.vcd" 
+}
+Rule PlayerTeleporterThanksScout
+{
+	criteria ConceptTeleported IsNotEngineer IsScout 30PercentChance
+	Response PlayerTeleporterThanksScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Auto Speech Combat
+//--------------------------------------------------------------------------------------------------------------
+Response DefendOnThePointScout
+{
+	scene "scenes/Player/Scout/low/489.vcd" 
+	scene "scenes/Player/Scout/low/1305.vcd" 
+}
+Rule DefendOnThePointScout
+{
+	criteria ConceptFireWeapon IsScout IsOnFriendlyControlPoint NotDefendOnThePointSpeech
+	ApplyContext "DefendOnThePointSpeech:1:30"
+	applycontexttoworld
+	Response DefendOnThePointScout
+}
+
+Response KilledPlayerManyScout
+{
+	scene "scenes/Player/Scout/low/493.vcd" 
+}
+Rule KilledPlayerManyScout
+{
+	criteria ConceptKilledPlayer IsManyRecentKills 30PercentChance IsWeaponPrimary KilledPlayerDelay ScoutNotKillSpeech IsScout
+	ApplyContext "ScoutKillSpeech:1:10"
+	applycontexttoworld
+	Response KilledPlayerManyScout
+}
+
+Response KilledPlayerMeleeScout
+{
+	scene "scenes/Player/Scout/low/476.vcd" 
+	scene "scenes/Player/Scout/low/477.vcd" 
+	scene "scenes/Player/Scout/low/479.vcd" 
+	scene "scenes/Player/Scout/low/482.vcd" 
+	scene "scenes/Player/Scout/low/481.vcd" 
+	scene "scenes/Player/Scout/low/483.vcd" 
+	scene "scenes/Player/Scout/low/484.vcd" 
+	scene "scenes/Player/Scout/low/498.vcd" 
+	scene "scenes/Player/Scout/low/501.vcd" 
+}
+Rule KilledPlayerMeleeScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 30PercentChance  IsWeaponMelee ScoutNotKillSpeechMelee IsScout
+	ApplyContext "ScoutKillSpeechMelee:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeScout
+}
+
+Response KilledPlayerMeleeScoutFatScout
+{
+	scene "scenes/Player/Scout/low/475.vcd" 
+}
+Rule KilledPlayerMeleeScoutFatScout
+{
+	criteria ConceptKilledPlayer KilledPlayerDelay 75PercentChance  IsWeaponMelee ScoutNotKillSpeechMeleeFat IsScout IsVictimHeavy
+	ApplyContext "ScoutKillSpeechMeleeFat:1:10"
+	applycontexttoworld
+	Response KilledPlayerMeleeScoutFatScout
+}
+
+Response PlayerKilledCapperScout
+{
+	scene "scenes/Player/Scout/low/359.vcd" 
+	scene "scenes/Player/Scout/low/372.vcd" 
+	scene "scenes/Player/Scout/low/373.vcd" 
+	scene "scenes/Player/Scout/low/454.vcd" 
+	scene "scenes/Player/Scout/low/488.vcd" 
+	scene "scenes/Player/Scout/low/491.vcd" 
+	scene "scenes/Player/Scout/low/499.vcd" 
+	scene "scenes/Player/Scout/low/1308.vcd" 
+}
+Rule PlayerKilledCapperScout
+{
+	criteria ConceptCapBlocked IsScout
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response PlayerKilledCapperScout
+}
+
+Response PlayerKilledDominatingScout
+{
+	scene "scenes/Player/Scout/low/396.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/1297.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/432.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/433.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/1295.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/1296.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/434.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/435.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/506.vcd" predelay "2.5"
+}
+Rule PlayerKilledDominatingScout
+{
+	criteria ConceptKilledPlayer IsScout IsDominated
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response PlayerKilledDominatingScout
+}
+
+Response PlayerKilledForRevengeScout
+{
+	scene "scenes/Player/Scout/low/374.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/453.vcd" predelay "2.5"
+	scene "scenes/Player/Scout/low/486.vcd" predelay "2.5"
+}
+Rule PlayerKilledForRevengeScout
+{
+	criteria ConceptKilledPlayer IsScout IsRevenge
+	ApplyContext "ScoutKillSpeech:1:10"
+	Response PlayerKilledForRevengeScout
+}
+
+Response PlayerKilledObjectScout
+{
+	scene "scenes/Player/Scout/low/485.vcd" 
+}
+Rule PlayerKilledObjectScout
+{
+	criteria ConceptKilledObject IsScout 30PercentChance IsARecentKill
+	ApplyContext "ScoutKillSpeechObject:1:30"
+	applycontexttoworld
+	Response PlayerKilledObjectScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Auto Speech Pain
+//--------------------------------------------------------------------------------------------------------------
+Response PlayerAttackerPainScout
+{
+	scene "scenes/Player/Scout/low/461.vcd" 
+	scene "scenes/Player/Scout/low/462.vcd" 
+	scene "scenes/Player/Scout/low/463.vcd" 
+	scene "scenes/Player/Scout/low/1361.vcd" 
+	scene "scenes/Player/Scout/low/1362.vcd" 
+	scene "scenes/Player/Scout/low/1363.vcd" 
+}
+Rule PlayerAttackerPainScout
+{
+	criteria ConceptAttackerPain IsScout
+	Response PlayerAttackerPainScout
+}
+
+Response PlayerOnFireScout
+{
+	scene "scenes/Player/Scout/low/365.vcd" 
+}
+Rule PlayerOnFireScout
+{
+	criteria ConceptFire IsScout ScoutIsNotStillonFire
+	ApplyContext "ScoutOnFire:1:7"
+	Response PlayerOnFireScout
+}
+
+Response PlayerOnFireRareScout
+{
+	scene "scenes/Player/Scout/low/366.vcd" 
+}
+Rule PlayerOnFireRareScout
+{
+	criteria ConceptFire IsScout 10PercentChance ScoutIsNotStillonFire
+	ApplyContext "ScoutOnFire:1:7"
+	Response PlayerOnFireRareScout
+}
+
+Response PlayerPainScout
+{
+	scene "scenes/Player/Scout/low/464.vcd" 
+	scene "scenes/Player/Scout/low/465.vcd" 
+	scene "scenes/Player/Scout/low/466.vcd" 
+	scene "scenes/Player/Scout/low/1364.vcd" 
+	scene "scenes/Player/Scout/low/1365.vcd" 
+	scene "scenes/Player/Scout/low/1366.vcd" 
+	scene "scenes/Player/Scout/low/1367.vcd" 
+	scene "scenes/Player/Scout/low/1368.vcd" 
+}
+Rule PlayerPainScout
+{
+	criteria ConceptPain IsScout
+	Response PlayerPainScout
+}
+
+Response PlayerStillOnFireScout
+{
+	scene "scenes/Player/Scout/low/1932.vcd" 
+}
+Rule PlayerStillOnFireScout
+{
+	criteria ConceptFire IsScout  ScoutIsStillonFire
+	ApplyContext "ScoutOnFire:1:7"
+	Response PlayerStillOnFireScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Speech Menu 1
+//--------------------------------------------------------------------------------------------------------------
+Response PlayerGoScout
+{
+	scene "scenes/Player/Scout/low/393.vcd" 
+	scene "scenes/Player/Scout/low/1286.vcd" 
+	scene "scenes/Player/Scout/low/392.vcd" 
+	scene "scenes/Player/Scout/low/394.vcd" 
+}
+Rule PlayerGoScout
+{
+	criteria ConceptPlayerGo IsScout
+	Response PlayerGoScout
+}
+
+Response PlayerHeadLeftScout
+{
+	scene "scenes/Player/Scout/low/398.vcd" 
+	scene "scenes/Player/Scout/low/399.vcd" 
+	scene "scenes/Player/Scout/low/400.vcd" 
+}
+Rule PlayerHeadLeftScout
+{
+	criteria ConceptPlayerLeft  IsScout
+	Response PlayerHeadLeftScout
+}
+
+Response PlayerHeadRightScout
+{
+	scene "scenes/Player/Scout/low/401.vcd" 
+	scene "scenes/Player/Scout/low/402.vcd" 
+	scene "scenes/Player/Scout/low/403.vcd" 
+}
+Rule PlayerHeadRightScout
+{
+	criteria ConceptPlayerRight  IsScout
+	Response PlayerHeadRightScout
+}
+
+Response PlayerHelpScout
+{
+	scene "scenes/Player/Scout/low/404.vcd" 
+	scene "scenes/Player/Scout/low/1290.vcd" 
+	scene "scenes/Player/Scout/low/405.vcd" 
+	scene "scenes/Player/Scout/low/406.vcd" 
+}
+Rule PlayerHelpScout
+{
+	criteria ConceptPlayerHelp IsScout
+	Response PlayerHelpScout
+}
+
+Response PlayerHelpCaptureScout
+{
+	scene "scenes/Player/Scout/low/407.vcd" 
+	scene "scenes/Player/Scout/low/408.vcd" 
+	scene "scenes/Player/Scout/low/409.vcd" 
+}
+Rule PlayerHelpCaptureScout
+{
+	criteria ConceptPlayerHelp IsScout IsOnCappableControlPoint
+	ApplyContext "ScoutHelpCap:1:10"
+	Response PlayerHelpCaptureScout
+}
+
+Response PlayerHelpCapture2Scout
+{
+	scene "scenes/Player/Scout/low/489.vcd" 
+	scene "scenes/Player/Scout/low/1304.vcd" 
+	scene "scenes/Player/Scout/low/1305.vcd" 
+	scene "scenes/Player/Scout/low/1306.vcd" 
+	scene "scenes/Player/Scout/low/1307.vcd" 
+}
+Rule PlayerHelpCapture2Scout
+{
+	criteria ConceptPlayerHelp IsScout IsOnCappableControlPoint IsHelpCapScout
+	Response PlayerHelpCapture2Scout
+}
+
+Response PlayerHelpDefendScout
+{
+	scene "scenes/Player/Scout/low/410.vcd" 
+	scene "scenes/Player/Scout/low/411.vcd" 
+	scene "scenes/Player/Scout/low/412.vcd" 
+}
+Rule PlayerHelpDefendScout
+{
+	criteria ConceptPlayerHelp IsScout IsOnFriendlyControlPoint
+	Response PlayerHelpDefendScout
+}
+
+Response PlayerMedicScout
+{
+	scene "scenes/Player/Scout/low/438.vcd" 
+	scene "scenes/Player/Scout/low/439.vcd" 
+	scene "scenes/Player/Scout/low/440.vcd" 
+}
+Rule PlayerMedicScout
+{
+	criteria ConceptPlayerMedic IsScout
+	Response PlayerMedicScout
+}
+
+Response PlayerMoveUpScout
+{
+	scene "scenes/Player/Scout/low/441.vcd" 
+	scene "scenes/Player/Scout/low/442.vcd" 
+	scene "scenes/Player/Scout/low/443.vcd" 
+}
+Rule PlayerMoveUpScout
+{
+	criteria ConceptPlayerMoveUp  IsScout
+	Response PlayerMoveUpScout
+}
+
+Response PlayerNoScout
+{
+	scene "scenes/Player/Scout/low/455.vcd" 
+	scene "scenes/Player/Scout/low/456.vcd" 
+	scene "scenes/Player/Scout/low/457.vcd" 
+}
+Rule PlayerNoScout
+{
+	criteria ConceptPlayerNo  IsScout
+	Response PlayerNoScout
+}
+
+Response PlayerThanksScout
+{
+	scene "scenes/Player/Scout/low/508.vcd" 
+	scene "scenes/Player/Scout/low/509.vcd" 
+}
+Rule PlayerThanksScout
+{
+	criteria ConceptPlayerThanks IsScout
+	Response PlayerThanksScout
+}
+
+Response PlayerYesScout
+{
+	scene "scenes/Player/Scout/low/516.vcd" 
+	scene "scenes/Player/Scout/low/517.vcd" 
+	scene "scenes/Player/Scout/low/518.vcd" 
+}
+Rule PlayerYesScout
+{
+	criteria ConceptPlayerYes  IsScout
+	Response PlayerYesScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Speech Menu 2
+//--------------------------------------------------------------------------------------------------------------
+Response PlayerActivateChargeScout
+{
+	scene "scenes/Player/Scout/low/353.vcd" 
+	scene "scenes/Player/Scout/low/354.vcd" 
+	scene "scenes/Player/Scout/low/355.vcd" 
+}
+Rule PlayerActivateChargeScout
+{
+	criteria ConceptPlayerActivateCharge IsScout
+	Response PlayerActivateChargeScout
+}
+
+Response PlayerCloakedSpyScout
+{
+	scene "scenes/Player/Scout/low/380.vcd" 
+	scene "scenes/Player/Scout/low/379.vcd" 
+	scene "scenes/Player/Scout/low/1285.vcd" 
+	scene "scenes/Player/Scout/low/381.vcd" 
+}
+Rule PlayerCloakedSpyScout
+{
+	criteria ConceptPlayerCloakedSpy IsScout
+	Response PlayerCloakedSpyScout
+}
+
+Response PlayerDispenserHereScout
+{
+	scene "scenes/Player/Scout/low/444.vcd" 
+}
+Rule PlayerDispenserHereScout
+{
+	criteria ConceptPlayerDispenserHere IsScout
+	Response PlayerDispenserHereScout
+}
+
+Response PlayerIncomingScout
+{
+	scene "scenes/Player/Scout/low/413.vcd" 
+	scene "scenes/Player/Scout/low/414.vcd" 
+	scene "scenes/Player/Scout/low/415.vcd" 
+}
+Rule PlayerIncomingScout
+{
+	criteria ConceptPlayerIncoming IsScout
+	Response PlayerIncomingScout
+}
+
+Response PlayerSentryAheadScout
+{
+	scene "scenes/Player/Scout/low/472.vcd" 
+	scene "scenes/Player/Scout/low/473.vcd" 
+	scene "scenes/Player/Scout/low/474.vcd" 
+}
+Rule PlayerSentryAheadScout
+{
+	criteria ConceptPlayerSentryAhead IsScout
+	Response PlayerSentryAheadScout
+}
+
+Response PlayerSentryHereScout
+{
+	scene "scenes/Player/Scout/low/445.vcd" 
+}
+Rule PlayerSentryHereScout
+{
+	criteria ConceptPlayerSentryHere IsScout
+	Response PlayerSentryHereScout
+}
+
+Response PlayerTeleporterHereScout
+{
+	scene "scenes/Player/Scout/low/446.vcd" 
+}
+Rule PlayerTeleporterHereScout
+{
+	criteria ConceptPlayerTeleporterHere IsScout
+	Response PlayerTeleporterHereScout
+}
+
+
+//--------------------------------------------------------------------------------------------------------------
+// Speech Menu 3
+//--------------------------------------------------------------------------------------------------------------
+Response PlayerBattleCryScout
+{
+	scene "scenes/Player/Scout/low/367.vcd" 
+	scene "scenes/Player/Scout/low/369.vcd" 
+	scene "scenes/Player/Scout/low/370.vcd" 
+	scene "scenes/Player/Scout/low/371.vcd" 
+	scene "scenes/Player/Scout/low/368.vcd" 
+}
+Rule PlayerBattleCryScout
+{
+	criteria ConceptPlayerBattleCry IsScout
+	Response PlayerBattleCryScout
+}
+
+Response PlayerCheersScout
+{
+	scene "scenes/Player/Scout/low/372.vcd" 
+	scene "scenes/Player/Scout/low/374.vcd" 
+	scene "scenes/Player/Scout/low/375.vcd" 
+	scene "scenes/Player/Scout/low/377.vcd" 
+	scene "scenes/Player/Scout/low/376.vcd" 
+	scene "scenes/Player/Scout/low/373.vcd" 
+}
+Rule PlayerCheersScout
+{
+	criteria ConceptPlayerCheers IsScout
+	Response PlayerCheersScout
+}
+
+Response PlayerGoodJobScout
+{
+	scene "scenes/Player/Scout/low/395.vcd" 
+	scene "scenes/Player/Scout/low/396.vcd" 
+	scene "scenes/Player/Scout/low/397.vcd" 
+	scene "scenes/Player/Scout/low/1288.vcd" 
+}
+Rule PlayerGoodJobScout
+{
+	criteria ConceptPlayerGoodJob IsScout
+	Response PlayerGoodJobScout
+}
+
+Response PlayerJeersScout
+{
+	scene "scenes/Player/Scout/low/419.vcd" 
+	scene "scenes/Player/Scout/low/420.vcd" 
+	scene "scenes/Player/Scout/low/421.vcd" 
+	scene "scenes/Player/Scout/low/422.vcd" 
+	scene "scenes/Player/Scout/low/423.vcd" 
+	scene "scenes/Player/Scout/low/424.vcd" 
+	scene "scenes/Player/Scout/low/425.vcd" 
+	scene "scenes/Player/Scout/low/426.vcd" 
+	scene "scenes/Player/Scout/low/427.vcd" 
+	scene "scenes/Player/Scout/low/428.vcd" 
+	scene "scenes/Player/Scout/low/430.vcd" 
+}
+Rule PlayerJeersScout
+{
+	criteria ConceptPlayerJeers IsScout
+	Response PlayerJeersScout
+}
+
+Response PlayerLostPointScout
+{
+	scene "scenes/Player/Scout/low/451.vcd" 
+	scene "scenes/Player/Scout/low/447.vcd" 
+	scene "scenes/Player/Scout/low/449.vcd" 
+	scene "scenes/Player/Scout/low/450.vcd" 
+	scene "scenes/Player/Scout/low/448.vcd" 
+}
+Rule PlayerLostPointScout
+{
+	criteria ConceptPlayerLostPoint IsScout
+	Response PlayerLostPointScout
+}
+
+Response PlayerNegativeScout
+{
+	scene "scenes/Player/Scout/low/451.vcd" 
+	scene "scenes/Player/Scout/low/447.vcd" 
+	scene "scenes/Player/Scout/low/449.vcd" 
+	scene "scenes/Player/Scout/low/450.vcd" 
+	scene "scenes/Player/Scout/low/448.vcd" 
+}
+Rule PlayerNegativeScout
+{
+	criteria ConceptPlayerNegative IsScout
+	Response PlayerNegativeScout
+}
+
+Response PlayerNiceShotScout
+{
+	scene "scenes/Player/Scout/low/452.vcd" 
+	scene "scenes/Player/Scout/low/453.vcd" 
+	scene "scenes/Player/Scout/low/454.vcd" 
+}
+Rule PlayerNiceShotScout
+{
+	criteria ConceptPlayerNiceShot IsScout
+	Response PlayerNiceShotScout
+}
+
+Response PlayerPositiveScout
+{
+	scene "scenes/Player/Scout/low/1302.vcd" 
+	scene "scenes/Player/Scout/low/467.vcd" 
+	scene "scenes/Player/Scout/low/469.vcd" 
+	scene "scenes/Player/Scout/low/470.vcd" 
+	scene "scenes/Player/Scout/low/471.vcd" 
+}
+Rule PlayerPositiveScout
+{
+	criteria ConceptPlayerPositive IsScout
+	Response PlayerPositiveScout
+}
+
+Response PlayerTauntsScout
+{
+	scene "scenes/Player/Scout/low/1298.vcd" 
+	scene "scenes/Player/Scout/low/436.vcd" 
+	scene "scenes/Player/Scout/low/437.vcd" 
+	scene "scenes/Player/Scout/low/1299.vcd" 
+	scene "scenes/Player/Scout/low/1300.vcd" 
+	scene "scenes/Player/Scout/low/1301.vcd" 
+}
+Rule PlayerTauntsScout
+{
+	criteria ConceptPlayerTaunts IsScout
+	Response PlayerTauntsScout
+}
+

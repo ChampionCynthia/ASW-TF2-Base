@@ -1,0 +1,42 @@
+// Choreo version 1
+actor "soldier"
+{
+  channel "audio"
+  {
+    event speak "Soldier.SpecialCompleted01"
+    {
+      time 1.468750 3.947480
+      param "Medic.Taunts15"
+      fixedlength
+      cctype "cc_master"
+      cctoken ""
+    }
+    event sequence "taunt05"
+    {
+      time 0.000000 5.600000
+      param "taunt05_oktoberfest"
+      fixedlength
+    }
+  }
+  channel "emotion"
+  {
+    event expression "happyFull"
+    {
+      time 0.020833 5.739583
+      param "player\medic\emotion\emotion"
+      param2 "happyFull"
+    }
+  }
+}
+
+scalesettings
+{
+  "SceneRampTool" "100"
+  "GestureTool" "100"
+  "RampTool" "66"
+  "ExpressionTool" "100"
+  "CChoreoView" "64"
+}
+fps 60
+snap off
+ignorePhonemes off

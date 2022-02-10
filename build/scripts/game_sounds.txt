@@ -68,6 +68,66 @@
 	"wave"			"common/null.wav"
 }
 
+// ------------------------------------------------------------------------------------ //
+// HEALTH KIT
+// ------------------------------------------------------------------------------------ //
+"HealthKit.Touch"
+{
+	"channel"	"CHAN_ITEM"
+	"volume"	"VOL_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"pitch"		"PITCH_NORM"
+	"wave"		"items/smallmedkit1.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// AMMO PACK
+// ------------------------------------------------------------------------------------ //
+"AmmoPack.Touch"
+{
+	"channel"	"CHAN_ITEM"
+	"volume"	"VOL_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"pitch"		"PITCH_NORM"
+	"wave"		"items/gunpickup2.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// GRENADE PACK
+// ------------------------------------------------------------------------------------ //
+"GrenadePack.Touch"
+{
+	"channel"	"CHAN_ITEM"
+	"volume"	"VOL_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"pitch"		"PITCH_NORM"
+	"wave"		"items/gunpickup2.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// REGENERATE
+// ------------------------------------------------------------------------------------ //
+"Regenerate.Touch"
+{
+	"channel"	"CHAN_ITEM"
+	"volume"	"VOL_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"pitch"		"PITCH_NORM"
+	"wave"		"items/regenerate.wav"
+}
+
+// ------------------------------------------------------------------------------------ //
+// CHANGE CLASS
+// ------------------------------------------------------------------------------------ //
+"ChangeClass.Touch"
+{
+	"channel"	"CHAN_ITEM"
+	"volume"	"VOL_NORM"
+	"soundlevel"	"SNDLVL_NONE"
+	"pitch"		"PITCH_NORM"
+	"wave"		"items/r_item1.wav"
+}
+
 "HudChat.Message"
 {
 	"channel"	"CHAN_ITEM"

@@ -70,6 +70,7 @@
 //   nodelay = an additional delay of 0 after speaking
 //   defaultdelay = an additional delay of 2.8 to 3.2 seconds after speaking
 //   delay interval = an additional delay based on a random sample from the interval after speaking
+//   predelay interval = delays the speech for the time interval. NOTE: Only works on scenes (i.e. no sentences/speak/print)
 //   speakonce = don't use this response more than one time (default off)
 //	 noscene = For an NPC, play the sound immediately using EmitSound, don't play it through the scene system. Good for playing sounds on dying or dead NPCs.
 //   odds = if this response is selected, if odds < 100, then there is a chance that nothing will be said (default 100)
@@ -145,9 +146,217 @@ enumeration "NPCState"
 	"Dead"		"6"
 }
 
-response "NullResponse"
+criterion "ConceptPlayerTaunt" "Concept" "TLK_PLAYER_TAUNT" "required"
+criterion "ConceptPlayerThanks" "Concept" "TLK_PLAYER_THANKS" "required"
+criterion "ConceptPlayerMedic" "Concept" "TLK_PLAYER_MEDIC" required
+criterion "ConceptPlayerHelp" "Concept" "TLK_PLAYER_HELP" required
+criterion "ConceptPlayerGo" "Concept"  "TLK_PLAYER_GO" required
+criterion "ConceptPlayerMoveUp" "Concept" "TLK_PLAYER_MOVEUP" required
+criterion "ConceptPlayerLeft" "Concept" "TLK_PLAYER_LEFT" required
+criterion "ConceptPlayerRight" "Concept" "TLK_PLAYER_RIGHT" required
+criterion "ConceptPlayerYes" "Concept" "TLK_PLAYER_YES" required
+criterion "ConceptPlayerNo" "Concept" "TLK_PLAYER_NO" required
+criterion "ConceptPlayerIncoming" "Concept" "TLK_PLAYER_INCOMING" required
+criterion "ConceptPlayerCloakedSpy" "Concept" "TLK_PLAYER_CLOAKEDSPY" required
+criterion "ConceptPlayerSentryAhead" "Concept" "TLK_PLAYER_SENTRYAHEAD" required
+criterion "ConceptPlayerTeleporterHere" "Concept" "TLK_PLAYER_TELEPORTERHERE" required
+criterion "ConceptPlayerDispenserHere" "Concept" "TLK_PLAYER_DISPENSERHERE" required
+criterion "ConceptPlayerSentryHere" "Concept" "TLK_PLAYER_SENTRYHERE" required
+criterion "ConceptPlayerActivateCharge" "Concept" "TLK_PLAYER_ACTIVATECHARGE" required
+criterion "ConceptPlayerChargeReady" "Concept" "TLK_PLAYER_CHARGEREADY" required
+criterion "ConceptPlayerTaunts" "Concept" "TLK_PLAYER_TAUNTS" required
+criterion "ConceptPlayerBattleCry" "Concept" "TLK_PLAYER_BATTLECRY" required
+criterion "ConceptPlayerCheers" "Concept" "TLK_PLAYER_CHEERS" required
+criterion "ConceptPlayerJeers" "Concept" "TLK_PLAYER_JEERS" required
+criterion "ConceptPlayerPositive" "Concept" "TLK_PLAYER_POSITIVE" required
+criterion "ConceptPlayerNegative" "Concept" "TLK_PLAYER_NEGATIVE" required
+criterion "ConceptPlayerNiceShot" "Concept" "TLK_PLAYER_NICESHOT" required
+criterion "ConceptPlayerGoodJob" "Concept" "TLK_PLAYER_GOODJOB" required
+criterion "ConceptSpySapping" "Concept" "TLK_SPY_SAPPER" required
+criterion "ConceptPain" "Concept" "TLK_PLAYER_PAIN" required
+criterion "ConceptAttackerPain" "Concept" "TLK_PLAYER_ATTACKER_PAIN" required
+criterion "ConceptFire" "Concept" "TLK_ONFIRE" required
+criterion "ConceptCapBlocked" "Concept" "TLK_CAPTURE_BLOCKED" required
+criterion "ConceptMedicChargeDeployed" "Concept" "TLK_MEDIC_CHARGEDEPLOYED" required
+criterion "ConceptMedicChargeStopped" "Concept" "TLK_HEALTARGET_STOPPEDHEALING" required 
 
-// General concepts
-criterion "PlayerAlive" "PlayerHealth" ">0" required
-criterion "PlayerDead" "PlayerHealth" "<=0" required
-criterion "PlayerWounded" "PlayerHealthFrac"	">0,<=.5"
+
+//Auto fire concepts
+criterion "ConceptPlayerCapturedPoint" "Concept" "TLK_CAPTURED_POINT" required
+criterion "ConceptPlayerRoundStart" "Concept" "TLK_ROUND_START" required
+criterion "ConceptPlayerSuddenDeathStart" "Concept" "TLK_SUDDENDEATH_START" required
+criterion "ConceptPlayerStalemate" "Concept" "TLK_STALEMATE" required
+criterion "ConceptPlayerBuildingObject" "Concept" "TLK_BUILDING_OBJECT" required
+criterion "ConceptPlayerDetonatedObject" "Concept" "TLK_DETONATED_OBJECT" required
+criterion "ConceptLostObject" "Concept" "TLK_LOST_OBJECT" required
+criterion "ConceptKilledObject" "Concept" "TLK_KILLED_OBJECT" required
+criterion "ConceptMedicChargeReady" "Concept" "TLK_MEDIC_CHARGEREADY" required
+criterion "ConceptTeleported" "Concept" "TLK_TELEPORTED" required
+criterion "ConceptPlayerDead" "Concept" "TLK_DEAD" required
+
+criterion "ConceptPlayerGrabbedIntelligence" "Concept" "TLK_FLAGPICKUP" required          
+criterion "ConceptPlayerCapturedIntelligence" "Concept" "TLK_FLAGCAPTURED" required          
+
+//cart stuff
+criterion "ConceptCartMovingForward" "Concept" "TLK_CART_MOVING_FORWARD" required          
+criterion "ConceptCartMovingStopped" "Concept" "TLK_CART_STOP" required          
+criterion "ConceptCartMovingBackward" "Concept" "TLK_CART_MOVING_BACKWARD" required          
+
+
+criterion "IsOnOffense" "teamrole" "offense" required
+criterion "IsOnDefense" "teamrole" "defense" required
+
+
+// Expressions
+criterion "ConceptPlayerExpression" "Concept" "TLK_PLAYER_EXPRESSION" required
+
+
+criterion "ConceptPlayerLostPoint" "Concept" "TLK_LOST_CONTROL_POINT'" required
+
+
+criterion "IsSentryGun" "objtype" "sentrygun" required
+criterion "IsTeleporterEntrance" "objtype" "teleporter_entrance" required
+criterion "IsTeleporterExit" "objtype" "teleporter_exit" required
+criterion "IsDispenser" "objtype" "dispenser" required
+criterion "IsDisguised" "disguised" "1" required
+criterion "IsWeaponPrimary" "weaponmode" "primary" required
+criterion "IsWeaponSecondary" "weaponmode" "secondary" required
+criterion "IsWeaponMelee" "weaponmode" "melee" required
+criterion "IsWeaponBuilding" "weaponmode" "building" required
+criterion "IsWeaponPda" "weaponmode" "pda" required
+
+
+criterion "IsOnScout" "crosshair_on" "Scout" "required"
+criterion "IsOnSniper" "crosshair_on" "Sniper" "required"
+criterion "IsOnSoldier" "crosshair_on" "Soldier" "required"
+criterion "IsOnDemoman" "crosshair_on" "Demoman" "required"
+criterion "IsOnMedic" "crosshair_on" "Medic" "required"
+criterion "IsOnHeavy" "crosshair_on" "Heavy" "required"
+criterion "IsOnPyro" "crosshair_on" "Pyro" "required"
+criterion "IsOnSpy" "crosshair_on" "Spy" "required"
+criterion "IsOnEngineer" "crosshair_on" "Engineer" "required"
+
+criterion "IsDominated" "domination" "dominated" "required" 
+criterion "IsRevenge" "domination" "revenge" "required" 
+criterion "IsHeadShot" "customdeath" "headshot" "required" 
+
+
+criterion "ConceptKilledPlayer" "Concept" "TLK_KILLED_PLAYER" required
+criterion "KilledPlayerDelay" "worldDontKilledPlayer" "!=1" "required"
+
+criterion "IsScout" "playerclass" "Scout" "required" 
+criterion "IsSniper" "playerclass" "Sniper" "required"
+criterion "IsSoldier" "playerclass" "Soldier" "required"
+criterion "IsDemoman" "playerclass" "Demoman" "required"
+criterion "IsMedic" "playerclass" "Medic" "required"
+criterion "IsHeavy" "playerclass" "Heavy" "required"
+criterion "IsPyro" "playerclass" "Pyro" "required"
+criterion "IsSpy" "playerclass" "Spy" "required"
+criterion "IsEngineer" "playerclass" "Engineer" "required"
+
+criterion "IsNotScout" "playerclass" "!=Scout" "required" 
+criterion "IsNotSniper" "playerclass" "!=Sniper" "required"
+criterion "IsNotSoldier" "playerclass" "!=Soldier" "required"
+criterion "IsNotDemoman" "playerclass" "!=Demoman" "required"
+criterion "IsNotMedic" "playerclass" "!=Medic" "required"
+criterion "IsNotHeavy" "playerclass" "!=Heavy" "required"
+criterion "IsNotPyro" "playerclass" "!=Pyro" "required"
+criterion "IsNotSpy" "playerclass" "!=Spy" "required"
+criterion "IsNotEngineer" "playerclass" "!=Engineer" "required"
+
+
+criterion "IsVictimScout" "victimclass" "Scout" "required" weight 0
+criterion "IsVictimSniper" "victimclass" "Sniper" "required" weight 0
+criterion "IsVictimSoldier" "victimclass" "Soldier" "required" weight 0
+criterion "IsVictimDemoman" "victimclass" "Demoman" "required" weight 0
+criterion "IsVictimMedic" "victimclass" "Medic" "required" weight 0
+criterion "IsVictimHeavy" "victimclass" "Heavy" "required" weight 0
+criterion "IsVictimPyro" "victimclass" "Pyro" "required" weight 0
+criterion "IsVictimSpy" "victimclass" "Spy" "required" weight 0
+criterion "IsVictimEngineer" "victimclass" "Engineer" "required"  weight 0
+
+criterion "IsNotVictimScout" "victimclass" "!=Scout" "required" weight 0
+criterion "IsNotVictimSniper" "victimclass" "!=Sniper" "required" weight 0
+criterion "IsNotVictimSoldier" "victimclass" "!=Soldier" "required" weight 0
+criterion "IsNotVictimDemoman" "victimclass" "!=Demoman" "required" weight 0
+criterion "IsNotVictimMedic" "victimclass" "!=Medic" "required" weight 0
+criterion "IsNotVictimHeavy" "victimclass" "!=Heavy" "required" weight 0
+criterion "IsNotVictimPyro" "victimclass" "!=Pyro" "required" weight 0
+criterion "IsNotVictimSpy" "victimclass" "!=Spy" "required" weight 0
+criterion "IsNotVictimEngineer" "victimclass" "!=Engineer" "required" weight 0
+    
+
+
+criterion "10PercentChance"  "randomnum"               ">90"   required
+criterion "20PercentChance"  "randomnum"               ">80"   required
+criterion "30PercentChance"  "randomnum"               ">70"   required
+criterion "50PercentChance"  "randomnum"               ">50"   required
+criterion "75PercentChance"  "randomnum"               ">25"   required
+criterion "IsARecentKill"  "recentkills"               ">0"   required
+criterion "IsManyRecentKills"  "recentkills"               ">1"   required
+criterion "IsVeryManyRecentKills"  "recentkills"               ">3"   required
+criterion "IsInvulnerable"  "invulnerable"               "1"   required weight 10
+
+criterion "IsOnFriendlyControlPoint"  "OnFriendlyControlPoint"	"1"   required
+criterion "IsOnCappableControlPoint"  "OnCappableControlPoint"	"1"   required
+
+criterion "WeaponIsMinigun" "playerweapon" "tf_weapon_minigun" "required"
+criterion "WeaponIsShotgun" "playerweapon" "tf_weapon_shotgun_secondary" "required"
+criterion "WeaponIsShotgunSoldier" "playerweapon" "tf_weapon_shotgun_soldier" "required"
+criterion "WeaponIsShotgunHwg" "playerweapon" "tf_weapon_shotgun_hwg" "required"
+criterion "WeaponIsShotgunPyro" "playerweapon" "tf_weapon_shotgun_pyro" "required"
+criterion "WeaponIsFists" "playerweapon" "tf_weapon_fists" "required"
+criterion "WeaponIsFlamethrower" "playerweapon" "tf_weapon_flamethrower" "required"
+criterion "WeaponIsAxe" "playerweapon" "tf_weapon_fireaxe" "required"
+criterion "WeaponIsSyringe" "playerweapon" "tf_weapon_syringegun_medic" "required"
+criterion "WeaponIsHeal" "playerweapon" "tf_weapon_medigun" "required"
+criterion "WeaponIsBonesaw" "playerweapon" "tf_weapon_bonesaw" "required"
+criterion "WeaponIsShotgunPrimary" "playerweapon" "tf_weapon_shotgun_primary" "required"
+criterion "WeaponIsPistol" "playerweapon" "tf_weapon_pistol" "required"
+criterion "WeaponIsBuild" "playerweapon" "tf_weapon_builder" "required"
+criterion "WeaponIsWrench" "playerweapon" "tf_weapon_wrench" "required"
+criterion "WeaponIsScattergun" "playerweapon" "tf_weapon_scattergun" "required"
+criterion "WeaponIsPistolScout" "playerweapon" "tf_weapon_pistol_scout" "required"
+criterion "WeaponIsBat" "playerweapon" "tf_weapon_bat" "required"
+criterion "WeaponIsSniperrifle" "playerweapon" "tf_weapon_sniperrifle" "required"
+criterion "WeaponIsSMG" "playerweapon" "tf_weapon_smg" "required"
+criterion "WeaponIsClub" "playerweapon" "tf_weapon_club" "required"
+criterion "WeaponIsRevolver" "playerweapon" "tf_weapon_revolver" "required"
+criterion "WeaponIsKnife" "playerweapon" "tf_weapon_knife" "required"
+criterion "WeaponIsPipebomb" "playerweapon" "tf_weapon_pipebomblauncher" "required"
+criterion "WeaponIsGrenade" "playerweapon" "tf_weapon_grenadelauncher" "required"
+criterion "WeaponIsBottle" "playerweapon" "tf_weapon_bottle" "required"
+criterion "WeaponIsSpyPDA" "playerweapon" "tf_weapon_pda_spy" "required"
+criterion "WeaponIsRocket" "playerweapon" "tf_weapon_rocketlauncher" "required"
+criterion "WeaponIsShovel" "playerweapon" "tf_weapon_shovel" "required"
+criterion "WeaponIsFlaregun" "playerweapon" "tf_weapon_flaregun" "required"
+
+criterion "WeaponIsSentrygun" "customdeath" "sentrygun" "required"
+criterion "WeaponIsNotSentrygun" "customdeath" "" "required"
+
+
+criterion "DeployedContext" "sniperzoomed" "1" "required"
+criterion "ConceptFireWeapon" "Concept" "TLK_FIREWEAPON" required
+criterion "ConceptFireMinigun" "Concept" "TLK_FIREMINIGUN" required
+criterion "ConceptWindMinigun" "Concept" "TLK_WINDMINIGUN" required
+criterion "LowHealthContext" "playerhealthfrac" "<0.25" required
+criterion "SuperHighHealthContext" "playerhealthfrac" ">1.400" required
+
+criterion "IsFiringMinigun" "minigunfiretime" ">0.0" required
+criterion "TimeFiringMinigunShort" "minigunfiretime" ">4.0,<=8.0" required
+criterion "TimeFiringMinigunLong" "minigunfiretime" ">8.0,<=15.0" required
+criterion "TimeFiringMinigunReallyLong" "minigunfiretime" ">15.0" required
+criterion "ConceptFireMinigunTalk" "Concept" "TLK_MINIGUN_FIREWEAPON" "required"
+Criterion "NotDefendOnThePointSpeech" "worldDefendOnThePointSpeech" "!=1" "required" weight 0
+
+// Test rules
+#include "talker/tf.txt"
+#include "talker/Heavy.txt"
+#include "talker/Scout.txt"
+#include "talker/Engineer.txt"
+#include "talker/Sniper.txt"
+#include "talker/Soldier.txt"
+#include "talker/Demoman.txt"
+#include "talker/Medic.txt"
+#include "talker/Pyro.txt"
+#include "talker/Spy.txt"

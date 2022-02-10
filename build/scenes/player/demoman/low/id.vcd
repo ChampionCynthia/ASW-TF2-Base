@@ -1,0 +1,16 @@
+// Choreo version 1
+actor "file"
+{
+  channel "audio"
+  {
+    event speak "file"
+    {
+      param "file"
+      fixedlength
+    }
+  }
+}
+
+fps 60
+snap off
+ignorePhonemes off

@@ -1,5 +1,249 @@
 "Resource/HudLayout.res"
 {
+	HudPlayerStatus
+	{
+		"fieldName" "HudPlayerStatus"
+		"visible" "1"
+		"enabled" "1"
+		"xpos"	"0"
+		"ypos"	"0"
+		"wide"	"f0"
+		"tall"	"480"
+	}
+	HudWeaponAmmo
+	{
+		"fieldName" "HudWeaponAmmo"
+		"visible" "1"
+		"enabled" "1"
+		"xpos"	"r99"	[$WIN32]
+		"xpos_minmode"	"r85"	[$WIN32]
+		"ypos"	"r55"	[$WIN32]
+		"ypos_minmode"	"r36"	[$WIN32]
+		"xpos"	"r131"	[$X360]
+		"ypos"	"r77"	[$X360]
+		"wide"	"90"
+		"tall"	"45"
+	}
+	HudObjectiveStatus
+	{
+		"fieldName" "HudObjectiveStatus"
+		"visible" "1"
+		"enabled" "1"
+		"xpos"	"0"
+		"ypos"	"0"
+		"wide"	"f0"
+		"tall"	"480"
+	}
+	HudCloakMeter
+	{
+		"fieldName"		"HudCloakMeter"
+		"visible"		"1"
+		"enabled"		"1"
+		"xpos"			"r162"	[$WIN32]
+		"xpos_minmode"	"r125"	[$WIN32]
+		"ypos"			"r52"	[$WIN32]
+		"ypos_minmode"	"r28"	[$WIN32]
+		"xpos"			"r194"	[$X360]
+		"ypos"			"r74"	[$X360]
+		"wide"			"100"
+		"tall"			"50"
+		"MeterFG"		"White"
+		"MeterBG"		"Gray"
+	}	
+	HudMedicCharge
+	{
+		"fieldName"		"HudMedicCharge"
+		"visible"		"1"
+		"enabled"		"1"
+		"xpos"			"r138"	[$WIN32]
+		"xpos_minmode"	"r100"	[$WIN32]
+		"ypos"			"r69"	[$WIN32]
+		"ypos_minmode"	"r34"	[$WIN32]
+		"xpos"			"r174"	[$X360]
+		"ypos"			"r90"	[$X360]
+		"wide"			"200"
+		"tall"			"100"
+	}
+	HudDemomanCharge
+	{
+		"fieldName"		"HudDemomanCharge"
+		"visible"		"1"
+		"enabled"		"1"
+		"xpos"			"r80"	[$WIN32]
+		"xpos_minmode"	"r52"	[$WIN32]
+		"ypos"			"r21"	[$WIN32]
+		"ypos_minmode"	"r40"	[$WIN32]
+		"xpos"			"r112"	[$X360]
+		"ypos"			"r45"	[$X360]
+		"zpos"			"1"			// draw in front of ammo
+		"wide"			"60"
+		"wide_minmode"	"50"
+		"tall"			"8"
+		"MeterFG"		"White"
+		"MeterBG"		"Gray"
+	}	
+	CHudAccountPanel
+	{
+		"fieldName"				"CHudAccountPanel"
+		"xpos"					"r162"	[$WIN32]
+		"ypos"					"r152"	[$WIN32]
+		"ypos_minmode"			"r134"	[$WIN32]
+		"xpos"					"r194"	[$X360]
+		"ypos"					"r174"	[$X360]
+		"wide"					"116"
+		"tall"  				"180"
+		"visible" 				"1"
+		"enabled" 				"1"
+		"PaintBackgroundType"	"2"
+	}
+	
+	CHealthAccountPanel
+	{
+		"fieldName"				"CHealthAccountPanel"
+		"xpos"					"76"
+		"xpos_minmode"			"61"
+		"ypos"					"r152"
+		"ypos_minmode"			"r134"
+		"wide"					"116"
+		"tall"  				"180"
+		"visible" 				"1"
+		"enabled" 				"1"
+		"PaintBackgroundType"	"2"
+	}
+	
+	DisguiseStatus
+	{
+		"fieldName" "DisguiseStatus"
+		"visible"	"1"
+		"enabled"	"1"
+		"xpos"		"10"	[$WIN32]
+		"ypos"		"380"	[$WIN32]
+		"xpos"		"50"	[$X360]
+		"ypos"		"350"	[$X360]
+		"wide"		"640"
+		"tall"		"40"
+		"TextFont"	"Default"	[$X360]
+	}
+
+	CMainTargetID
+	{
+		"fieldName" 	"CMainTargetID"
+		"visible" 	"0"
+		"enabled" 	"1"
+		"xpos"		"c-126"
+		"ypos"		"250"
+		"wide"	 	"252"
+		"tall"	 	"35"
+		"tall_minmode"	 	"28"
+		"priority"	"40"
+		"priority_lodef"	"5"
+	}
+	
+	CSpectatorTargetID
+	{
+		"fieldName" 	"CSpectatorTargetID"
+		"visible" 	"0"
+		"enabled" 	"1"
+		"xpos"		"c-126"
+		"ypos"		"250"
+		"wide"	 	"252"
+		"tall"	 	"35"
+		"tall_minmode"	 	"28"
+		"priority"	"40"
+		"priority_lodef" "35"
+	}
+	
+	CSecondaryTargetID
+	{
+		"fieldName" 	"CSecondaryTargetID"
+		"visible" 	"0"
+		"enabled" 	"1"
+		"xpos"		"c-126"
+		"ypos"		"300"
+		"wide"	 	"252"
+		"tall"	 	"35"
+		"tall_minmode"	 	"28"
+		"priority"	"35"
+	}
+	
+	BuildingStatus_Spy
+	{
+		"fieldName" "BuildingStatus_Spy"
+		"visible"	"1"
+		"enabled"	"1"
+		"xpos"		"0"	[$WIN32]
+		"ypos"		"0"	[$WIN32]
+		"xpos"		"32"	[$X360]
+		"ypos"		"16"	[$X360]		
+		"wide"		"640"
+		"tall"		"480"
+		
+		"PaintBackgroundType"	"2"
+	}
+	HudProgressBar
+	{
+		"fieldName" "HudProgressBar"
+		"xpos"	"c-150"
+		"ypos"	"300"
+		"wide"	"300"
+		"tall"  "15"
+		"visible" "1"
+		"enabled" "1"
+
+		"BorderThickness" "1"
+
+		"PaintBackgroundType"	"2"
+	}
+
+	HudRoundTimer
+	{
+		"fieldName" "HudRoundTimer"
+		"xpos"	"c-20"
+		"ypos"	"440"
+		"wide"	"120"
+		"tall"  "40"
+		"visible" "1"
+		"enabled" "1"
+		
+		"PaintBackgroundType"	"2"
+
+		"FlashColor" "HudIcon_Red"		
+
+		"icon_xpos"		"0"
+		"icon_ypos"		"2"
+		"digit_xpos"	"34"
+		"digit_ypos"	"2"
+	}
+	BuildingStatus_Engineer
+	{
+		"fieldName" "BuildingStatus_Engineer"
+		"visible"	"1"
+		"enabled"	"1"
+		"xpos"		"0"
+		"xpos_hidef"		"32"
+		"xpos_lodef"		"40"
+		"ypos"		"0"
+		"ypos_hidef"		"16"
+		"ypos_lodef"		"25"
+		"wide"		"640"
+		"tall"		"480"
+		
+		"PaintBackgroundType"	"2"
+	}
+	HudScenarioIcon 
+	{
+		"fieldName" "HudScenarioIcon"
+		"xpos"	"c110"
+		"ypos"	"443"
+		"wide"	"40"
+		"tall"  "44"
+		"visible" "1"
+		"enabled" "1"
+
+		"PaintBackgroundType"	"2"
+
+		"IconColor"				"Hostage_Yellow"	
+	}
 	HudHealth
 	{
 		"fieldName"		"HudHealth"
