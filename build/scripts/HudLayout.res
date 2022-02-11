@@ -82,9 +82,9 @@
 		"MeterFG"		"White"
 		"MeterBG"		"Gray"
 	}	
-	CHudAccountPanel
+	HudAccount
 	{
-		"fieldName"				"CHudAccountPanel"
+		"fieldName"				"CHudAccount"
 		"xpos"					"r162"	[$WIN32]
 		"ypos"					"r152"	[$WIN32]
 		"ypos_minmode"			"r134"	[$WIN32]
@@ -97,7 +97,7 @@
 		"PaintBackgroundType"	"2"
 	}
 	
-	CHealthAccountPanel
+	HealthAccountPanel
 	{
 		"fieldName"				"CHealthAccountPanel"
 		"xpos"					"76"
@@ -404,6 +404,25 @@
 		"BarHeight" "2"
 		"BarChunkWidth" "2"
 		"BarChunkGap" "1"
+	}
+	HudScope
+	{
+		"fieldName" "HudScope"
+		"visible" "1"
+		"enabled" "1"
+		"wide"	 "640"
+		"tall"	 "480"
+	}
+	
+	HudScopeCharge
+	{
+		"fieldName" "HudScopeCharge"
+		"visible" "1"
+		"enabled" "1"
+		"xpos"	 "c64"
+		"ypos"	 "c-64"
+		"wide"	 "64"
+		"tall"	 "128"
 	}
 	HudVoiceSelfStatus
 	{
