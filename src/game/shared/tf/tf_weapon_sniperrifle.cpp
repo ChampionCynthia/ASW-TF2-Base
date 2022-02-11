@@ -20,6 +20,7 @@
 #include "materialsystem/IMaterialVar.h"
 #include "toolframework_client.h"
 #include "input.h"
+#include "imaterialproxydict.h"
 #endif
 
 #define TF_WEAPON_SNIPERRIFLE_CHARGE_PER_SEC	50.0
@@ -702,7 +703,7 @@ void CProxySniperRifleCharge::OnBind( void *pC_BaseEntity )
 	}
 }
 
-EXPOSE_INTERFACE( CProxySniperRifleCharge, IMaterialProxy, "SniperRifleCharge" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CProxySniperRifleCharge, SniperRifleCharge );
 #endif
 
 //=============================================================================

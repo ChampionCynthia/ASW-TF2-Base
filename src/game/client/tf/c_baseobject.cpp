@@ -25,6 +25,7 @@
 #include "tf_hud_building_status.h"
 #include "cl_animevent.h"
 #include "eventlist.h"
+#include "imaterialproxydict.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -909,7 +910,7 @@ void CObjectPowerProxy::OnBind( void *pRenderable )
 	SetFloatResult(  m_Factor.GetFloat() );
 }
 
-EXPOSE_INTERFACE( CObjectPowerProxy, IMaterialProxy, "ObjectPower" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CObjectPowerProxy, ObjectPower );
 
 //-----------------------------------------------------------------------------
 // Control screen 

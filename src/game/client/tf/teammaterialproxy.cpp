@@ -7,6 +7,7 @@
 #include "materialsystem/IMaterialVar.h"
 #include "c_team.h"
 #include "tf_shareddefs.h"
+#include "imaterialproxydict.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -84,4 +85,4 @@ IMaterial *CTeamMaterialProxy::GetMaterial()
 	return m_FrameVar->GetOwningMaterial();
 }
 
-EXPOSE_INTERFACE( CTeamMaterialProxy, IMaterialProxy, "TeamTexture" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CTeamMaterialProxy, TeamTexture );

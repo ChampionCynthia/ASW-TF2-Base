@@ -34,7 +34,11 @@
 #include "materialsystem/IMaterial.h"
 #include "materialsystem/IMaterialVar.h"
 
+#include "imaterialproxydict.h"
+
 extern CTFWeaponInfo *GetTFWeaponInfo( int iWeapon );
+extern ConVar tf_vm_min_invis;
+extern ConVar tf_vm_max_invis;
 #endif
 
 extern ConVar tf_useparticletracers;
@@ -2185,6 +2189,122 @@ IMaterial *CWeaponInvisProxy::GetMaterial()
 	return m_pPercentInvisible->GetOwningMaterial();
 }
 
-EXPOSE_INTERFACE( CWeaponInvisProxy, IMaterialProxy, "weapon_invis" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CWeaponInvisProxy, weapon_invis );
+
+//-----------------------------------------------------------------------------
+// Purpose: Used for spy invisiblity material
+//
+//			Original TF2 used "weapon_invis" for world models
+//          and "vm_invis" for viewmodels.
+//
+//          Later TF2 merged both into a single "invis" proxy,
+//          and so are the SFM models.
+//
+//          Thus, we implement both the old and new proxies
+//          to support 2007 models and SFM ones.
+//-----------------------------------------------------------------------------
+class CInvisProxy : public CEntityMaterialProxy
+{
+public:
+
+	CInvisProxy( void );
+	virtual ~CInvisProxy( void );
+	virtual bool Init( IMaterial *pMaterial, KeyValues* pKeyValues );
+	virtual void OnBind( C_BaseEntity *pC_BaseEntity );
+	virtual IMaterial * GetMaterial();
+
+private:
+	IMaterialVar *m_pPercentInvisible;
+};
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+CInvisProxy::CInvisProxy( void )
+{
+	m_pPercentInvisible = NULL;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+CInvisProxy::~CInvisProxy( void )
+{
+
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Get pointer to the color value
+// Input : *pMaterial - 
+//-----------------------------------------------------------------------------
+bool CInvisProxy::Init( IMaterial *pMaterial, KeyValues* pKeyValues )
+{
+	Assert( pMaterial );
+
+	// Need to get the material var
+	bool bFound;
+	m_pPercentInvisible = pMaterial->FindVar( "$cloakfactor", &bFound );
+
+	return bFound;
+}
+
+extern ConVar tf_teammate_max_invis;
+//-----------------------------------------------------------------------------
+// Purpose: 
+// Input :
+//-----------------------------------------------------------------------------
+void CInvisProxy::OnBind( C_BaseEntity *pEnt )
+{
+	if( !m_pPercentInvisible )
+		return;
+
+	if ( !pEnt )
+		return;
+
+	C_BaseEntity *pMoveParent = pEnt->GetMoveParent();
+	if ( !pMoveParent || !pMoveParent->IsPlayer() )
+	{
+		// Viewmodel invis here.
+		CTFViewModel *pVM = dynamic_cast<CTFViewModel *>( pEnt );
+	    if ( !pVM )
+	    {
+			m_pPercentInvisible->SetFloatValue( 0.0f );
+			return;
+	    }
+
+		CTFPlayer *pPlayer = ToTFPlayer( pVM->GetOwner() );
+
+		if ( !pPlayer )
+		{
+			m_pPercentInvisible->SetFloatValue( 0.0f );
+			return;
+		}
+
+		float flPercentInvisible = pPlayer->GetPercentInvisible();
+
+		// remap from 0.22 to 0.5
+		// but drop to 0.0 if we're not invis at all
+		float flWeaponInvis = ( flPercentInvisible < 0.01 ) ?
+			0.0 :
+			RemapVal( flPercentInvisible, 0.0, 1.0, tf_vm_min_invis.GetFloat(), tf_vm_max_invis.GetFloat() );
+
+		m_pPercentInvisible->SetFloatValue( flWeaponInvis );
+		return;
+	}
+
+	CTFPlayer *pPlayer = ToTFPlayer( pMoveParent );
+	Assert( pPlayer );
+
+	m_pPercentInvisible->SetFloatValue( pPlayer->GetEffectiveInvisibilityLevel() );
+}
+
+IMaterial *CInvisProxy::GetMaterial()
+{
+	if ( !m_pPercentInvisible )
+		return NULL;
+
+	return m_pPercentInvisible->GetOwningMaterial();
+}
+EXPOSE_MATERIAL_PROXY( CInvisProxy, invis );
 
 #endif // CLIENT_DLL

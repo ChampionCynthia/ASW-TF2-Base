@@ -66,6 +66,7 @@
 
 #include "materialsystem/imesh.h"		//for materials->FindMaterial
 #include "iviewrender.h"				//for view->
+#include "imaterialproxydict.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -765,7 +766,7 @@ IMaterial *CSpyInvisProxy::GetMaterial()
 	return m_pPercentInvisible->GetOwningMaterial();
 }
 
-EXPOSE_INTERFACE( CSpyInvisProxy, IMaterialProxy, "spy_invis" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CSpyInvisProxy, spy_invis );
 
 //-----------------------------------------------------------------------------
 // Purpose: Used for invulnerability material
@@ -819,7 +820,7 @@ public:
 	}
 };
 
-EXPOSE_INTERFACE( CProxyInvulnLevel, IMaterialProxy, "InvulnLevel" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CProxyInvulnLevel, InvulnLevel );
 
 //-----------------------------------------------------------------------------
 // Purpose: Used for burning material on player models
@@ -887,7 +888,7 @@ public:
 	}
 };
 
-EXPOSE_INTERFACE( CProxyBurnLevel, IMaterialProxy, "BurnLevel" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CProxyBurnLevel, BurnLevel );
 
 //-----------------------------------------------------------------------------
 // Purpose: RecvProxy that converts the Player's object UtlVector to entindexes

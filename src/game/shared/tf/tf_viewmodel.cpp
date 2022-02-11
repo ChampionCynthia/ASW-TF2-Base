@@ -17,6 +17,7 @@
 #include "materialsystem/IMaterialVar.h"
 #include "prediction.h"
 
+#include "imaterialproxydict.h"
 #endif
 
 #include "bone_setup.h"	//temp
@@ -359,7 +360,7 @@ IMaterial *CViewModelInvisProxy::GetMaterial()
 	return m_pPercentInvisible->GetOwningMaterial();
 }
 
-EXPOSE_INTERFACE( CViewModelInvisProxy, IMaterialProxy, "vm_invis" IMATERIAL_PROXY_INTERFACE_VERSION );
+EXPOSE_MATERIAL_PROXY( CViewModelInvisProxy, vm_invis );
 
 
 #endif // CLIENT_DLL
