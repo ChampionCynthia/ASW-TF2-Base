@@ -203,15 +203,18 @@ Scheme
 		WizardSubPanel.BgColor		"Blank"
 
 		// scheme-specific colors
-		MainMenu.TextColor			"White"				[$WIN32]
+		// MainMenu.TextColor			"White"				[$WIN32]
+		MainMenu.TextColor			"TanLight"			[$WIN32]
+		MainMenu.ArmedTextColor		"117 107 94 255"	[$WIN32]
+		MainMenu.Inset				"32"	
 		MainMenu.TextColor			"200 200 200 255"	[$X360]
-		MainMenu.ArmedTextColor		"200 200 200 255"	[$WIN32]
+		// MainMenu.ArmedTextColor		"200 200 200 255"	[$WIN32]
 		MainMenu.ArmedTextColor		"White"				[$X360]
 		MainMenu.DepressedTextColor	"192 186 80 255"
 		MainMenu.MenuItemHeight		"30"				[$WIN32]
 		MainMenu.MenuItemHeight			"22"				[$X360]
 		MainMenu.MenuItemHeight_hidef	"32"				[$X360]
-		MainMenu.Inset				"32"
+		// MainMenu.Inset				"32"
 		MainMenu.Backdrop			"0 0 0 156"
 
 		Console.TextColor			"OffWhite"
@@ -1480,6 +1483,25 @@ Scheme
 				}
 			}
 		}
+		
+		"MainMenuFont"
+		{
+			"1"	[$WIN32]
+			{
+				"name"		"TF2 Build"
+				"tall"		"18"
+				"weight"	"500"
+				"additive"	"0"
+				"antialias" "1"
+			}
+		}
+		"MenuLarge"
+		{
+			"1"	[$X360]
+			{
+				"tall_hidef"		"24"
+			}
+		}
 	}
 
 	//////////////////////// CUSTOM FONT FILES /////////////////////////////
@@ -1487,6 +1509,7 @@ Scheme
 	// specifies all the custom (non-system) font files that need to be loaded to service the above described fonts
 	CustomFontFiles
 	{
-		"1"		"resource/NeoSans.vfont"
+		"1"		"resource/TF2Build.vfont"
+		"2"		"resource/NeoSans.vfont"
 	}
 }

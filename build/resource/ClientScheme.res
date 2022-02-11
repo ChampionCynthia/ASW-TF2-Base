@@ -27,6 +27,67 @@ Scheme
 		"ForTesting"		"255 0 0 32"
 		"ForTesting_Magenta"	"255 0 255 255"
 		"ForTesting_MagentaDim"	"255 0 255 120"
+		
+		// TF
+		"White"				"235 235 235 255"
+		"RedSolid"			"192 28 0 255"
+		"Blue"				"0 28 162 140"
+		"Yellow"			"251 235 202 255"
+		"TransparentYellow"	"251 235 202 140"
+		
+		"FooterBGBlack"		"52 48 55 255"
+		
+		"HUDBlueTeam"		"104 124 155 127"
+		"HUDRedTeam"		"180 92 77 127"
+		"HUDSpectator"		"124 124 124 127"
+		"HUDBlueTeamSolid"	"104 124 155 255"
+		"HUDRedTeamSolid"	"180 92 77 255"
+		"HUDDeathWarning"	"255 0 0 255"
+		"HudWhite"			"255 255 255 255"
+		"HudOffWhite"		"200 187 161 255"
+		
+		"Gray"				"178 178 178 255"
+		
+		"HudPanelForeground"		"123 110 59 184"
+		"HudPanelBackground"		"123 110 59 184"
+		"HudPanelBorder"			"255 255 255 102"
+
+		"HudProgressBarActive"		"240 207 78 255"
+		"HudProgressBarInActive"	"140 120 73 255"
+		"HudProgressBarActiveLow"	"240 30 30 255"
+		"HudProgressBarInActiveLow"	"240 30 30 99"	
+
+		"HudTimerProgressActive"	"251 235 202 255"
+		"HudTimerProgressInActive"	"52 48 45 255"
+		"HudTimerProgressWarning"	"240 30 30 255"
+		
+		"TanDark"				"117 107 94 255"
+		"TanLight"				"235 226 202 255"
+		"TanDarker"				"46 43 42 255"
+		
+		// Building HUD Specific
+		"LowHealthRed"		"255 0 0 255"
+		"ProgressOffWhite"	"251 235 202 255"
+		"ProgressBackground"	"250 234 201 51"
+		"HealthBgGrey"		"72 71 69 255"
+		
+		"ProgressOffWhiteTransparent"	"251 235 202 128"
+		
+		"LabelDark"			"48 43 42 255"
+		"LabelTransparent"	"109 96 80 180"
+		
+		"BuildMenuActive"	"248 231 198 255"
+		
+		"DisguiseMenuIconRed"	"192 56 63 255"
+		"DisguiseMenuIconBlue"	"92 128 166 255"
+
+ 		"MatchmakingDialogTitleColor"			"200 184 151 255"
+ 		"MatchmakingMenuItemBackground"			"46 43 42 255"
+ 		"MatchmakingMenuItemBackgroundActive"	"150 71 0 255"	
+		"MatchmakingMenuItemTitleColor"			"200 184 151 255"
+		"MatchmakingMenuItemDescriptionColor"	"200 184 151 255"
+		
+		"HTMLBackground"						"95 92 101 255"
 	}
 	
 	///////////////////// BASE SETTINGS ////////////////////////
@@ -35,11 +96,11 @@ Scheme
 	// controls use these to determine their settings
 	BaseSettings
 	{
-		"FgColor"			"255 220 0 100"
-		"BgColor"			"0 0 0 76"
+		"FgColor"		"Orange"
+		"BgColor"		"TransparentBlack"
 
-		"Panel.FgColor"			"255 220 0 100"
-		"Panel.BgColor"			"0 0 0 76"
+		Panel.FgColor					"Gray"
+		Panel.BgColor					"Blank"
 		
 		"BrightFg"		"255 220 0 255"
 
@@ -62,16 +123,16 @@ Scheme
 		"Caution"			"255 48 0 255"
 		
 			// vgui_controls color specifications
-		Border.Bright				"LightOrange"		// the lit side of a control
-		Border.Dark				"LightOrange"		// the dark/unlit side of a control
-		Border.Selection			"Blank"				// the additional border color for displaying the default/selected button
+		Border.Bright					"Blank"		// the lit side of a control
+		Border.Dark						"Blank"		// the dark/unlit side of a control
+		Border.Selection				"Gray"			// the additional border color for displaying the default/selected button
 
-		Button.TextColor			"Orange"
-		Button.BgColor				"Blank"
-		Button.ArmedTextColor			"Orange"
-		Button.ArmedBgColor			"Red"
-		Button.DepressedTextColor		"Orange"
-		Button.DepressedBgColor			"Red"
+		Button.TextColor				"TanDark"
+		Button.BgColor					"Yellow"
+		Button.ArmedTextColor			"Black"
+		Button.ArmedBgColor				"Orange"
+		Button.DepressedTextColor		"Black"
+		Button.DepressedBgColor			"Orange"
 
 		CheckButton.TextColor			"Orange"
 		CheckButton.SelectedTextColor		"Orange"
@@ -79,6 +140,9 @@ Scheme
 		CheckButton.Border1  			"Border.Dark" 		// the left checkbutton border
 		CheckButton.Border2  			"Border.Bright"		// the right checkbutton border
 		CheckButton.Check			"Orange"				// color of the check itself
+		CheckButton.ArmedBgColor "Orange"
+		CheckButton.DepressedBgColor "Orange"
+		CheckButton.HighlightFgColor "Orange"
 
 		ComboBoxButton.ArrowColor		"Orange"
 		ComboBoxButton.ArmedArrowColor		"Orange"
@@ -108,11 +172,11 @@ Scheme
 		GraphPanel.FgColor			"Orange"
 		GraphPanel.BgColor			"TransparentBlack"
 
-		Label.TextDullColor			"Orange"
-		Label.TextColor				"Orange"
-		Label.TextBrightColor			"Orange"
-		Label.SelectedTextColor			"Orange"
-		Label.BgColor				"Blank"
+		Label.TextDullColor				"TanDark"
+		Label.TextColor					"TanLight"
+		Label.TextBrightColor			"TanLight"
+		Label.SelectedTextColor			"White"
+		Label.BgColor					"Blank"
 		Label.DisabledFgColor1			"Blank"
 		Label.DisabledFgColor2			"LightOrange"
 
@@ -123,19 +187,23 @@ Scheme
 		ListPanel.SelectedOutOfFocusBgColor	"Red"
 		ListPanel.EmptyListInfoTextColor	"Orange"
 
-		Menu.TextColor				"Orange"
-		Menu.BgColor				"TransparentBlack"
-		Menu.ArmedTextColor			"Orange"
-		Menu.ArmedBgColor			"Red"
-		Menu.TextInset				"6"
+		Menu.TextColor					"TanLight"
+		Menu.BgColor					"TransparentBlack"
+		Menu.ArmedTextColor				"TanDark"
+		Menu.ArmedBgColor				"TanLight"
+		Menu.TextInset					"6"
 
 		Chat.TypingText				"Orange"
 
-		Panel.FgColor				"OrangeDim"
+		Panel.FgColor				"Gray"
 		Panel.BgColor				"blank"
 
-		ProgressBar.FgColor			"Orange"
-		ProgressBar.BgColor			"TransparentBlack"
+		ProgressBar.FgColor				"ProgressOffWhite"
+		ProgressBar.BgColor				"ProgressBackground"
+		
+		"BuildingHealthBar.BgColor"		"HealthBgGrey"
+		"BuildingHealthBar.Health"		"ProgressOffWhite"
+		"BuildingHealthBar.LowHealth"	"LowHealthRed"
 
 		PropertySheet.TextColor			"Orange"
 		PropertySheet.SelectedTextColor		"Orange"
@@ -144,20 +212,20 @@ Scheme
 		RadioButton.TextColor			"Orange"
 		RadioButton.SelectedTextColor		"Orange"
 
-		RichText.TextColor			"Orange"
-		RichText.BgColor			"Blank"
-		RichText.SelectedTextColor		"Orange"
-		RichText.SelectedBgColor		"Blank"
+		RichText.TextColor				"Gray"
+		RichText.BgColor				"Blank"
+		RichText.SelectedTextColor		"Gray"
+		RichText.SelectedBgColor		"Red"
 
-		ScrollBarButton.FgColor			"Orange"
-		ScrollBarButton.BgColor			"Blank"
-		ScrollBarButton.ArmedFgColor		"Orange"
+		ScrollBarButton.FgColor				"Gray"
+		ScrollBarButton.BgColor				"Blank"
+		ScrollBarButton.ArmedFgColor		"Gray"
 		ScrollBarButton.ArmedBgColor		"Blank"
-		ScrollBarButton.DepressedFgColor	"Orange"
+		ScrollBarButton.DepressedFgColor	"Black"
 		ScrollBarButton.DepressedBgColor	"Blank"
 
-		ScrollBarSlider.FgColor			"Blank"		// nob color
-		ScrollBarSlider.BgColor			"Blank"		// slider background color
+		ScrollBarSlider.FgColor				"Gray"		// nob color
+		ScrollBarSlider.BgColor				"Blank"		// slider background color
 
 		SectionedListPanel.HeaderTextColor	"Orange"
 		SectionedListPanel.HeaderBgColor	"Blank"
@@ -176,15 +244,15 @@ Scheme
 		Slider.DisabledTextColor1		"117 117 117 255"
 		Slider.DisabledTextColor2		"30 30 30 255"
 
-		TextEntry.TextColor			"Orange"
-		TextEntry.BgColor			"TransparentBlack"
-		TextEntry.CursorColor			"Orange"
-		TextEntry.DisabledTextColor		"Orange"
-		TextEntry.DisabledBgColor		"Blank"
-		TextEntry.SelectedTextColor		"Black"
-		TextEntry.SelectedBgColor		"Red"
-		TextEntry.OutOfFocusSelectedBgColor	"Red"
-		TextEntry.FocusEdgeColor		"TransparentBlack"
+		TextEntry.TextColor			"Gray"
+		TextEntry.BgColor			"Blank"
+		TextEntry.CursorColor		"Gray"
+		TextEntry.DisabledTextColor	"Gray"
+		TextEntry.DisabledBgColor	"Blank"
+		TextEntry.SelectedTextColor	"TanLight"
+		TextEntry.SelectedBgColor	"Blank"
+		TextEntry.OutOfFocusSelectedBgColor	"Blank"
+		TextEntry.FocusEdgeColor	"Blank"
 
 		ToggleButton.SelectedTextColor		"Orange"
 
@@ -212,6 +280,63 @@ Scheme
 
 		// Blank space to leave beneath the menu on the main screen
 		"Main.BottomBorder"	"32"
+		
+		// TF Scheme-specific.
+		TimerProgress.Active		"HudTimerProgressActive"
+		TimerProgress.InActive		"HudTimerProgressInActive"
+		TimerProgress.Warning		"HudTimerProgressWarning"
+
+		HudObjectives.FgColor		"HudPanelForeground"
+		HudObjectives.BgColor		"HudPanelBackground"
+		HudObjectives.BorderColor	"HudPanelBorder"
+				
+		HudProgressBar.Active		"HudProgressBarActive"
+		HudProgressBar.InActive		"HudProgressBarInActive"
+		
+		HudCaptureIcon.Active		"HudProgressBarActive"
+		HudCaptureIcon.InActive		"HudProgressBarInActive"
+		HudCaptureProgressBar.Active	"HudProgressBarActive"
+		HudCaptureProgressBar.InActive	"HudProgressBarInActive"
+		
+		// scheme-specific colors
+		"FgColor"		"Orange"
+		"BgColor"		"TransparentBlack"
+
+		"ViewportBG"		"Blank"
+		"TeamSpec"			"204 204 204 255"
+		"TeamRed"			"255 64 64 255"
+		"TeamBlue"			"153 204 255 255"
+
+		"MapDescriptionText"	"Gray" // the text used in the map description window
+		"HudIcon_Green"		"0 160 0 255"
+		"HudIcon_Red"		"160 0 0 255"
+
+		// CHudMenu
+		"ItemColor"		"255 167 42 200"	// default 255 167 42 255
+		"MenuColor"		"233 208 173 255"
+		"MenuBoxBg"		"0 0 0 100"
+
+		// weapon selection colors
+		"SelectionNumberFg"		"251 235 202 255"
+		"SelectionTextFg"		"251 235 202 255"
+		"SelectionEmptyBoxBg" 	"0 0 0 80"
+		"SelectionBoxBg" 		"0 0 0 80"
+		"SelectionSelectedBoxBg" "0 0 0 190"
+
+		// Hint message colors
+		"HintMessageFg"			"255 255 255 255"
+		"HintMessageBg" 		"0 0 0 60"
+
+		"ProgressBarFg"			"255 30 13 255"
+
+		// Top-left corner of the menu on the main screen
+		"Main.Menu.X"		"32"
+		"Main.Menu.Y"		"248"
+
+		// Blank space to leave beneath the menu on the main screen
+		"Main.BottomBorder"	"32"
+		
+		"VguiScreenCursor"			"255 208 64 255"
 	}
 	
 	//////////////////////// FONTS /////////////////////////////
