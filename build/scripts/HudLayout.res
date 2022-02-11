@@ -490,7 +490,7 @@
 		"SelectionGrowTime"	"0.4"
 		"TextYPos" "64"
 	}
-
+	
 	HudCrosshair
 	{
 		"fieldName" "HudCrosshair"
@@ -791,6 +791,42 @@
 		"icon_height"	"40"
 	}
 	
+	VguiScreenCursor
+	{
+		"fieldName" "VguiScreenCursor"
+		"visible" "1"
+		"enabled" "1"
+		"wide"	 "640"
+		"tall"	 "480"
+	}
+
+	HudControlPointIcons
+	{
+		"fieldName"				"HudControlPointIcons"
+		"xpos"					"0"
+		"ypos"					"410"
+		"wide"					"f0"
+		"tall"					"200"
+		"visible"				"1"
+		"enabled"				"1"
+		"separator_width"		"7"	// distance between the icons (including their backgrounds)
+		"separator_height"		"7"
+		"height_offset"			"0"	[$WIN32] // distance from the bottom of the panel
+		"height_offset"			"26"	[$X360]
+	}
+
+	HudCapturePanel
+	{
+		"fieldName"				"HudCapturePanel"
+		"xpos"					"c-75"
+		"ypos"					"c80"
+		"wide"					"150"
+		"tall"					"90"
+		"visible"				"1"
+		"enabled"				"1"
+		"icon_space"			"2"
+	}
+	
 	HudHDRDemo
 	{
 		"fieldName" "HudHDRDemo"
@@ -826,5 +862,223 @@
 		"wide"					"f10"	[$WIN32]
 		"wide"					"f60"	[$X360]
 		"tall"					"100"
+	}
+	WinPanel
+	{
+		"fieldName"				"WinPanel"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"c-150"
+		"ypos"					"255"
+		"wide"					"300"
+		"tall"					"200"
+	}
+
+	StatPanel
+	{
+		"fieldName"				"StatPanel"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"c-133"
+		"xpos_lodef"			"c-190"
+		"ypos"				"270"
+		"ypos_lodef"			"250"
+		"wide"					"266"
+		"wide_lodef"			"400"
+		"tall"					"120"
+		"tall_lodef"			"190"
+	}
+	
+	FreezePanel
+	{
+		"fieldName"				"FreezePanel"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"0"
+		"ypos"					"0"
+		"wide"					"f0"
+		"tall"					"480"
+	}
+
+	FreezePanelCallout
+	{
+		"fieldName"				"FreezePanelCallout"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"200"
+		"ypos"					"200"
+		"wide"					"100"
+		"tall"					"50"
+	}
+	
+	WaitingForPlayersPanel
+	{
+		"fieldName"				"WaitingForPlayersPanel"
+		"visible"				"0"
+		"enabled"				"1"
+		"xpos"					"c-146"
+		"ypos"					"10"
+		"wide"					"292"
+		"tall"					"64"
+	}
+	
+	"HudMenuEngyBuild"
+	{
+		"fieldName" 	"HudMenuEngyBuild"
+		"visible" 		"1"
+		"enabled" 		"1"
+		"xpos"			"c-225"
+		"ypos"			"c-55"
+		"wide"			"450"
+		"tall"			"195"
+		"PaintBackgroundType"	"0"
+	}
+	
+	"HudMenuEngyDestroy"
+	{
+		"fieldName" 	"HudMenuEngyDestroy"
+		"visible" 		"1"
+		"enabled" 		"1"
+		"xpos"			"c-225"
+		"ypos"			"c-59"
+		"wide"			"450"
+		"tall"			"200"
+		"PaintBackgroundType"	"0"
+	}
+	
+	"HudMenuSpyDisguise"
+	{
+		"fieldName" 	"HudMenuSpyDisguise"
+		"visible" 		"1"
+		"enabled" 		"1"
+		"xpos"			"c-235"
+		"ypos"			"c-52"
+		"ypos_hidef"	"c-42"
+		"ypos_lodef"	"c-42"
+		"wide"			"470"
+		"tall"			"200"	[$WIN32]
+		"tall"			"180"	[$X360]
+		"PaintBackgroundType"	"0"
+	}	
+	
+	HudDemomanPipes
+	{
+		"fieldName"		"HudDemomanPipes"
+		"visible"		"1"
+		"enabled"		"1"
+		"xpos"			"r162"	[$WIN32]
+		"xpos_minmode"	"r110"	[$WIN32]
+		"ypos"			"r52"	[$WIN32]
+		"ypos_minmode"	"r30"	[$WIN32]
+		"xpos"			"r194"	[$X360]
+		"ypos"			"r74"	[$X360]
+		"wide"			"100"
+		"tall"			"50"
+	}	
+
+	HudTeamGoal
+	{
+		"fieldName"				"HudTeamGoal"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"c-160"
+		"ypos"					"15"
+		"ypos_lodef"			"75"
+		"wide"					"320"
+		"tall"					"245"
+	}
+
+	HudTeamSwitch
+	{
+		"fieldName"				"HudTeamSwitch"
+		"visible"				"0"
+		"enabled"				"1"
+		"xpos"					"c-160"
+		"ypos"					"75"
+		"ypos_hidef"				"90"
+		"ypos_lodef"			"90"
+		"wide"					"320"
+		"tall"					"100"
+	}
+
+	HudStalemate
+	{
+		"fieldName"				"HudStalemate"
+		"visible"				"0"
+		"enabled"				"1"
+		"xpos"					"c-160"
+		"ypos"					"65"
+		"ypos_lodef"				"75"
+		"wide"					"320"
+		"tall"					"100"
+	}
+	HudTournament
+	{
+		"fieldName"				"HudTournament"
+		"visible"				"0"
+		"enabled"				"1"
+		"xpos"					"c-125"
+		"ypos"					"5"
+		"ypos_lodef"				"75"
+		"wide"					"250"
+		"tall"					"80"
+	}
+
+	HudTournamentSetup
+	{
+		"fieldName"				"HudTournamentSetup"
+		"visible"				"0"
+		"enabled"				"1"
+		"xpos"					"c-90"
+		"ypos"					"-70"
+		"ypos_lodef"				"75"
+		"wide"					"180"
+		"tall"					"65"
+	}
+
+	HudStopWatch
+	{
+		"fieldName"				"HudStopWatch"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"c-160"
+		"ypos"					"5"
+		"ypos_minmode"				"15"
+		"ypos_lodef"				"75"
+		"wide"					"125"
+		"tall"					"55"
+	}
+	
+	NotificationPanel
+	{
+		"fieldName"				"NotificationPanel"
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"c-320"
+		"ypos"					"300"
+		"wide"					"640"
+		"tall"					"100"
+	}
+	
+	CriticalPanel [$WIN32]
+	{
+		"fieldName"				"CriticalPanel"		
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"r155"
+		"ypos"					"r75"
+		"wide"					"150"
+		"tall"					"25"
+	}
+	
+	HudArenaClassLayout [$WIN32]
+	{
+		"fieldName"				"HudArenaClassLayout"		
+		"visible"				"1"
+		"enabled"				"1"
+		"xpos"					"0"
+		"ypos"					"r320"
+		"wide"					"f0"
+		"tall"					"320"
 	}
 }

@@ -10,6 +10,7 @@ particles_manifest
 	"file"		"particles/impact_fx.pcf"
 	"file"		"particles/medicgun_attrib.pcf"
 	"file"		"particles/medicgun_beam.pcf"
+	"file"		"particles/muzzle_flash.pcf"
 	"file"		"particles/rain_fx.pcf"	
 	"file"		"particles/rocket_fx.pcf"
 	"file"		"particles/rockettrail.pcf"

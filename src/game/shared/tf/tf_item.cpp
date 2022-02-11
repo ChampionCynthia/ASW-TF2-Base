@@ -73,7 +73,7 @@ bool CTFItem::ShouldDraw()
 {
 	// If I'm carrying the flag, don't draw it
 	C_BasePlayer *player = C_BasePlayer::GetLocalPlayer();
-	if ( GetMoveParent() == player && !(player->ShouldDrawLocalPlayer()) )
+	if ( player && GetMoveParent() == player && !(player->ShouldDrawLocalPlayer()) )
 		return false;
 
 	return BaseClass::ShouldDraw();
@@ -84,7 +84,8 @@ bool CTFItem::ShouldDraw()
 //-----------------------------------------------------------------------------
 ShadowType_t CTFItem::ShadowCastType()
 {
-	if ( GetMoveParent() == C_BasePlayer::GetLocalPlayer() )
+	C_BasePlayer *player = C_BasePlayer::GetLocalPlayer();
+	if ( player && GetMoveParent() == player )
 		return SHADOWS_NONE;
 
 	return BaseClass::ShadowCastType();
