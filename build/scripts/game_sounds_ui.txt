@@ -54,10 +54,7 @@
 
 	"soundlevel"	"SNDLVL_NONE"
 
-	"rndwave"
-	{
-//		 "wave"	"*#ui\gamestartup1.wav"
-	}
+	"wave"			"common/null.wav"
 }
 
 "HUDQuickInfo.LowHealth"
