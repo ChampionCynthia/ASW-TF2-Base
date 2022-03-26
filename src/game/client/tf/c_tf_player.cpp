@@ -366,7 +366,7 @@ void C_TFRagdoll::CreateTFRagdoll()
 	DevMsg( 2, "CreateTFRagdoll %d %d\n", gpGlobals->framecount, pPlayer ? pPlayer->entindex() : 0 );
 #endif
 	
-	if ( pPlayer && !pPlayer->IsDormant() )
+	if ( pPlayer && C_BasePlayer::IsLocalPlayer( pPlayer ) )
 	{
 		// Move my current model instance to the ragdoll's so decals are preserved.
 		pPlayer->SnatchModelInstance( this );
@@ -424,6 +424,7 @@ void C_TFRagdoll::CreateTFRagdoll()
 	{
 		// Make us a ragdoll..
 		// m_nRenderFX = kRenderFxRagdoll;
+		m_bClientSideRagdoll = true;
 
 		matrix3x4a_t boneDelta0[MAXSTUDIOBONES];
 		matrix3x4a_t boneDelta1[MAXSTUDIOBONES];
@@ -448,7 +449,7 @@ void C_TFRagdoll::CreateTFRagdoll()
 			Assert( !bChangedModel && "C_TFRagdoll::CreateTFRagdoll: Trying to create ragdoll with a different model than the player it's based on" );
 		}
 
-		if ( pPlayer && !pPlayer->IsDormant() && !bChangedModel )
+		if ( pPlayer && C_BasePlayer::IsLocalPlayer( pPlayer ) && !bChangedModel )
 		{
 			pPlayer->GetRagdollInitBoneArrays( boneDelta0, boneDelta1, currentBones, boneDt );
 		}
@@ -563,6 +564,7 @@ void C_TFRagdoll::OnDataChanged( DataUpdateType_t type )
 		{
 			// Don't let it set us back to a ragdoll with data from the server.
 			SetRenderFX( kRenderFxNone );
+			m_bClientSideRagdoll = false;
 		}
 	}
 }
