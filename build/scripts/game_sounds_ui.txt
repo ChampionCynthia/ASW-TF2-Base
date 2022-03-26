@@ -56,7 +56,7 @@
 
 	"rndwave"
 	{
-		"wave"	"*#ui\gamestartup1.wav"
+//		 "wave"	"*#ui\gamestartup1.wav"
 	}
 }
 
