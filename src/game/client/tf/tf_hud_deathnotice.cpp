@@ -45,6 +45,7 @@ class CTFHudDeathNotice : public CHudBaseDeathNotice
 	DECLARE_CLASS_SIMPLE( CTFHudDeathNotice, CHudBaseDeathNotice );
 public:
 	CTFHudDeathNotice( const char *pElementName ) : CHudBaseDeathNotice( pElementName ) {};
+	virtual void Init( void );
 	virtual void ApplySchemeSettings( vgui::IScheme *scheme );
 	virtual bool IsVisible( void );
 
@@ -65,6 +66,17 @@ private:
 };
 
 DECLARE_HUDELEMENT( CTFHudDeathNotice );
+
+void CTFHudDeathNotice::Init( void )
+{
+	BaseClass::Init();
+
+	// TF-specific events
+	ListenForGameEvent( "object_destroyed" );	
+	ListenForGameEvent( "teamplay_point_captured" );
+	ListenForGameEvent( "teamplay_capture_blocked" );
+	ListenForGameEvent( "teamplay_flag_event" );
+}
 
 void CTFHudDeathNotice::ApplySchemeSettings( vgui::IScheme *scheme )
 {
