@@ -87,7 +87,7 @@ public:
 
 	CTFGameRules();
 
-	virtual bool	Init();
+	// virtual bool	Init();
 
 	// Damage Queries.
 	virtual bool	Damage_IsTimeBased( int iDmgType );			// Damage types that are time-based.
@@ -158,6 +158,8 @@ public:
 	void			SetTeamGoalString( int iTeam, const char *pszGoal );
 
 	// Speaking, vcds, voice commands.
+	// Fox: Moved to L4D response system.
+#if 0
 	struct ResponseRules_t
 	{
 		CUtlVector<IResponseSystem*> m_ResponseSystems;
@@ -166,7 +168,7 @@ public:
 
 	virtual void	InitCustomResponseRulesDicts();
 	virtual void	ShutdownCustomResponseRulesDicts();
-
+#endif
 	virtual bool	HasPassedMinRespawnTime( CBasePlayer *pPlayer );
 
 	bool			ShouldScorePerRound( void );

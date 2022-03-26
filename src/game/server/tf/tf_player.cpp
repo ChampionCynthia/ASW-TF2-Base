@@ -5600,6 +5600,7 @@ bool CTFPlayer::CanHearAndReadChatFrom( CBasePlayer *pPlayer )
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
+#if 0
 IResponseSystem *CTFPlayer::GetResponseSystem()
 {
 	int iClass = GetPlayerClass()->GetClassIndex();
@@ -5623,7 +5624,7 @@ IResponseSystem *CTFPlayer::GetResponseSystem()
 		return TFGameRules()->m_ResponseRules[iClass].m_ResponseSystems[m_iCurrentConcept];
 	}
 }
-
+#endif
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------

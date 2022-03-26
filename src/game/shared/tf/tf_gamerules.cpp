@@ -303,15 +303,6 @@ ConVar ammo_max( "ammo_max", "5000", FCVAR_REPLICATED );
 ConVar sk_plr_dmg_grenade( "sk_plr_dmg_grenade","0");		// Very lame that the base code needs this defined
 #endif
 
-bool CTFGameRules::Init( void )
-{
-#if defined( GAME_DLL )
-	InitCustomResponseRulesDicts();
-#endif
-
-	return BaseClass::Init();
-}
-
 //-----------------------------------------------------------------------------
 // Purpose: 
 // Input  : iDmgType - 
@@ -1069,7 +1060,7 @@ void CTFGameRules::RadiusDamage( const CTakeDamageInfo &info, const Vector &vecS
 		// Note, don't delete each team since they are in the gEntList and will 
 		// automatically be deleted from there, instead.
 		TFTeamMgr()->Shutdown();
-		ShutdownCustomResponseRulesDicts();
+		// ShutdownCustomResponseRulesDicts();
 	}
 
 	//-----------------------------------------------------------------------------
@@ -3238,6 +3229,7 @@ bool CTFGameRules::ShouldShowTeamGoal( void )
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
+#if 0
 void CTFGameRules::ShutdownCustomResponseRulesDicts()
 {
 	DestroyCustomResponseSystems();
@@ -3252,7 +3244,9 @@ void CTFGameRules::ShutdownCustomResponseRulesDicts()
 		m_ResponseRules.Purge();
 	}
 }
+#endif
 
+#if 0
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
@@ -3286,6 +3280,7 @@ void CTFGameRules::InitCustomResponseRulesDicts()
 		}		
 	}
 }
+#endif
 
 //-----------------------------------------------------------------------------
 // Purpose: 
