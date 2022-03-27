@@ -3544,6 +3544,7 @@ void CTFPlayer::ClientHearVox( const char *pSentence )
 void CTFPlayer::UpdateModel( void )
 {
 	SetModel( GetPlayerClass()->GetModelName() );
+	m_PlayerAnimState->OnNewModel();
 }
 
 //-----------------------------------------------------------------------------
