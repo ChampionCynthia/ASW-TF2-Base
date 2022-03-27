@@ -1,0 +1,84 @@
+// Created by Crowbar 0.71
+version 1
+nodes
+  0 "toolboxRoot" -1
+  1 "root" 0
+  2 "upper_telescope_02" 1
+  3 "upper_telescope_01" 1
+  4 "S2turret_back" 3
+  5 "turretBackPlate" 4
+  6 "boxRocketArm1" 4
+  7 "boxRocketArm2" 6
+  8 "boxRocketArm3" 7
+  9 "boxRocket" 8
+  10 "S3wireR01" 4
+  11 "S3wireR02" 10
+  12 "S3wireR03" 11
+  13 "S3wireL01" 4
+  14 "S3wireL02" 13
+  15 "S3wireL03" 14
+  16 "S2rFork_flap" 3
+  17 "S2midHousingR" 16
+  18 "ammochain08" 17
+  19 "ammochain09" 18
+  20 "ammochain015" 19
+  21 "ammochain010" 20
+  22 "ammochain016" 21
+  23 "ammochain011" 22
+  24 "ammochain017" 23
+  25 "ammochain012" 24
+  26 "ammochain018" 25
+  27 "ammochain013" 26
+  28 "ammochain014" 27
+  29 "S2lFork_flap" 3
+  30 "S2midHousingL" 29
+  31 "ammoBeltL1" 30
+  32 "ammoBeltL2" 31
+  33 "ammoBeltL3" 32
+  34 "ammoBeltL4" 33
+  35 "ammoBeltL5" 34
+  36 "ammoBeltL6" 35
+  37 "ammoBeltL7" 36
+  38 "ammoBeltL8" 37
+  39 "S2turretArm01" 3
+  40 "S2turretArm02" 39
+  41 "S2turretArm03" 40
+  42 "lower_lLateralBase" 1
+  43 "lLeg01" 42
+  44 "lLeg02" 43
+  45 "lLeg03" 44
+  46 "lLeg04" 45
+  47 "legbraceL02" 45
+  48 "legbraceL03" 47
+  49 "legbraceL04" 48
+  50 "lBackLeg01" 42
+  51 "lBackLeg02" 50
+  52 "lBackLeg03" 51
+  53 "lower_rLateralBase" 1
+  54 "rLeg01" 53
+  55 "rLeg02" 54
+  56 "rLeg03" 55
+  57 "rLeg04" 56
+  58 "legbraceR02" 56
+  59 "legbraceR03" 58
+  60 "legbraceR04" 59
+  61 "rBackLeg01" 53
+  62 "rBackLeg02" 61
+  63 "rBackLeg03" 62
+  64 "stabilixerJoint1" 0
+  65 "stabilixerJoint2" 64
+  66 "stabilixerJoint3" 65
+  67 "stabilixerJoint5" 66
+  68 "stabilixerJoint8" 67
+  69 "stabilixerJointR1" 0
+  70 "stabilixerJointR2" 69
+  71 "stabilixerJointR3" 70
+  72 "stabilixerJointR5" 71
+  73 "stabilixerJointR8" 72
+  74 "stabilixerJoint4" 68
+  75 "stabilixerJointR4" 73
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 0.000000 0.000000 -1.570796
+end

@@ -1,0 +1,29 @@
+// Created by Crowbar 0.71
+version 1
+nodes
+  0 "crate_broken01.polymsh9" -1
+  1 "crate_broken01.polymsh_detached" -1
+  2 "crate_broken01.polymsh_detached2" -1
+  3 "crate_broken01.polymsh_detached3" -1
+  4 "crate_broken01.polymsh_detached4" -1
+  5 "crate_broken01.polymsh_detached5" -1
+  6 "crate_broken01.polymsh_detached7" -1
+  7 "crate_broken01.polymsh_detached10" -1
+  8 "crate_broken01.polymsh10" -1
+  9 "crate_broken01.polymsh_detached11" -1
+  10 "crate_broken01.polymsh_detached19" -1
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    1 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    2 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    3 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    4 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    5 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    6 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    7 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    8 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    9 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+    10 0.000000 0.000000 0.000000 1.570674 0.000061 -0.000061
+end

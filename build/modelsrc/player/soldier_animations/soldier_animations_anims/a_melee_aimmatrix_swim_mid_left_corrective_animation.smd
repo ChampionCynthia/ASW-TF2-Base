@@ -1,0 +1,82 @@
+// Created by Crowbar 0.71
+version 1
+nodes
+  0 "bip_pelvis" -1
+  1 "bip_spine_0" 0
+  2 "bip_spine_1" 1
+  3 "bip_spine_2" 2
+  4 "bip_spine_3" 3
+  5 "bip_neck" 4
+  6 "bip_head" 5
+  7 "bip_collar_R" 4
+  8 "bip_upperArm_R" 7
+  9 "bip_lowerArm_R" 8
+  10 "bip_hip_L" 0
+  11 "bip_knee_L" 10
+  12 "bip_foot_L" 11
+  13 "bip_hip_R" 0
+  14 "bip_hand_R" 9
+  15 "bip_collar_L" 4
+  16 "bip_upperArm_L" 15
+  17 "bip_lowerArm_L" 16
+  18 "bip_hand_L" 17
+  19 "bip_knee_R" 13
+  20 "bip_foot_R" 19
+  21 "prp_coat_front_R" 0
+  22 "prp_coat_back_L" 0
+  23 "bip_ring_0_L" 18
+  24 "bip_middle_0_L" 18
+  25 "bip_toe_R" 20
+  26 "bip_pinky_0_L" 18
+  27 "prp_coat_back_R" 0
+  28 "prp_pack_L" 0
+  29 "weapon_bone_L" 18
+  30 "bip_index_0_L" 18
+  31 "prp_pack_R" 0
+  32 "prp_pack_back" 0
+  33 "bip_thumb_0_L" 18
+  34 "prp_helmet" 6
+  35 "bip_thumb_0_R" 14
+  36 "rocket_joint" 18
+  37 "bip_index_0_R" 14
+  38 "bip_toe_L" 12
+  39 "bip_middle_0_R" 14
+  40 "bip_ring_0_R" 14
+  41 "prp_grenade_bottom" 2
+  42 "prp_grenade_top" 3
+  43 "bip_pinky_0_R" 14
+  44 "weapon_bone" 14
+  45 "weapon_bone_1" 14
+  46 "prp_coat_front_L" 0
+  47 "bip_pinky_1_R" 43
+  48 "bip_pinky_2_R" 47
+  49 "prp_coatCollar_L" 4
+  50 "prp_coatCollar_R" 4
+  51 "prp_coatCollar_back" 4
+  52 "bip_ring_1_R" 40
+  53 "bip_ring_2_R" 52
+  54 "bip_middle_1_R" 39
+  55 "bip_middle_2_R" 54
+  56 "bip_index_1_R" 37
+  57 "bip_index_2_R" 56
+  58 "bip_thumb_1_R" 35
+  59 "bip_thumb_2_R" 58
+  60 "bip_pinky_1_L" 26
+  61 "bip_pinky_2_L" 60
+  62 "bip_ring_1_L" 23
+  63 "bip_ring_2_L" 62
+  64 "prp_coat_front_1_L" 46
+  65 "bip_middle_1_L" 24
+  66 "bip_middle_2_L" 65
+  67 "prp_coat_back_1_L" 22
+  68 "prp_coat_front_1_R" 21
+  69 "bip_index_1_L" 30
+  70 "bip_index_2_L" 69
+  71 "prp_coat_back_1_R" 27
+  72 "bip_thumb_1_L" 33
+  73 "bip_thumb_2_L" 72
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 0.011758 -0.022500 -1.617323
+end

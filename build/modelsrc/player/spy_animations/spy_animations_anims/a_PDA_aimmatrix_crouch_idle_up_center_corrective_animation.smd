@@ -1,0 +1,79 @@
+// Created by Crowbar 0.71
+version 1
+nodes
+  0 "bip_pelvis" -1
+  1 "bip_spine_0" 0
+  2 "bip_spine_1" 1
+  3 "bip_spine_2" 2
+  4 "bip_spine_3" 3
+  5 "bip_neck" 4
+  6 "bip_head" 5
+  7 "prp_cig" 6
+  8 "bip_collar_L" 4
+  9 "bip_upperArm_L" 8
+  10 "bip_lowerArm_L" 9
+  11 "bip_hand_L" 10
+  12 "bip_collar_R" 4
+  13 "bip_upperArm_R" 12
+  14 "bip_lowerArm_R" 13
+  15 "bip_hand_R" 14
+  16 "weapon_bone_1" 15
+  17 "weapon_bone_2" 15
+  18 "bip_hip_R" 0
+  19 "bip_knee_R" 18
+  20 "bip_foot_R" 19
+  21 "bip_hip_L" 0
+  22 "bip_knee_L" 21
+  23 "bip_foot_L" 22
+  24 "weapon_bone" 15
+  25 "prp_wristInner_R" 14
+  26 "prp_wristOuter_R" 14
+  27 "prp_wristOuter_L" 10
+  28 "prp_wristInner_L" 10
+  29 "hlp_suitArmTop_L" 9
+  30 "hlp_suitArmpitBack_L" 9
+  31 "hlp_suitArmpitBack_R" 13
+  32 "hlp_thigh_L" 0
+  33 "hlp_thigh_R" 0
+  34 "prp_coat_front_0_L" 0
+  35 "prp_coat_back_0_R" 0
+  36 "prp_coat_back_0_L" 0
+  37 "prp_coat_front_0_R" 0
+  38 "hlp_suitArmTop_R" 13
+  39 "bip_pinky_0_L" 11
+  40 "bip_thumb_0_L" 11
+  41 "bip_middle_0_R" 15
+  42 "bip_index_0_L" 11
+  43 "bip_toe_R" 20
+  44 "bip_ring_0_R" 15
+  45 "bip_middle_0_L" 11
+  46 "bip_toe_L" 23
+  47 "bip_pinky_0_R" 15
+  48 "bip_ring_0_L" 11
+  49 "bip_thumb_0_R" 15
+  50 "bip_index_0_R" 15
+  51 "bip_thumb_1_R" 49
+  52 "bip_thumb_2_R" 51
+  53 "bip_pinky_1_L" 39
+  54 "bip_pinky_2_L" 53
+  55 "bip_pinky_1_R" 47
+  56 "bip_pinky_2_R" 55
+  57 "bip_ring_1_L" 48
+  58 "bip_ring_2_L" 57
+  59 "bip_middle_1_L" 45
+  60 "bip_middle_2_L" 59
+  61 "bip_ring_1_R" 44
+  62 "bip_ring_2_R" 61
+  63 "bip_index_1_L" 42
+  64 "bip_index_2_L" 63
+  65 "bip_middle_1_R" 41
+  66 "bip_middle_2_R" 65
+  67 "bip_thumb_1_L" 40
+  68 "bip_thumb_2_L" 67
+  69 "bip_index_1_R" 50
+  70 "bip_index_2_R" 69
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 0.028957 -0.061061 -1.516833
+end
