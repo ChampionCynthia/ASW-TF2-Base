@@ -1,9 +1,8 @@
-Subrect
+"Subrect"
 {
-$Material "decals/decals_mod2x"
-$Pos "0 0"
-$Size "64 64"
-$decalscale 0.06
-$modelmaterial "decals/concrete/shot5"
-$decalDynamicScale 1
+	"$Material"	"decals/decals_mod2x"
+	"$Pos"		"0 0"
+	"$Size"		"64 64"
+	"$decalscale" 	0.16
+	"$modelmaterial" "decals/concrete/shot5"
 }
