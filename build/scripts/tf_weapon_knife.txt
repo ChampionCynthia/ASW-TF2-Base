@@ -2,7 +2,7 @@ WeaponData
 {
 	// Attributes Base.
 	"printname"			"#TF_Weapon_Knife"
-	"BuiltRightHanded"		"0"
+	"BuiltRightHanded"		"1"
 	"MeleeWeapon"			"1"
 	"weight"			"2"
 	"WeaponType"		"melee"

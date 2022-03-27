@@ -2,7 +2,7 @@ WeaponData
 {
 	// Attributes Base.
 	"printname"			"#TF_Weapon_ObjectSelection"
-	"BuiltRightHanded"		"0"
+	"BuiltRightHanded"		"1"
 	"weight"				"1"
 	"WeaponType"			"pda"
 	"ITEM_FLAG_NOITEMPICKUP" 	"1"

@@ -2,7 +2,7 @@ WeaponData
 {
 	// Attributes Base.
 	"printname"		"#TF_Weapon_Minigun"
-	"BuiltRightHanded"	"0"
+	"BuiltRightHanded"	"1"
 	"weight"		"3"
 	"WeaponType"		"primary"
 	"ITEM_FLAG_NOITEMPICKUP" 	"1"

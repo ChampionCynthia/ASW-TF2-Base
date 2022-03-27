@@ -2,7 +2,7 @@
 {
 	// Attributes Base.
 	"printname"			"#TF_Weapon_PDA"
-	"BuiltRightHanded"		"0"
+	"BuiltRightHanded"		"1"
 	"weight"			"2"
 	"WeaponType"			"secondary"
 	"autoswitchto"		"0"
