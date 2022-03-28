@@ -332,7 +332,16 @@ bool C_BaseObject::Simulate( void )
 		rotInterpolator.ClearHistory();
 	}	
 
-	return BaseClass::Simulate();
+	// return BaseClass::Simulate();
+
+	// ASW fix: always simulate client-side when placing
+	// Source 2007 simulates all C_BaseAnimating
+	// while ASW only simulates the ones having a model
+	// with anim events.
+	// Blueprint models don't have anim events so they
+	// aren't simulated by default while placing.
+	bool bRet = BaseClass::Simulate();
+	return m_bPlacing ? m_bPlacing : bRet;
 }
 
 //-----------------------------------------------------------------------------
