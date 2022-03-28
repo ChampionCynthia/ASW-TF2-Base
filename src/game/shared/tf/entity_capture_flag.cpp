@@ -1088,11 +1088,12 @@ float CCaptureFlag::GetReturnProgress()
 
 bool CCaptureFlag::Simulate( void )
 {
-	bool bRet = BaseClass::Simulate();
+	BaseClass::Simulate();
 
 	ManageTrailEffects();
 
-	return bRet;
+	// Always simulate.
+	return true;
 }
 
 void CCaptureFlag::ManageTrailEffects( void )
