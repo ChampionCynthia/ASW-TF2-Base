@@ -643,6 +643,23 @@ exit 1
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="NextBot\NavMeshEntities\func_nav_prerequisite.cpp" />
+    <ClCompile Include="NextBot\NextBot.cpp" />
+    <ClCompile Include="NextBot\NextBotBodyInterface.cpp" />
+    <ClCompile Include="NextBot\NextBotComponentInterface.cpp" />
+    <ClCompile Include="NextBot\NextBotGroundLocomotion.cpp" />
+    <ClCompile Include="NextBot\NextBotIntentionInterface.cpp" />
+    <ClCompile Include="NextBot\NextBotInterface.cpp" />
+    <ClCompile Include="NextBot\NextBotLocomotionInterface.cpp" />
+    <ClCompile Include="NextBot\NextBotManager.cpp" />
+    <ClCompile Include="NextBot\NextBotVisionInterface.cpp" />
+    <ClCompile Include="NextBot\Path\NextBotChasePath.cpp" />
+    <ClCompile Include="NextBot\Path\NextBotPath.cpp" />
+    <ClCompile Include="NextBot\Path\NextBotPathFollow.cpp" />
+    <ClCompile Include="NextBot\Player\NextBotPlayer.cpp" />
+    <ClCompile Include="NextBot\Player\NextBotPlayerBody.cpp" />
+    <ClCompile Include="NextBot\Player\NextBotPlayerLocomotion.cpp" />
+    <ClCompile Include="NextBot\simple_bot.cpp" />
     <ClCompile Include="npc_vehicledriver.cpp" />
     <ClCompile Include="..\shared\obstacle_pushaway.cpp" />
     <ClCompile Include="particle_light.cpp" />
@@ -1226,6 +1243,33 @@ exit 1
     <ClInclude Include="networkstringtable_gamedll.h" />
     <ClInclude Include="..\..\public\networkstringtabledefs.h" />
     <ClInclude Include="..\shared\obstacle_pushaway.h" />
+    <ClInclude Include="NextBot\Behavior\BehaviorBackUp.h" />
+    <ClInclude Include="NextBot\Behavior\BehaviorMoveTo.h" />
+    <ClInclude Include="NextBot\NavMeshEntities\func_nav_prerequisite.h" />
+    <ClInclude Include="NextBot\NextBot.h" />
+    <ClInclude Include="NextBot\NextBotBehavior.h" />
+    <ClInclude Include="NextBot\NextBotBodyInterface.h" />
+    <ClInclude Include="NextBot\NextBotComponentInterface.h" />
+    <ClInclude Include="NextBot\NextBotContextualQueryInterface.h" />
+    <ClInclude Include="NextBot\NextBotDebug.h" />
+    <ClInclude Include="NextBot\NextBotEventResponderInterface.h" />
+    <ClInclude Include="NextBot\NextBotGroundLocomotion.h" />
+    <ClInclude Include="NextBot\NextBotHearingInterface.h" />
+    <ClInclude Include="NextBot\NextBotIntentionInterface.h" />
+    <ClInclude Include="NextBot\NextBotInterface.h" />
+    <ClInclude Include="NextBot\NextBotKnownEntity.h" />
+    <ClInclude Include="NextBot\NextBotLocomotionInterface.h" />
+    <ClInclude Include="NextBot\NextBotManager.h" />
+    <ClInclude Include="NextBot\NextBotUtil.h" />
+    <ClInclude Include="NextBot\NextBotVisionInterface.h" />
+    <ClInclude Include="NextBot\Path\NextBotChasePath.h" />
+    <ClInclude Include="NextBot\Path\NextBotPath.h" />
+    <ClInclude Include="NextBot\Path\NextBotPathFollow.h" />
+    <ClInclude Include="NextBot\Path\NextBotRetreatPath.h" />
+    <ClInclude Include="NextBot\Player\NextBotPlayer.h" />
+    <ClInclude Include="NextBot\Player\NextBotPlayerBody.h" />
+    <ClInclude Include="NextBot\Player\NextBotPlayerLocomotion.h" />
+    <ClInclude Include="NextBot\simple_bot.h" />
     <ClInclude Include="particle_fire.h" />
     <ClInclude Include="particle_light.h" />
     <ClInclude Include="..\shared\particle_parse.h" />

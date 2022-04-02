@@ -628,6 +628,7 @@ exit 1
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="NextBot\C_NextBot.cpp" />
     <ClCompile Include="object_motion_blur_effect.cpp" />
     <ClCompile Include="..\shared\obstacle_pushaway.cpp" />
     <ClCompile Include="panelmetaclassmgr.cpp" />
@@ -1707,6 +1708,7 @@ exit 1
     <ClInclude Include="..\shared\point_bonusmaps_accessor.h" />
     <ClInclude Include="..\shared\postprocess_shared.h" />
     <ClInclude Include="..\shared\sharedvar.h" />
+    <ClInclude Include="NextBot\C_NextBot.h" />
     <ClInclude Include="spatialentitymgr.h" />
     <ClInclude Include="swarm\c_asw_jukebox.h" />
     <ClInclude Include="swarm\gameui\swarm\vkeyboard.h" />
