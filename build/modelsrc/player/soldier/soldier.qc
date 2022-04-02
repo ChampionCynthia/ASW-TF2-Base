@@ -620,7 +620,21 @@ $bonemerge "bip_hand_L"
 $bonemerge "weapon_bone_L"
 $bonemerge "weapon_bone"
 $bonemerge "weapon_bone_1"
-
+$bonemerge "bip_thumb_0_L"
+$bonemerge "bip_thumb_1_L"
+$bonemerge "bip_thumb_2_L"
+$bonemerge "bip_index_0_L"
+$bonemerge "bip_index_1_L"
+$bonemerge "bip_index_2_L"
+$bonemerge "bip_middle_0_L"
+$bonemerge "bip_middle_1_L"
+$bonemerge "bip_middle_2_L"
+$bonemerge "bip_ring_0_L"
+$bonemerge "bip_ring_1_L"
+$bonemerge "bip_ring_2_L"
+$bonemerge "bip_pinky_0_L"
+$bonemerge "bip_pinky_1_L"
+$bonemerge "bip_pinky_2_L"
 
 $poseparameter "body_pitch" -45 45 loop 360
 $poseparameter "body_yaw" -45 45 loop 360
