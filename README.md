@@ -47,7 +47,6 @@ format fine, and pretty much all TF2 textures are using the compatible 7.4 versi
   * decals_mod2x incompatibilities (conflict between blood on walls and explosion decals)
       - Alien Swarm uses Left 4 Dead 2-formatted decals_mod2x for blood decals.
       - But it also seems to use the Orange Box-formatted decals_mod2x for TF2 explosion effects.
-  * Ragdolls tend to spawn with angles 0 0 0.
   * Weapons are not properly hidden when taunting.
       - Weapon visibility seems to be handled client-side on Source 2007.
       - AE_WPN_HIDE and AE_WPN_UNHIDE animation events are properly registered 

@@ -366,7 +366,7 @@ void C_TFRagdoll::CreateTFRagdoll()
 	DevMsg( 2, "CreateTFRagdoll %d %d\n", gpGlobals->framecount, pPlayer ? pPlayer->entindex() : 0 );
 #endif
 	
-	if ( pPlayer && C_BasePlayer::IsLocalPlayer( pPlayer ) )
+	if ( pPlayer && !pPlayer->IsDormant() )
 	{
 		// Move my current model instance to the ragdoll's so decals are preserved.
 		pPlayer->SnatchModelInstance( this );
@@ -449,7 +449,7 @@ void C_TFRagdoll::CreateTFRagdoll()
 			Assert( !bChangedModel && "C_TFRagdoll::CreateTFRagdoll: Trying to create ragdoll with a different model than the player it's based on" );
 		}
 
-		if ( pPlayer && C_BasePlayer::IsLocalPlayer( pPlayer ) && !bChangedModel )
+		if ( pPlayer && !pPlayer->IsDormant() && !bChangedModel )
 		{
 			pPlayer->GetRagdollInitBoneArrays( boneDelta0, boneDelta1, currentBones, boneDt );
 		}
