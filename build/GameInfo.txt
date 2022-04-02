@@ -1,16 +1,16 @@
 "GameInfo"
 {
   // This is what shows up in the 'Third Party Games' area of the Steam games list.
-	"game"		          "Swarm SDK Template"
+	"game"		          "Team Fortress 2008 ASW"
 	"type"		          "multiplayer_only"
 	"title"		          ""
 	"title2"	          ""
 
 	"icon"		          "resource/game"
-	"developer"		      "Swarm SDK Template"
-	"developer_url" 	  "http://code.google.com/p/swarm-sdk-template/"
+	"developer"		      "ChampionCynthia"
+	"developer_url" 	  "https://github.com/ChampionCynthia/ASW-TF2-Base"
 
-	GameData            "swarmsdktemplate.fgd"
+	GameData            "aswtf.fgd"
 	InstancePath 	      "tilegen/instances/"
 	
 	SupportsDX8     	  0
