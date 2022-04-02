@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Multiplayer">
       <UniqueIdentifier>{56e925f1-5c6f-4fd4-98d9-3fb4b168ecf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\NextBot">
+      <UniqueIdentifier>{50495f65-d413-43c6-a75c-a9412e43c332}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="client_base.vpc">
@@ -2191,6 +2194,9 @@
     </ClCompile>
     <ClCompile Include="..\shared\teamplay_round_timer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\C_NextBot.cpp">
+      <Filter>Source Files\NextBot</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4647,6 +4653,9 @@
     </ClInclude>
     <ClInclude Include="..\shared\teamplay_round_timer.h">
       <Filter>Game Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\C_NextBot.h">
+      <Filter>Source Files\NextBot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

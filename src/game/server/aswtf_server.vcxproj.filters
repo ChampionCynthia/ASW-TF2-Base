@@ -37,6 +37,21 @@
     <Filter Include="Source Files\Multiplayer">
       <UniqueIdentifier>{a1940d9c-b57a-4ac4-999e-15ab283cdea5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\NextBot">
+      <UniqueIdentifier>{faafe408-eab1-4b2c-b424-b62722851ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NextBot\Behavior">
+      <UniqueIdentifier>{ac2cfe18-cafb-4be5-afa5-2c96a0f088c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NextBot\NavMeshEntities">
+      <UniqueIdentifier>{724ef562-c889-4925-aaeb-7fd89b639a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NextBot\Path">
+      <UniqueIdentifier>{209b17fd-e2fc-4aec-a554-39b951a1dca6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NextBot\Player">
+      <UniqueIdentifier>{aa17be8d-9fb9-46a6-b3f0-9b21bac92e7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\vpc_scripts\loadaddress.vpc">
@@ -1792,6 +1807,57 @@
     </ClCompile>
     <ClCompile Include="..\shared\teamplay_round_timer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBot.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotBodyInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotComponentInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotGroundLocomotion.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotIntentionInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotLocomotionInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotManager.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NextBotVisionInterface.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\simple_bot.cpp">
+      <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\NavMeshEntities\func_nav_prerequisite.cpp">
+      <Filter>Source Files\NextBot\NavMeshEntities</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Path\NextBotChasePath.cpp">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Path\NextBotPath.cpp">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Path\NextBotPathFollow.cpp">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Player\NextBotPlayer.cpp">
+      <Filter>Source Files\NextBot\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Player\NextBotPlayerBody.cpp">
+      <Filter>Source Files\NextBot\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="NextBot\Player\NextBotPlayerLocomotion.cpp">
+      <Filter>Source Files\NextBot\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3705,6 +3771,87 @@
     </ClInclude>
     <ClInclude Include="..\shared\teamplay_round_timer.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBot.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotBehavior.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotBodyInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotComponentInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotContextualQueryInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotDebug.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotEventResponderInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotGroundLocomotion.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotHearingInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotIntentionInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotKnownEntity.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotLocomotionInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotManager.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotUtil.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NextBotVisionInterface.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\simple_bot.h">
+      <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Behavior\BehaviorBackUp.h">
+      <Filter>Source Files\NextBot\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Behavior\BehaviorMoveTo.h">
+      <Filter>Source Files\NextBot\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\NavMeshEntities\func_nav_prerequisite.h">
+      <Filter>Source Files\NextBot\NavMeshEntities</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Path\NextBotRetreatPath.h">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Path\NextBotChasePath.h">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Path\NextBotPath.h">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Path\NextBotPathFollow.h">
+      <Filter>Source Files\NextBot\Path</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Player\NextBotPlayer.h">
+      <Filter>Source Files\NextBot\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Player\NextBotPlayerBody.h">
+      <Filter>Source Files\NextBot\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="NextBot\Player\NextBotPlayerLocomotion.h">
+      <Filter>Source Files\NextBot\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
