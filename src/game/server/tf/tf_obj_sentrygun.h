@@ -63,6 +63,10 @@ public:
 
 	int				GetUpgradeLevel( void ) { return m_iUpgradeLevel; }
 
+	virtual float	GetTimeSinceLastFired( void ) const		{ return m_timeSinceLastFired.GetElapsedTime();	}
+
+	virtual const QAngle &GetTurretAngles( void ) const		{ return m_vecCurAngles; }
+
 private:
 
 	// Main think
@@ -96,6 +100,7 @@ private:
 	CNetworkVar( int, m_iState );
 
 	float m_flNextAttack;
+	IntervalTimer m_timeSinceLastFired;
 
 	// Upgrade Level ( 1, 2, 3 )
 	CNetworkVar( int, m_iUpgradeLevel );

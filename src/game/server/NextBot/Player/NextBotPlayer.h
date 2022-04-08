@@ -613,8 +613,10 @@ inline void NextBotPlayer< PlayerType >::PhysicsSimulate( void )
 		if ( !m_meleeButtonTimer.IsElapsed() )
 			m_inputButtons |= IN_ATTACK2;
 
+#if 0
 		if ( !m_specialFireButtonTimer.IsElapsed() )
 			m_inputButtons |= IN_ATTACK3;
+#endif
 
 		if ( !m_useButtonTimer.IsElapsed() )
 			m_inputButtons |= IN_USE;

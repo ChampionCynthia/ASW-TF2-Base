@@ -14,6 +14,7 @@
 #include "player_resource.h"
 #include "team.h"
 #include "hl2orange.spa.h"
+#include "NextBot/NextBotManager.h"
 
 // Must run with -gamestats to be able to turn on/off stats with ConVar below.
 static ConVar tf_stats_track( "tf_stats_track", "1", FCVAR_NONE, "Turn on//off tf stats tracking." );
@@ -544,6 +545,12 @@ void CTFGameStats::Event_PlayerFiredWeapon( CTFPlayer *pPlayer, bool bCritical )
 					pWeaponStats->iCritShotsFired++;
 				}
 			}
+
+			// need a better place to do this
+			pPlayer->OnMyWeaponFired( pTFWeapon );
+
+			// inform the bots
+			TheNextBots().OnWeaponFired( pPlayer, pTFWeapon );
 		}
 	}
 

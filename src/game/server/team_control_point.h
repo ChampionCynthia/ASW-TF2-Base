@@ -87,6 +87,9 @@ public:
 	float		LastContestedAt( void );
 	void		SetLastContestedAt( float flTime );
 
+#if defined( TF_DLL )
+	float		GetTeamCapPercentage( int iTeam );
+#endif
 	void		UpdateCapPercentage( void );
 
 	// The specified player took part in capping this point.
@@ -104,7 +107,9 @@ public:
 private:
 	void		SendCapString( int iCapTeam, int iNumCappingPlayers, int *pCappingPlayers );
 	void		InternalSetOwner( int iCapTeam, bool bMakeSound = true, int iNumCappers = 0, int *iCappingPlayers = NULL );
+#if !defined( TF_DLL )
 	float		GetTeamCapPercentage( int iTeam );
+#endif
 	void		HandleScoring( int iTeam );
 
 	int			m_iTeam;			

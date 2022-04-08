@@ -550,6 +550,14 @@ bool CObjectDispenser::CouldHealTarget( CBaseEntity *pTarget )
 }
 
 //-----------------------------------------------------------------------------
+// Purpose: Used by Engineer TFBots to know the metal count.
+//-----------------------------------------------------------------------------
+inline int CObjectDispenser::GetAvailableMetal( void ) const
+{
+	return m_iAmmoMetal;
+}
+
+//-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
 void CObjectDispenser::AddHealingTarget( CBaseEntity *pOther )

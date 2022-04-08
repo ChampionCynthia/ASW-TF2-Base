@@ -75,6 +75,7 @@ public:
 #endif
 
 	float			GetChargeLevel( void ) { return m_flChargeLevel; }
+	virtual bool	IsCombatItem( void ) { return true; }
 
 private:
 	bool					FindAndHealTargets( void );

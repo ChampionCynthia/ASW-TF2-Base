@@ -1270,6 +1270,10 @@ public:
 	// Sets the origin + angles to match the last position received
 	void MoveToLastReceivedPosition( bool force = false );
 
+#if defined( TF_CLIENT_DLL )
+	virtual bool IsCombatItem( void ) { return false; }
+#endif
+
 protected:
 	// Only meant to be called from subclasses
 	void DestroyModelInstance();

@@ -540,6 +540,13 @@ CBaseCombatCharacter::CBaseCombatCharacter( void )
 	m_impactEnergyScale = 1.0f;
 
 	m_bForceServerRagdoll = ai_force_serverside_ragdoll.GetBool();
+
+#if defined( TF_DLL )
+	for( int t=0; t<MAX_DAMAGE_TEAMS; ++t )
+	{
+		m_damageHistory[t].team = TEAM_INVALID;
+	}
+#endif
 }
 
 //------------------------------------------------------------------------------
@@ -2135,6 +2142,32 @@ int CBaseCombatCharacter::OnTakeDamage( const CTakeDamageInfo &info )
 		UTIL_Smoke( info.GetDamagePosition(), random->RandomInt( 10, 15 ), 10 );
 	}
 
+#if defined( TF_DLL )
+	// track damage history
+	if ( info.GetAttacker() )
+	{
+		int attackerTeam = info.GetAttacker()->GetTeamNumber();
+
+		for( int i=0; i<MAX_DAMAGE_TEAMS; ++i )
+		{
+			if ( m_damageHistory[i].team == attackerTeam )
+			{
+				// restart the injury timer
+				m_damageHistory[i].interval.Start();
+				break;
+			}
+
+			if ( m_damageHistory[i].team == TEAM_INVALID )
+			{
+				// team not registered yet
+				m_damageHistory[i].team = attackerTeam;
+				m_damageHistory[i].interval.Start();
+				break;
+			}
+		}
+	}
+#endif
+
 	switch( m_lifeState )
 	{
 	case LIFE_ALIVE:
@@ -3438,3 +3471,43 @@ void CBaseCombatCharacter::OnNavAreaRemoved( CNavArea *removedArea )
 	}
 }
 
+#if defined( TF_DLL )
+//-----------------------------------------------------------------------------
+// Return time since we were hurt by a member of the given team
+//-----------------------------------------------------------------------------
+float CBaseCombatCharacter::GetTimeSinceLastInjury( int team /*= TEAM_ANY */ ) const
+{
+	const float never = 999999999999.9f;
+
+	if ( team == TEAM_ANY )
+	{
+		float time = never;
+
+		// find most recent injury time
+		for( int i=0; i<MAX_DAMAGE_TEAMS; ++i )
+		{
+			if ( m_damageHistory[i].team != TEAM_INVALID )
+			{
+				if ( m_damageHistory[i].interval.GetElapsedTime() < time )
+				{
+					time = m_damageHistory[i].interval.GetElapsedTime();
+				}
+			}
+		}
+
+		return time;
+	}
+	else
+	{
+		for( int i=0; i<MAX_DAMAGE_TEAMS; ++i )
+		{
+			if ( m_damageHistory[i].team == team )
+			{
+				return m_damageHistory[i].interval.GetElapsedTime();
+			}
+		}
+	}
+
+	return never;
+}
+#endif

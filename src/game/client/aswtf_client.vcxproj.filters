@@ -79,6 +79,12 @@
     <Filter Include="Source Files\NextBot">
       <UniqueIdentifier>{50495f65-d413-43c6-a75c-a9412e43c332}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\TF\TFBots">
+      <UniqueIdentifier>{5da698cf-bf13-4473-bd45-5e383ed13ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TF\TFBots\Map Entities">
+      <UniqueIdentifier>{eec0aac1-663f-4a45-8092-7d2529eb07c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="client_base.vpc">
@@ -2197,6 +2203,9 @@
     </ClCompile>
     <ClCompile Include="NextBot\C_NextBot.cpp">
       <Filter>Source Files\NextBot</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.cpp">
+      <Filter>Source Files\TF\TFBots\Map Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4656,6 +4665,9 @@
     </ClInclude>
     <ClInclude Include="NextBot\C_NextBot.h">
       <Filter>Source Files\NextBot</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.h">
+      <Filter>Source Files\TF\TFBots\Map Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
