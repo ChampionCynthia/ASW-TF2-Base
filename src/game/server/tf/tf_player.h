@@ -163,6 +163,10 @@ public:
 	virtual void		Weapon_HandleAnimEvent( animevent_t *pEvent );
 	virtual bool		Weapon_ShouldSetLast( CBaseCombatWeapon *pOldWeapon, CBaseCombatWeapon *pNewWeapon );
 
+	virtual void		OnMyWeaponFired( CBaseCombatWeapon *weapon );	// call this when this player fires a weapon to allow other systems to react
+	virtual float		GetTimeSinceWeaponFired( void ) const;			// returns the time, in seconds, since this player fired a weapon
+	virtual bool		IsInCombat( void ) const;
+
 	virtual void		GetStepSoundVelocities( float *velwalk, float *velrun );
 	virtual void		SetStepSoundTime( stepsoundtimes_t iStepSoundTime, bool bWalking );
 
@@ -286,6 +290,9 @@ public:
 	bool GetMedigunAutoHeal( void ){ return m_bMedigunAutoHeal; }
 	void SetMedigunAutoHeal( bool bMedigunAutoHeal ){ m_bMedigunAutoHeal = bMedigunAutoHeal; }
 
+	bool IsCallingForMedic( void ) const;			// return true if this player has called for a Medic in the last few seconds
+	float GetTimeSinceCalledForMedic( void ) const;
+
 	bool ShouldAutoRezoom( void ) { return m_bAutoRezoom; }
 	void SetAutoRezoom( bool bAutoRezoom ) { m_bAutoRezoom = bAutoRezoom; }
 
@@ -315,6 +322,12 @@ public:
 	virtual int	CalculateTeamBalanceScore( void );
 
 	bool ShouldAnnouceAchievement( void );
+	virtual bool IsBotOfType( int botType ) const;
+	virtual int GetBotType( void ) const;
+
+	CBaseObject	*GetObject( int index ) const;
+	CBaseObject	*GetObjectOfType( int iObjectType ) const;
+	int	GetObjectCount( void ) const;
 
 public:
 
@@ -337,6 +350,10 @@ public:
 	int		no_dispenser_message;
 	
 	CNetworkVar( bool, m_bSaveMeParity );
+
+	// TFBot additions
+	CNetworkVar( bool, m_bIsABot );
+	CNetworkVar( int, m_nBotSkill );
 
 	// teleporter variables
 	int		no_entry_teleporter_message;
@@ -382,12 +399,20 @@ public:
 	CTFWeaponBase		*Weapon_OwnsThisID( int iWeaponID );
 	CTFWeaponBase		*Weapon_GetWeaponByType( int iType );
 
+	// Creation
+	void				InitClass( void );
+
+	// Client commands.
+	void				HandleCommand_JoinTeam( const char *pTeamName );
+	void				HandleCommand_JoinClass( const char *pClassName );
+	void				HandleCommand_JoinTeam_NoMenus( const char *pTeamName );
+
 private:
 
 	int					GetAutoTeam( void );
 
 	// Creation/Destruction.
-	void				InitClass( void );
+	// void				InitClass( void ); // Moved to public
 	void				GiveDefaultItems();
 	bool				SelectSpawnSpot( const char *pEntClassName, CBaseEntity* &pSpot );
 	void				PrecachePlayerModels( void );
@@ -401,11 +426,6 @@ private:
 	// Taunt.
 	EHANDLE				m_hTauntScene;
 	bool				m_bInitTaunt;
-
-	// Client commands.
-	void				HandleCommand_JoinTeam( const char *pTeamName );
-	void				HandleCommand_JoinClass( const char *pClassName );
-	void				HandleCommand_JoinTeam_NoMenus( const char *pTeamName );
 
 	// Bots.
 	friend void			Bot_Think( CTFPlayer *pBot );
@@ -517,6 +537,9 @@ private:
 	bool 				m_bMedigunAutoHeal;
 	bool				m_bAutoRezoom;	// does the player want to re-zoom after each shot for sniper rifles
 
+	IntervalTimer		m_calledForMedicTimer;
+	IntervalTimer		m_weaponFiredTimer;
+
 public:
 	bool				SetPowerplayEnabled( bool bOn );
 	bool				PlayerHasPowerplay( void );
@@ -542,6 +565,30 @@ inline int CTFPlayer::StateGet( void ) const
 	return m_Shared.m_nPlayerState;
 }
 
+inline bool CTFPlayer::IsCallingForMedic( void ) const
+{
+	return m_calledForMedicTimer.HasStarted() && m_calledForMedicTimer.IsLessThen( 5.0f );
+}
 
+inline float CTFPlayer::GetTimeSinceCalledForMedic() const
+{
+	return m_calledForMedicTimer.GetElapsedTime();
+}
+
+inline float CTFPlayer::GetTimeSinceWeaponFired( void ) const
+{
+	return m_weaponFiredTimer.GetElapsedTime();
+}
+
+inline void CTFPlayer::OnMyWeaponFired( CBaseCombatWeapon *weapon )
+{
+	m_weaponFiredTimer.Start();
+}
+
+inline bool CTFPlayer::IsInCombat( void ) const
+{
+	// the simplest condition is whether we've been firing our weapon very recently
+	return GetTimeSinceWeaponFired() < 2.0f;
+}
 
 #endif	// TF_PLAYER_H

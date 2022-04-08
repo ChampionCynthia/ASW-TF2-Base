@@ -772,6 +772,7 @@ exit 1
     <ClCompile Include="swarm\vgui\nb_header_footer.cpp" />
     <ClCompile Include="text_message.cpp" />
     <ClCompile Include="texturescrollmaterialproxy.cpp" />
+    <ClCompile Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.cpp" />
     <ClCompile Include="tf\clientmode_tf.cpp" />
     <ClCompile Include="tf\c_baseobject.cpp" />
     <ClCompile Include="tf\c_func_capture_zone.cpp" />
@@ -1715,6 +1716,7 @@ exit 1
     <ClInclude Include="swarm\vgui\asw_vgui_music_importer.h" />
     <ClInclude Include="swarm\vgui\nb_button.h" />
     <ClInclude Include="swarm\vgui\nb_header_footer.h" />
+    <ClInclude Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.h" />
     <ClInclude Include="tf\clientmode_tf.h" />
     <ClInclude Include="tf\c_baseobject.h" />
     <ClInclude Include="tf\c_obj_dispenser.h" />

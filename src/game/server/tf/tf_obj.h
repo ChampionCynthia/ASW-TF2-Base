@@ -45,10 +45,12 @@ if ( object_verbose.GetInt() )									\
 #define TRACE_OBJECT( string )
 #endif
 
+DECLARE_AUTO_LIST( IBaseObjectAutoList )
+
 // ------------------------------------------------------------------------ //
 // Resupply object that's built by the player
 // ------------------------------------------------------------------------ //
-class CBaseObject : public CBaseCombatCharacter, public IHasBuildPoints, public IScorer
+class CBaseObject : public CBaseCombatCharacter, public IHasBuildPoints, public IScorer, public IBaseObjectAutoList
 {
 	DECLARE_CLASS( CBaseObject, CBaseCombatCharacter );
 public:

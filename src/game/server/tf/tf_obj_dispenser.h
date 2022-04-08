@@ -60,6 +60,8 @@ public:
 
 	bool CouldHealTarget( CBaseEntity *pTarget );
 
+	virtual int	GetAvailableMetal( void ) const;
+
 	Vector GetHealOrigin( void );
 
 	CUtlVector< EHANDLE >	m_hHealingTargets;

@@ -173,6 +173,12 @@ public:
 
 	bool			ShouldScorePerRound( void );
 
+	// populate vector with set of control points the player needs to capture
+	virtual void CollectCapturePoints( CBasePlayer *player, CUtlVector< CTeamControlPoint * > *captureVector ) const;
+
+	// populate vector with set of control points the player needs to defend from capture
+	virtual void CollectDefendPoints( CBasePlayer *player, CUtlVector< CTeamControlPoint * > *defendVector ) const;
+
 protected:
 	virtual void	InitTeams( void );
 
@@ -323,7 +329,6 @@ public:
 
 	bool m_bControlSpawnsPerTeam[ MAX_TEAMS ][ MAX_CONTROL_POINTS ];
 	int	 m_iPreviousRoundWinners;
-
 	int		m_iBirthdayMode;
 };
 

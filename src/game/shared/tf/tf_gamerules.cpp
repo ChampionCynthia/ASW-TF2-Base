@@ -3352,3 +3352,87 @@ const char *CTFGameRules::GetVideoFileForMap( bool bWithExtension /*= true*/ )
 	return strFullpath;
 }
 #endif
+
+#if defined( TF_DLL )
+//-----------------------------------------------------------------------------
+// Populate vector with set of control points the player needs to capture
+void CTFGameRules::CollectCapturePoints( CBasePlayer *player, CUtlVector< CTeamControlPoint * > *captureVector ) const
+{
+	if ( !captureVector )
+		return;
+
+	captureVector->RemoveAll();
+
+	CTeamControlPointMaster *pMaster = g_hControlPointMasters.Count() ? g_hControlPointMasters[0] : NULL;
+	if ( pMaster )
+	{
+		// No KOTH in TF2008
+		// special case hack for KotH mode to use control points that are locked at the start of the round
+		/*if ( IsInKothMode() && pMaster->GetNumPoints() == 1 )
+		{
+			captureVector->AddToTail( pMaster->GetControlPoint( 0 ) );
+			return;
+		}*/
+
+		for( int i=0; i<pMaster->GetNumPoints(); ++i )
+		{
+			CTeamControlPoint *point = pMaster->GetControlPoint( i );
+			if ( point && pMaster->GetCurrentRound()->IsControlPointInRound( point ) )
+			{
+				if ( ObjectiveResource()->GetOwningTeam( point->GetPointIndex() ) == player->GetTeamNumber() )
+					continue;
+
+				/*if ( player && player->IsBot() && point->ShouldBotsIgnore() )
+					continue;*/
+
+				if ( ObjectiveResource()->TeamCanCapPoint( point->GetPointIndex(), player->GetTeamNumber() ) )
+				{
+					if ( TeamplayGameRules()->TeamMayCapturePoint( player->GetTeamNumber(), point->GetPointIndex() ) )
+					{
+						// unlocked point not on our team available to capture
+						captureVector->AddToTail( point );
+					}
+				}
+			}
+		}
+	}
+}
+
+//-----------------------------------------------------------------------------
+// Populate vector with set of control points the player needs to defend from capture
+void CTFGameRules::CollectDefendPoints( CBasePlayer *player, CUtlVector< CTeamControlPoint * > *defendVector ) const
+{
+	if ( !defendVector )
+		return;
+
+	defendVector->RemoveAll();
+
+	CTeamControlPointMaster *pMaster = g_hControlPointMasters.Count() ? g_hControlPointMasters[0] : NULL;
+	if ( pMaster )
+	{
+		for( int i=0; i<pMaster->GetNumPoints(); ++i )
+		{
+			CTeamControlPoint *point = pMaster->GetControlPoint( i );
+			if ( point && pMaster->GetCurrentRound()->IsControlPointInRound( point ) )
+			{
+				if ( ObjectiveResource()->GetOwningTeam( point->GetPointIndex() ) != player->GetTeamNumber() )
+					continue;
+					
+				/*if ( player && player->IsBot() && point->ShouldBotsIgnore() )
+					continue;*/
+
+				int enemyTeam = ( player->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
+
+				if ( ObjectiveResource()->TeamCanCapPoint( point->GetPointIndex(), enemyTeam ) )
+				{
+					if ( TeamplayGameRules()->TeamMayCapturePoint( enemyTeam, point->GetPointIndex() ) )
+					{
+						// unlocked point on our team vulnerable to capture
+						defendVector->AddToTail( point );
+					}
+				}
+			}
+		}
+	}
+}
+#endif

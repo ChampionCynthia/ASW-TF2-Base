@@ -1524,4 +1524,49 @@ private:
 	CBasePlayer	*m_pPlayer;
 };
 
+#if defined( TF_DLL )
+//--------------------------------------------------------------------------------------------------------------
+//
+// Collect all valid, connected players into given vector.
+// Returns number of players collected.
+//
+#define COLLECT_ONLY_LIVING_PLAYERS true
+#define APPEND_PLAYERS true
+template < typename T >
+int CollectPlayers( CUtlVector< T * > *playerVector, int team = TEAM_ANY, bool isAlive = false, bool shouldAppend = false )
+{
+	if ( !shouldAppend )
+	{
+		playerVector->RemoveAll();
+	}
+
+	for( int i=1; i<=gpGlobals->maxClients; ++i )
+	{
+		CBasePlayer *player = UTIL_PlayerByIndex( i );
+
+		if ( player == NULL )
+			continue;
+
+		if ( FNullEnt( player->edict() ) )
+			continue;
+
+		if ( !player->IsPlayer() )
+			continue;
+
+		if ( !player->IsConnected() )
+			continue;
+
+		if ( team != TEAM_ANY && player->GetTeamNumber() != team )
+			continue;
+
+		if ( isAlive && !player->IsAlive() )
+			continue;
+
+		playerVector->AddToTail( assert_cast< T * >( player ) );
+	}
+
+	return playerVector->Count();
+}
+#endif
+
 #endif // PLAYER_H
