@@ -28,7 +28,7 @@
 		"font"				"ScreenTitle"
 		"textAlignment"			"west"
 		"ControlName"			"Label"
-		"labelText"				"#SDK_UI_Game_Title"
+		"labelText"				"#TF_Title"
 		"fgcolor_override"		"10 10 10 255"
 	}
 	
@@ -43,7 +43,7 @@
 		"font"				"ScreenTitle"
 		"textAlignment"			"west"
 		"ControlName"			"Label"
-		"labelText"				"#SDK_UI_Game_Title"
+		"labelText"				"#TF_Title"
 		"fgcolor_override"		"230 230 230 255"
 	}
 	

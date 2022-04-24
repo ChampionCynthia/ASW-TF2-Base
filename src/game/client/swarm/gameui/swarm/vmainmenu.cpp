@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2008, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2008, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -470,7 +470,7 @@ void MainMenu::OnCommand( const char *command )
 
 			GenericConfirmation::Data_t data;
 
-			data.pWindowTitle = "#SDK_UI_Game_Title";
+			data.pWindowTitle = "#TF_Title";
 			data.pMessageText = "#L4D360UI_MainMenu_Quit_ConfirmMsg";
 
 			data.bOkButtonEnabled = true;

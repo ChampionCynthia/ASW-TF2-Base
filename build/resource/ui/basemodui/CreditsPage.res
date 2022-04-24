@@ -45,7 +45,7 @@
 		"visible"				"1"
 		"enabled"				"1"
 		"tabPosition"			"0"
-		"labelText"				"#SDK_UI_Game_Title"
+		"labelText"				"#TF_Title"
 		"font"					"DefaultLarge"
 	}
 	
