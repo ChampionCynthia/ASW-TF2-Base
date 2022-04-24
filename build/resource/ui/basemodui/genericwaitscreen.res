@@ -61,6 +61,6 @@
 		"tabPosition"			"0"
 		"proportionalToParent"	"1"
 		"scaleImage"			"1"
-		"image"					"common/swarm_cycle"
+		"image"					"common/aswtf_cycle"
 	}	
 }
