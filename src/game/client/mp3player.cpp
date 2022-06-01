@@ -6,7 +6,7 @@
 
 #include "cbase.h"
 
-#if 0
+#if defined( TF_CLIENT_DLL )
 #include "mp3player.h"
 #include "KeyValues.h"
 #include "FileSystem.h"
