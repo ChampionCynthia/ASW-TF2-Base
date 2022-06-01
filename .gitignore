@@ -2,6 +2,7 @@ Debug_swarm/
 Release_swarm/
 
 # Valve MP3 Player
+build/resource/mp3player_db.txt
 build/resource/mp3settings.txt
 
 ## Ignore Visual Studio temporary files, build results, and
