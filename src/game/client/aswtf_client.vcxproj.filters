@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Multiplayer">
       <UniqueIdentifier>{56e925f1-5c6f-4fd4-98d9-3fb4b168ecf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CD">
+      <UniqueIdentifier>{2da4e229-ff65-470d-a68e-a15cff41ecc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="client_base.vpc">
@@ -2191,6 +2194,12 @@
     </ClCompile>
     <ClCompile Include="..\shared\teamplay_round_timer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cd.cpp">
+      <Filter>CD</Filter>
+    </ClCompile>
+    <ClCompile Include="cdThread.cpp">
+      <Filter>CD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4647,6 +4656,15 @@
     </ClInclude>
     <ClInclude Include="..\shared\teamplay_round_timer.h">
       <Filter>Game Shared Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cd.h">
+      <Filter>CD</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_internal.h">
+      <Filter>CD</Filter>
+    </ClInclude>
+    <ClInclude Include="ithread.h">
+      <Filter>CD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -333,6 +333,7 @@ exit 1
     <ClCompile Include="..\..\common\blackbox_helper.cpp" />
     <ClCompile Include="..\..\public\bone_accessor.cpp" />
     <ClCompile Include="bone_merge_cache.cpp" />
+    <ClCompile Include="cd.cpp" />
     <ClCompile Include="c_ai_basehumanoid.cpp" />
     <ClCompile Include="c_ai_basenpc.cpp" />
     <ClCompile Include="c_baseanimating.cpp" />
@@ -852,6 +853,7 @@ exit 1
     <ClCompile Include="tf\vgui\vgui_pda_panel.cpp" />
     <ClCompile Include="tf\vgui\vgui_rootpanel_tf.cpp" />
     <ClCompile Include="tf\vgui\vgui_rotation_slider.cpp" />
+    <ClCompile Include="cdThread.cpp" />
     <ClCompile Include="timematerialproxy.cpp" />
     <ClCompile Include="toggletextureproxy.cpp" />
     <ClCompile Include="..\shared\usercmd.cpp" />
@@ -1679,6 +1681,8 @@ exit 1
     <ClInclude Include="..\shared\baseachievement.h" />
     <ClInclude Include="..\..\common\blackbox_helper.h" />
     <ClInclude Include="basepresence.h" />
+    <ClInclude Include="cd.h" />
+    <ClInclude Include="cd_internal.h" />
     <ClInclude Include="c_baselesson.h" />
     <ClInclude Include="c_basetoggle.h" />
     <ClInclude Include="c_colorcorrection.h" />
@@ -1701,6 +1705,7 @@ exit 1
     <ClInclude Include="hud_locator_target.h" />
     <ClInclude Include="..\..\engine\iblackbox.h" />
     <ClInclude Include="ipresence.h" />
+    <ClInclude Include="ithread.h" />
     <ClInclude Include="modelrendersystem.h" />
     <ClInclude Include="..\shared\particle_parse.h" />
     <ClInclude Include="..\shared\particle_property.h" />
