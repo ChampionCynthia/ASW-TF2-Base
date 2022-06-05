@@ -48,7 +48,8 @@ T * NextBotCreatePlayerBot( const char *name, bool bReportFakeClient = true )
 	ClientPutInServerOverride( T::AllocatePlayerEntity );
 
 	// create the bot and spawn it into the environment
-	edict_t *botEdict = engine->CreateFakeClientEx( name, bReportFakeClient );
+	// edict_t *botEdict = engine->CreateFakeClientEx( name, bReportFakeClient );
+	edict_t *botEdict = engine->CreateFakeClient( name );
 
 	// close the "back door"
 	ClientPutInServerOverride( NULL );
@@ -355,6 +356,7 @@ inline void NextBotPlayer< PlayerType >::ReleaseMeleeButton( void )
 	m_meleeButtonTimer.Invalidate();
 }
 
+#if 0
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::PressSpecialFireButton( float duration )
 {
@@ -368,6 +370,7 @@ inline void NextBotPlayer< PlayerType >::ReleaseSpecialFireButton( void )
 	m_inputButtons &= ~IN_ATTACK3;
 	m_specialFireButtonTimer.Invalidate();
 }
+#endif
 
 template < typename PlayerType >
 inline void NextBotPlayer< PlayerType >::PressUseButton( float duration )

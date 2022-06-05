@@ -16,6 +16,8 @@
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
+IMPLEMENT_AUTO_LIST( IFuncRespawnRoomAutoList )
+
 //-----------------------------------------------------------------------------
 // Purpose: Visualizes a respawn room to the enemy team
 //-----------------------------------------------------------------------------
@@ -45,7 +47,7 @@ protected:
 LINK_ENTITY_TO_CLASS( func_respawnroom, CFuncRespawnRoom);
 
 BEGIN_DATADESC( CFuncRespawnRoom )
-	DEFINE_FUNCTION( RespawnRoomTouch ),
+	DEFINE_FUNCTION( CFuncRespawnRoomShim::Touch ),
 	// inputs
 	DEFINE_INPUTFUNC( FIELD_VOID, "SetActive", InputSetActive ),
 	DEFINE_INPUTFUNC( FIELD_VOID, "SetInactive", InputSetInactive ),
@@ -77,7 +79,7 @@ void CFuncRespawnRoom::Spawn( void )
 	SetCollisionGroup( TFCOLLISION_GROUP_RESPAWNROOMS );
 
 	m_bActive = true;
-	SetTouch( &CFuncRespawnRoom::RespawnRoomTouch );
+	SetTouch( &CFuncRespawnRoomShim::Touch );
 }
 
 //-----------------------------------------------------------------------------

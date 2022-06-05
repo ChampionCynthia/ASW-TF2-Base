@@ -15,7 +15,7 @@
 #include "tf_obj_sentrygun.h"
 #include "tf_weapon_flamethrower.h"
 #include "tf_weapon_sniperrifle.h"
-#include "tf_weapon_compound_bow.h"
+// #include "tf_weapon_compound_bow.h"
 #include "bot/tf_bot.h"
 #include "bot/tf_bot_manager.h"
 #include "bot/behavior/tf_bot_behavior.h"
@@ -27,7 +27,7 @@
 #include "bot/behavior/tf_bot_tactical_monitor.h"
 #include "bot/behavior/tf_bot_taunt.h"
 #include "bot/behavior/scenario/creep_wave/tf_bot_creep_wave.h"
-#include "player_vs_environment/tf_population_manager.h"
+// #include "player_vs_environment/tf_population_manager.h"
 
 
 extern ConVar tf_bot_health_ok_ratio;
@@ -225,7 +225,7 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 				if ( me->IsDifficulty( CTFBot::EASY ) || me->IsDifficulty( CTFBot::NORMAL ) )
 				{
 					// disguise as a random class
-					me->m_Shared.Disguise( GetEnemyTeam( me->GetTeamNumber() ), RandomInt( TF_FIRST_NORMAL_CLASS, TF_LAST_NORMAL_CLASS-1 ) );
+					me->m_Shared.Disguise( ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE, RandomInt( TF_FIRST_NORMAL_CLASS, TF_LAST_NORMAL_CLASS-1 ) );
 				}
 				else
 				{
@@ -235,7 +235,7 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 			else
 			{
 				// disguise as the class we just killed
-				me->m_Shared.Disguise( GetEnemyTeam( me->GetTeamNumber() ), m_nextDisguise );
+				me->m_Shared.Disguise( ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE, m_nextDisguise );
 				m_nextDisguise = TF_CLASS_UNDEFINED;
 			}
 		}
@@ -247,6 +247,8 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 	FireWeaponAtEnemy( me );
 	Dodge( me );
 
+// No Auto-Reload in TF2008. -Cynthia
+#if 0
 	if ( me->IsPlayerClass( TF_CLASS_DEMOMAN ) )
 	{
 		// dont auto reload, so we fire stickies fast
@@ -257,6 +259,7 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 		// reload weapons
 		me->SetAutoReload( true );
 	}
+#endif
 
 	return Continue();
 }
@@ -396,6 +399,7 @@ EventDesiredResult< CTFBot > CTFBotMainAction::OnContact( CTFBot *me, CBaseEntit
 		m_lastTouchTime = gpGlobals->curtime;
 
 		// Mini-bosses destroy non-Sentrygun objects they bump into (ie: Dispensers)
+#if 0
 		if ( TFGameRules()->IsMannVsMachineMode() && me->IsMiniBoss() )
 		{
 			if ( other->IsBaseObject() )
@@ -413,6 +417,7 @@ EventDesiredResult< CTFBot > CTFBotMainAction::OnContact( CTFBot *me, CBaseEntit
 				}
 			}
 		}
+#endif
 	}
 
 	return TryContinue();
@@ -461,7 +466,7 @@ EventDesiredResult< CTFBot > CTFBotMainAction::OnStuck( CTFBot *me )
 		}
 	}
 */
-
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		if ( me->m_Shared.InCond( TF_COND_MVM_BOT_STUN_RADIOWAVE ) )
@@ -485,6 +490,7 @@ EventDesiredResult< CTFBot > CTFBotMainAction::OnStuck( CTFBot *me )
 			}
 		}
 	}
+#endif
 
 	UTIL_LogPrintf( "\"%s<%i><%s><%s>\" stuck (position \"%3.2f %3.2f %3.2f\") (duration \"%3.2f\") ",
 					me->GetPlayerName(),
@@ -568,11 +574,13 @@ EventDesiredResult< CTFBot > CTFBotMainAction::OnOtherKilled( CTFBot *me, CBaseC
 		{
 			bool isTaunting = !me->HasTheFlag() && RandomFloat( 0.0f, 100.0f ) <= tf_bot_taunt_victim_chance.GetFloat();
 
+#if 0
 			if ( TFGameRules()->IsMannVsMachineMode() && me->IsMiniBoss() )
 			{
 				// Bosses don't taunt puny humans
 				isTaunting = false;
 			}
+#endif
 
 			if ( isTaunting )
 			{
@@ -673,6 +681,7 @@ Vector CTFBotMainAction::SelectTargetPoint( const INextBot *meBot, const CBaseCo
 
 					return subject->EyePosition();
 				}
+#if 0
 				else if ( myWeapon->GetWeaponID() == TF_WEAPON_COMPOUND_BOW )
 				{
 					// lead our target
@@ -711,9 +720,11 @@ Vector CTFBotMainAction::SelectTargetPoint( const INextBot *meBot, const CBaseCo
 
 					return subject->EyePosition();
 				}
+#endif
 			}
 
-			if ( WeaponID_IsSniperRifle( myWeapon->GetWeaponID() ) )
+//			if ( WeaponID_IsSniperRifle( myWeapon->GetWeaponID() ) )
+			if ( myWeapon->GetWeaponID() == TF_WEAPON_SNIPERRIFLE )
 			{
 				if ( m_aimAdjustTimer.IsElapsed() )
 				{
@@ -903,10 +914,10 @@ bool CTFBotMainAction::IsImmediateThreat( const CBaseCombatCharacter *subject, c
 		// non-player threat - sentry guns
 
 		CObjectSentrygun *sentry = dynamic_cast< CObjectSentrygun * >( threat->GetEntity() );
-		if ( sentry && !sentry->HasSapper() && !sentry->IsPlasmaDisabled() && !sentry->IsPlacing() )
+		if ( sentry && !sentry->HasSapper() /*&& !sentry->IsPlasmaDisabled()*/ && !sentry->IsPlacing() )
 		{
 			// are we in range? (or will be very soon)
-			if ( threatRange < 1.5f * SENTRY_MAX_RANGE )
+			if ( threatRange < 1.5f * 1100.0f )
 			{
 				// is it pointing at us?
 				Vector sentryForward;
@@ -1071,11 +1082,13 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 	// close range sentries are the most dangerous of all
 	bool shouldFearSentryGuns = true;
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		// MvM bots are not afraid of sentry guns and treat them like other enemy players
 		shouldFearSentryGuns = false;
 	}
+#endif
 
 	if ( shouldFearSentryGuns )
 	{
@@ -1091,10 +1104,10 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 			sentry2 = dynamic_cast< CObjectSentrygun * >( threat2->GetEntity() );
 		}
 
-		if ( sentry1 && me->IsRangeLessThan( sentry1, SENTRY_MAX_RANGE ) && !sentry1->HasSapper() && !sentry1->IsPlasmaDisabled() && !sentry1->IsPlacing() )
+		if ( sentry1 && me->IsRangeLessThan( sentry1, 1100.0f ) && !sentry1->HasSapper() /*&& !sentry1->IsPlasmaDisabled()*/ && !sentry1->IsPlacing() )
 		{
 			// in range of a visible sentry!
-			if ( sentry2 && me->IsRangeLessThan( sentry2, SENTRY_MAX_RANGE ) && !sentry2->HasSapper() && !sentry2->IsPlasmaDisabled() && !sentry2->IsPlacing() )
+			if ( sentry2 && me->IsRangeLessThan( sentry2, 1100.0f ) && !sentry2->HasSapper() /*&& !sentry2->IsPlasmaDisabled()*/ && !sentry2->IsPlacing() )
 			{
 				// in range of two visible sentries!  we're probably dead meat at this point.
 				// default is choose closest
@@ -1104,7 +1117,7 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 			return threat1;
 		}
 
-		if ( sentry2 && me->IsRangeLessThan( sentry2, SENTRY_MAX_RANGE ) && !sentry2->HasSapper() && !sentry2->IsPlasmaDisabled() && !sentry2->IsPlacing() )
+		if ( sentry2 && me->IsRangeLessThan( sentry2, 1100.0f ) && !sentry2->HasSapper() /*&& !sentry2->IsPlasmaDisabled()*/ && !sentry2->IsPlacing() )
 		{
 			// in range of a visible sentry!
 			return threat2;
@@ -1112,6 +1125,7 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 	}
 
 	// enforce Spy hatred in MvM mode
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		const float spyHateRadius = 1000.0f;
@@ -1122,6 +1136,7 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 			return spyThreat;
 		}
 	}
+#endif
 
 
 	bool isImmediateThreat1 = IsImmediateThreat( subject, threat1 );
@@ -1174,6 +1189,7 @@ const CKnownEntity *CTFBotMainAction::SelectMoreDangerousThreatInternal( const I
 //---------------------------------------------------------------------------------------------
 QueryResultType CTFBotMainAction::ShouldAttack( const INextBot *meBot, const CKnownEntity *them ) const
 {
+#if 0
 	if ( g_pPopulationManager )
 	{
 		// if I'm in my spawn room, obey the population manager's attack restrictions
@@ -1186,6 +1202,7 @@ QueryResultType CTFBotMainAction::ShouldAttack( const INextBot *meBot, const CKn
 			return g_pPopulationManager->CanBotsAttackWhileInSpawnRoom() ? ANSWER_YES : ANSWER_NO;
 		}
 	}
+#endif
 
 	return ANSWER_YES;
 }
@@ -1194,6 +1211,7 @@ QueryResultType CTFBotMainAction::ShouldAttack( const INextBot *meBot, const CKn
 //---------------------------------------------------------------------------------------------
 QueryResultType	CTFBotMainAction::ShouldHurry( const INextBot *meBot ) const
 {
+#if 0
 	if ( g_pPopulationManager )
 	{
 		// if I'm in my spawn room, obey the population manager's attack restrictions
@@ -1210,6 +1228,7 @@ QueryResultType	CTFBotMainAction::ShouldHurry( const INextBot *meBot ) const
 			}
 		}
 	}
+#endif
 
 	return ANSWER_UNDEFINED;
 }
@@ -1280,7 +1299,7 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 	if ( me->IsPlayerClass( TF_CLASS_HEAVYWEAPONS ) && !me->IsAmmoLow() && me->GetIntentionInterface()->ShouldHurry( me ) != ANSWER_YES )
 	{
 		const float spinTime = 3.0f;
-		if ( me->GetVisionInterface()->GetTimeSinceVisible( GetEnemyTeam( me->GetTeamNumber() ) ) < spinTime )
+		if ( me->GetVisionInterface()->GetTimeSinceVisible( ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE ) < spinTime )
 		{
 			me->PressAltFireButton();
 		}
@@ -1304,15 +1323,15 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 	}
 
 	// if our target is uber'd, most weapons are useless - unless we're in MvM, where invuln tanking is valuable
-	if ( TFGameRules() && !TFGameRules()->IsMannVsMachineMode() )
+//	if ( TFGameRules() && !TFGameRules()->IsMannVsMachineMode() )
 	{
 		CTFPlayer *playerThreat = ToTFPlayer( threat->GetEntity() );
-		if ( playerThreat && playerThreat->m_Shared.IsInvulnerable() )
+		if ( playerThreat && playerThreat->m_Shared.InCond( TF_COND_INVULNERABLE ) )
 		{
 			if ( !myWeapon->IsWeapon( TF_WEAPON_ROCKETLAUNCHER ) &&
 				!myWeapon->IsWeapon( TF_WEAPON_GRENADELAUNCHER ) &&
-				!myWeapon->IsWeapon( TF_WEAPON_PIPEBOMBLAUNCHER ) &
-				!myWeapon->IsWeapon( TF_WEAPON_ROCKETLAUNCHER_DIRECTHIT ) )
+				!myWeapon->IsWeapon( TF_WEAPON_PIPEBOMBLAUNCHER ) //&
+				/*!myWeapon->IsWeapon( TF_WEAPON_ROCKETLAUNCHER_DIRECTHIT )*/ )
 			{
 				// firing would just waste ammo, so don't
 				return;
@@ -1339,6 +1358,7 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 	}
 
 	// limit range of hitscan weapon fire in MvM
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() && !me->IsPlayerClass( TF_CLASS_SNIPER ) && me->IsHitScanWeapon( myWeapon ) )
 	{
 		if ( me->IsRangeGreaterThan( threat->GetEntity(), tf_bot_hitscan_range_limit.GetFloat() ) )
@@ -1346,9 +1366,11 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 			return;
 		}
 	}
+#endif
 
 	if ( myWeapon->IsWeapon( TF_WEAPON_FLAMETHROWER ) )
 	{
+#if 0
 		CTFFlameThrower *pFlamethrower = assert_cast< CTFFlameThrower* >( myWeapon );
 		// watch for enemy projectiles heading our way
 		if ( pFlamethrower->CanAirBlast() && me->ShouldFireCompressionBlast() )
@@ -1356,7 +1378,8 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 			// bounce missiles with compression blast
 			me->PressAltFireButton();
 		}
-		else if ( threat->GetTimeSinceLastSeen() < 1.0f && 
+#endif
+		/*else*/ if ( threat->GetTimeSinceLastSeen() < 1.0f && 
 				  me->IsDistanceBetweenLessThan( threat->GetEntity(), me->GetMaxAttackRange() ) )
 		{
 			me->PressFireButton( tf_bot_fire_weapon_min_time.GetFloat() );
@@ -1370,6 +1393,7 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 	// actual head aiming is handled elsewhere, just check if we're on target
 	if ( me->GetBodyInterface()->IsHeadAimingOnTarget() && threatRange < me->GetMaxAttackRange() )
 	{
+#if 0
 		if ( myWeapon->IsWeapon( TF_WEAPON_COMPOUND_BOW ) )
 		{
 			CTFCompoundBow *myBow = (CTFCompoundBow *)myWeapon;
@@ -1379,12 +1403,13 @@ void CTFBotMainAction::FireWeaponAtEnemy( CTFBot *me )
 				me->PressFireButton();
 			}
 		}
-		else if ( WeaponID_IsSniperRifle( myWeapon->GetWeaponID() ) )
+#endif
+		/*else*/ if ( myWeapon->IsWeapon( TF_WEAPON_SNIPERRIFLE ) )
 		{
 			// only fire if zoomed in
 			if ( me->m_Shared.InCond( TF_COND_ZOOMED ) )
 			{
-				const float reactionTime = TFGameRules()->IsMannVsMachineMode() ? 0.5f : 0.1f;	// just a moment to stop headshots when obviously panning too fast to see
+				const float reactionTime = /*TFGameRules()->IsMannVsMachineMode() ? 0.5f :*/ 0.1f;	// just a moment to stop headshots when obviously panning too fast to see
 				if ( m_steadyTimer.HasStarted() && m_steadyTimer.IsGreaterThen( reactionTime ) )
 				{
 					trace_t trace;
@@ -1508,7 +1533,7 @@ QueryResultType	CTFBotMainAction::ShouldRetreat( const INextBot *bot ) const
 		return ANSWER_NO;
 
 	// don't retreat if ubered
-	if ( me->m_Shared.IsInvulnerable() )
+	if ( me->m_Shared.InCond( TF_COND_INVULNERABLE ) )
 		return ANSWER_NO;
 
 	// don't retreat if we're ignoring enemies
@@ -1516,8 +1541,10 @@ QueryResultType	CTFBotMainAction::ShouldRetreat( const INextBot *bot ) const
 		return ANSWER_NO;
 
 	// retreat if stunned
+#if 0
 	if ( me->m_Shared.IsControlStunned() || me->m_Shared.IsLoserStateStunned() )
 		return ANSWER_YES;
+#endif
 
 	// don't retreat during setup time, since we're always safe
 	if ( TFGameRules()->InSetup() )
@@ -1528,7 +1555,7 @@ QueryResultType	CTFBotMainAction::ShouldRetreat( const INextBot *bot ) const
 	{
 		if ( me->m_Shared.InCond( TF_COND_DISGUISED ) ||
 			 me->m_Shared.InCond( TF_COND_DISGUISING ) ||
-			 me->m_Shared.IsStealthed() )
+			 me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			return ANSWER_NO;
 		}
@@ -1554,7 +1581,7 @@ void CTFBotMainAction::Dodge( CTFBot *me )
 		return;
 
 	// no need to dodge if we're invulnerable
-	if ( me->m_Shared.IsInvulnerable() )
+	if ( me->m_Shared.InCond( TF_COND_INVULNERABLE ) )
 		return;
 
 	// don't dodge if we're trying to snipe
@@ -1584,7 +1611,7 @@ void CTFBotMainAction::Dodge( CTFBot *me )
 	// disguised/cloaked spies don't dodge
 	if ( me->m_Shared.InCond( TF_COND_DISGUISED ) ||
 		 me->m_Shared.InCond( TF_COND_DISGUISING ) ||
-		 me->m_Shared.IsStealthed() )
+		 me->m_Shared.InCond( TF_COND_STEALTHED ) )
 	{
 		return;
 	}
@@ -1601,6 +1628,7 @@ void CTFBotMainAction::Dodge( CTFBot *me )
 		bool isShotClear = true;
 
 		CTFWeaponBase *myGun = (CTFWeaponBase *)me->Weapon_GetSlot( TF_WPN_TYPE_PRIMARY );
+#if 0
 		if ( myGun && myGun->IsWeapon( TF_WEAPON_COMPOUND_BOW ) )
 		{
 			CTFCompoundBow *myBow = (CTFCompoundBow *)myGun;
@@ -1614,6 +1642,7 @@ void CTFBotMainAction::Dodge( CTFBot *me )
 			isShotClear = true;
 		}
 		else
+#endif
 		{
 			isShotClear = me->IsLineOfFireClear( threat->GetLastKnownPosition() );
 		}

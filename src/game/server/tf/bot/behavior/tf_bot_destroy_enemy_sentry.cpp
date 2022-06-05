@@ -190,6 +190,7 @@ bool CTFBotDestroyEnemySentry::IsPossible( CTFBot *me )
 	}
 #endif
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		if ( me->GetTeamNumber() == TF_TEAM_PVE_INVADERS )
@@ -197,6 +198,7 @@ bool CTFBotDestroyEnemySentry::IsPossible( CTFBot *me )
 			return false;
 		}
 	}
+#endif
 
 	return true;
 }
@@ -241,7 +243,7 @@ public:
 			{
 				if ( m_me->IsLineOfFireClear( m_attackSpot + m_me->GetClassEyeHeight(), m_me->GetEnemySentry() ) )
 				{
-					if ( ( m_attackSpot - m_me->GetEnemySentry()->GetAbsOrigin() ).IsLengthGreaterThan( 1.1f * SENTRY_MAX_RANGE ) )
+					if ( ( m_attackSpot - m_me->GetEnemySentry()->GetAbsOrigin() ).IsLengthGreaterThan( 1.1f * 1100.0f ) )
 					{
 						// found our attack spot
 						m_foundAttackSpot = true;
@@ -301,7 +303,7 @@ void CTFBotDestroyEnemySentry::ComputeSafeAttackSpot( CTFBot *me )
 		Vector farthestFromSentry;
 		area->GetClosestPointOnArea( wayOut, &farthestFromSentry ); 
 
-		if ( ( farthestFromSentry - sentry->GetAbsOrigin() ).IsLengthGreaterThan( SENTRY_MAX_RANGE ) )
+		if ( ( farthestFromSentry - sentry->GetAbsOrigin() ).IsLengthGreaterThan( 1100.0f ) )
 		{
 			// at least some of this area is out of sentry range
 			beyondSentryRangeVector.AddToTail( area );
@@ -322,7 +324,7 @@ void CTFBotDestroyEnemySentry::ComputeSafeAttackSpot( CTFBot *me )
 		Vector closestToSentry;
 		area->GetClosestPointOnArea( sentry->GetAbsOrigin(), &closestToSentry );
 
-		if ( ( closestToSentry - sentry->GetAbsOrigin() ).IsLengthLessThan( 1.5f * SENTRY_MAX_RANGE ) )
+		if ( ( closestToSentry - sentry->GetAbsOrigin() ).IsLengthLessThan( 1.5f * 1100.0f ) )
 		{
 			// good attack range
 			attackSentryVector.AddToTail( area );
@@ -480,7 +482,7 @@ void CTFBotDestroyEnemySentry::ComputeCornerAttackSpot( CTFBot *me )
 		Vector close;
 		area->GetClosestPointOnArea( sentry->GetAbsOrigin(), &close );
 
-		if ( ( sentry->GetAbsOrigin() - close ).IsLengthLessThan( SENTRY_MAX_RANGE ) )
+		if ( ( sentry->GetAbsOrigin() - close ).IsLengthLessThan( 1100.0f ) )
 		{
 			area->TFMark();
 
@@ -506,7 +508,7 @@ void CTFBotDestroyEnemySentry::ComputeCornerAttackSpot( CTFBot *me )
 		{
 			m_safeAttackSpot = safeArea->GetRandomPoint();
 
-			if ( ( sentry->WorldSpaceCenter() - m_safeAttackSpot ).IsLengthGreaterThan( SENTRY_MAX_RANGE ) ||
+			if ( ( sentry->WorldSpaceCenter() - m_safeAttackSpot ).IsLengthGreaterThan( 1100.0f ) ||
 				 !me->IsLineOfFireClear( sentry->WorldSpaceCenter(), m_safeAttackSpot ) )
 			{
 				break;
@@ -579,7 +581,7 @@ ActionResult< CTFBot >	CTFBotDestroyEnemySentry::Update( CTFBot *me, float inter
 		return ChangeTo( new CTFBotDestroyEnemySentry, "Changed sentry target" );
 	}
 
-	if ( me->m_Shared.IsInvulnerable() )
+	if ( me->m_Shared.InCond( TF_COND_INVULNERABLE ) )
 	{
 		if ( !m_wasUber )
 		{
@@ -731,7 +733,7 @@ ActionResult< CTFBot >	CTFBotDestroyEnemySentry::Update( CTFBot *me, float inter
 			m_isAttackingSentry = false;
 		}
 
-		if ( me->IsRangeGreaterThan( me->GetEnemySentry(), 1.1f * SENTRY_MAX_RANGE ) )
+		if ( me->IsRangeGreaterThan( me->GetEnemySentry(), 1.1f * 1100.0f ) )
 		{
 			// safely out of range of the gun - hold here and fire at it
 			return Continue();

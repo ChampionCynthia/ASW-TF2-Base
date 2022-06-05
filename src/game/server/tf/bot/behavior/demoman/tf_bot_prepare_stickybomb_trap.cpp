@@ -83,7 +83,7 @@ CTFBotPrepareStickybombTrap::~CTFBotPrepareStickybombTrap( )
 bool CTFBotPrepareStickybombTrap::IsPossible( CTFBot *me )
 {
 	// don't lay a trap if we're in the midst of fighting
-	if ( /*me->IsInCombat() || */ me->GetTimeSinceLastInjury() < 1.0f )
+	if ( me->IsInCombat() || me->GetTimeSinceLastInjury() < 1.0f )
 	{
 		return false;
 	}
@@ -94,7 +94,7 @@ bool CTFBotPrepareStickybombTrap::IsPossible( CTFBot *me )
 	}
 
 	CTFPipebombLauncher *stickyLauncher = dynamic_cast< CTFPipebombLauncher * >( me->Weapon_GetSlot( TF_WPN_TYPE_SECONDARY ) );
-	if ( stickyLauncher && !me->IsWeaponRestricted( stickyLauncher ) )
+	if ( stickyLauncher /*&& !me->IsWeaponRestricted( stickyLauncher )*/ )
 	{
 		if ( stickyLauncher->GetPipeBombCount() >= MAX_STICKYBOMB_COUNT || me->GetAmmoCount( TF_AMMO_SECONDARY ) <= 0 )
 		{

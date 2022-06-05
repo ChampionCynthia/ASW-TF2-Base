@@ -1641,6 +1641,32 @@ EHANDLE CTFPlayerShared::GetFirstHealer()
 
 	return NULL;
 }
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+CBaseEntity *CTFPlayerShared::GetHealerByIndex( int index )
+{
+	int iNumHealers = m_aHealers.Count();
+
+	if ( index < 0 || index >= iNumHealers )
+		return NULL;
+
+	return m_aHealers[index].pPlayer;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+bool CTFPlayerShared::HealerIsDispenser( int index )
+{
+	int iNumHealers = m_aHealers.Count();
+
+	if ( index < 0 || index >= iNumHealers )
+		return false;
+
+	return m_aHealers[index].bDispenserHeal;
+}
 #endif
 
 //-----------------------------------------------------------------------------

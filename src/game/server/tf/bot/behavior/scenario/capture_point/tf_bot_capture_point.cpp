@@ -127,6 +127,7 @@ ActionResult< CTFBot >	CTFBotCapturePoint::Update( CTFBot *me, float interval )
 			m_repathTimer.Start( RandomFloat( 2.0f, 3.0f ) ); 
 		}
 
+#if 0
 		if ( TFGameRules()->IsInTraining() && !me->IsAnyPointBeingCaptured() )
 		{
 			// stop short of capturing until the human trainee starts it
@@ -138,6 +139,7 @@ ActionResult< CTFBot >	CTFBotCapturePoint::Update( CTFBot *me, float interval )
 				return Continue();
 			}
 		}
+#endif
 
 		// move towards next capture point
 		m_path.Update( me );

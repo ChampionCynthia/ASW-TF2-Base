@@ -157,6 +157,8 @@ public:
 	void	RecalculateInvuln( bool bInstantRemove = false );
 	int		FindHealerIndex( CTFPlayer *pPlayer );
 	EHANDLE	GetFirstHealer();
+	CBaseEntity *GetHealerByIndex( int index );
+	bool HealerIsDispenser( int index );
 #endif
 	int		GetNumHealers( void ) { return m_nNumHealers; }
 

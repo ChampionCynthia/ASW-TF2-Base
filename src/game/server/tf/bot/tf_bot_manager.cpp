@@ -364,8 +364,10 @@ void CTFBotManager::MaintainBotQuota()
 		return;
 
 	// training mode controls the bots
+#if 0
 	if ( TFGameRules()->IsInTraining() )
 		return;
+#endif
 
 	// if it is not time to do anything...
 	if ( gpGlobals->curtime < m_flNextPeriodicThink )
@@ -461,8 +463,8 @@ void CTFBotManager::MaintainBotQuota()
 	if ( desiredBotCount > nTFBotsOnGameTeams )
 	{
 		// don't try to add a bot if it would unbalance
-		if ( !TFGameRules()->WouldChangeUnbalanceTeams( TF_TEAM_BLUE, TEAM_UNASSIGNED ) ||
-			 !TFGameRules()->WouldChangeUnbalanceTeams( TF_TEAM_RED, TEAM_UNASSIGNED ) )
+		if ( !TFGameRules()->WouldChangeUnbalanceTeams( 1, TF_TEAM_BLUE, TEAM_UNASSIGNED ) ||
+			 !TFGameRules()->WouldChangeUnbalanceTeams( 1, TF_TEAM_RED, TEAM_UNASSIGNED ) )
 		{
 			CTFBot *pBot = GetAvailableBotFromPool();
 			if ( pBot == NULL )
@@ -486,11 +488,13 @@ void CTFBotManager::MaintainBotQuota()
 				engine->SetFakeClientConVarValue( pBot->edict(), "name", name );
 				
 				// Keep track of any bots we add during a match
+#if 0
 				CMatchInfo *pMatchInfo = GTFGCClientSystem()->GetMatch();
 				if ( pMatchInfo )
 				{
 					pMatchInfo->m_nBotsAdded++;
 				}
+#endif
 			}
 		}
 	}
@@ -572,7 +576,8 @@ bool CTFBotManager::IsAllBotTeam( int iTeam )
 
 	// okay, this is a bit trickier...
 	// if there are no people on this team, then we need to check the "assigned" human team
-	return TFGameRules()->GetAssignedHumanTeam() != iTeam;
+	// return TFGameRules()->GetAssignedHumanTeam() != iTeam;
+	return false;
 }
 
 

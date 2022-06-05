@@ -354,9 +354,9 @@ QueryResultType CTFBotSpyAttack::ShouldAttack( const INextBot *meBot, const CKno
 
 	if ( m_isCoverBlown ||
 		 me->m_Shared.InCond( TF_COND_BURNING ) ||
-		 me->m_Shared.InCond( TF_COND_URINE ) ||
-		 me->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ||
-		 me->m_Shared.InCond( TF_COND_BLEEDING ) )
+//		 me->m_Shared.InCond( TF_COND_URINE ) ||
+		 me->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ) // ||
+//		 me->m_Shared.InCond( TF_COND_BLEEDING ) )
 	{
 		// our cover is blown anyway
 		return ANSWER_YES;

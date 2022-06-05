@@ -113,8 +113,8 @@ public:
 		int numHealers = current->m_Shared.GetNumHealers();
 		for ( i=0; i<numHealers; ++i )
 		{
-			// CBaseEntity *medic = current->m_Shared.GetHealerByIndex(i);
-			CBaseEntity *medic = current->m_Shared.GetFirstHealer();
+			CBaseEntity *medic = current->m_Shared.GetHealerByIndex(i);
+			// CBaseEntity *medic = current->m_Shared.GetFirstHealer();
 
 			if ( medic && medic->IsPlayer() && !m_me->IsSelf( medic ) )
 				return contender;
@@ -124,8 +124,8 @@ public:
 		numHealers = contender->m_Shared.GetNumHealers();
 		for ( i=0; i<numHealers; ++i )
 		{
-			// CBaseEntity *medic = contender->m_Shared.GetHealerByIndex(i);
-			CBaseEntity *medic = contender->m_Shared.GetFirstHealer();
+			CBaseEntity *medic = contender->m_Shared.GetHealerByIndex(i);
+			// CBaseEntity *medic = contender->m_Shared.GetFirstHealer();
 
 			if ( medic && medic->IsPlayer() && !m_me->IsSelf( medic ) )
 				return current;

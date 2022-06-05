@@ -514,15 +514,18 @@ bool CTFBotSniperLurk::FindNewHome( CTFBot *me )
 //---------------------------------------------------------------------------------------------
 QueryResultType CTFBotSniperLurk::ShouldAttack( const INextBot *bot, const CKnownEntity *them ) const
 {
+
+#if 0
 	CTFBot *me = (CTFBot *)bot->GetEntity();
 
 	CTFNavArea *area = me->GetLastKnownArea();
 
-	/*if ( TFGameRules()->IsMannVsMachineMode() && area && area->HasAttributeTF( TF_NAV_SPAWN_ROOM_BLUE ) )
+	if ( TFGameRules()->IsMannVsMachineMode() && area && area->HasAttributeTF( TF_NAV_SPAWN_ROOM_BLUE ) )
 	{
 		// don't fire while in the spawn area
 		return ANSWER_NO;
-	}*/
+	}
+#endif
 
 	// take the shot if you've got it
 	return ANSWER_YES;

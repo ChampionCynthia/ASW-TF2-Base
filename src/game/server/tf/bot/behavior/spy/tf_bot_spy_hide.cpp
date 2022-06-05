@@ -4,6 +4,7 @@
 // Michael Booth, September 2011
 
 #include "cbase.h"
+#include "UtlSortVector.h"
 #include "tf_player.h"
 #include "bot/tf_bot.h"
 #include "bot/behavior/spy/tf_bot_spy_hide.h"
@@ -27,7 +28,7 @@ ActionResult< CTFBot >	CTFBotSpyHide::OnStart( CTFBot *me, Action< CTFBot > *pri
 
 	CTFNavArea *myArea = me->GetLastKnownArea();
 
-	int enemyTeam = GetEnemyTeam( me->GetTeamNumber() );
+	int enemyTeam = ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
 
 	m_incursionThreshold = myArea ? myArea->GetIncursionDistance( enemyTeam ) : FLT_MAX;
 	if ( m_incursionThreshold < 0.0f )
@@ -79,7 +80,7 @@ ActionResult< CTFBot >	CTFBotSpyHide::Update( CTFBot *me, float interval )
 		CTFNavArea *myArea = me->GetLastKnownArea();
 		if ( myArea )
 		{
-			int enemyTeam = GetEnemyTeam( me->GetTeamNumber() );
+			int enemyTeam = ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
 
 	  		m_incursionThreshold = myArea->GetIncursionDistance( enemyTeam );
 		}
@@ -187,7 +188,7 @@ bool CTFBotSpyHide::FindHidingSpot( CTFBot *me )
 
 	float maxIncursion = m_incursionThreshold + 1000.0f;
 
-	int enemyTeam = GetEnemyTeam( me->GetTeamNumber() );
+	int enemyTeam = ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
 
 	// if we are standing in an area the defenders can't reach, don't limit
 	if ( myArea->GetIncursionDistance( enemyTeam ) < 0.0f )

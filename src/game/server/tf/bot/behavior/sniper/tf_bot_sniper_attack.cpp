@@ -181,7 +181,7 @@ bool CTFBotSniperAttack::IsImmediateThreat( const CBaseCombatCharacter *subject,
 		if ( sentry )
 		{
 			// are we in range?
-			if ( threatRange < SENTRY_MAX_RANGE )
+			if ( threatRange < 1100.0f )
 			{
 				// is it pointing at us?
 				Vector sentryForward;

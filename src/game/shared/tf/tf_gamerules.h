@@ -296,6 +296,9 @@ public:
 	void	SendHudNotification( IRecipientFilter &filter, HudNotification_t iType );
 	void	SendHudNotification( IRecipientFilter &filter, const char *pszText, const char *pszIcon, int iTeam = TEAM_UNASSIGNED );
 
+	const CUtlVector< CHandle< CBaseEntity > > &GetHealthEntityVector( void );		// return vector of health entities 
+	const CUtlVector< CHandle< CBaseEntity > > &GetAmmoEntityVector( void );		// return vector of ammo entities 
+
 private:
 
 	int DefaultFOV( void ) { return 75; }
@@ -318,6 +321,15 @@ private:
 	int m_iPrevRoundState;	// bit string representing the state of the points at the start of the previous miniround
 	int m_iCurrentRoundState;
 	int m_iCurrentMiniRoundMask;
+
+	CUtlVector< CHandle< CBaseEntity > > m_ammoVector;			// vector of active ammo entities
+	bool m_isAmmoVectorReady;									// for lazy evaluation
+
+	CUtlVector< CHandle< CBaseEntity > > m_healthVector;		// vector of active health entities
+	bool m_isHealthVectorReady;									// for lazy evaluation
+
+	void ComputeHealthAndAmmoVectors( void );		// compute internal vectors of health and ammo locations
+	bool m_areHealthAndAmmoVectorsReady;
 
 #endif
 

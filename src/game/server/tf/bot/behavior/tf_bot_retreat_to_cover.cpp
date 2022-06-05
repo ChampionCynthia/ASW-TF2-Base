@@ -172,7 +172,7 @@ ActionResult< CTFBot >	CTFBotRetreatToCover::OnStart( CTFBot *me, Action< CTFBot
 	// if I'm a spy, cloak and disguise while I retreat
 	if ( me->IsPlayerClass( TF_CLASS_SPY ) )
 	{
-		if ( !me->m_Shared.IsStealthed() )
+		if ( !me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			me->PressAltFireButton();
 		}
@@ -232,7 +232,7 @@ ActionResult< CTFBot >	CTFBotRetreatToCover::Update( CTFBot *me, float interval 
 		}
 
 		// uncloak so we can attack when we leave cover
-		if ( me->m_Shared.IsStealthed() )
+		if ( me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			me->PressAltFireButton();
 		}

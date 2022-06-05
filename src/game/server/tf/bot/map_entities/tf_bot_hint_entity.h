@@ -14,6 +14,8 @@ class CBaseTFBotHintEntity : public CPointEntity, public ITFBotHintEntityAutoLis
 public:
 	DECLARE_DATADESC();
 
+	IMPLEMENT_AUTO_LIST_GET();
+
 	CBaseTFBotHintEntity( void );
 	virtual ~CBaseTFBotHintEntity() { }
 

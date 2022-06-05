@@ -23,7 +23,7 @@ extern ConVar tf_bot_debug_spy;
 ActionResult< CTFBot >	CTFBotSpyLurk::OnStart( CTFBot *me, Action< CTFBot > *priorAction )
 {
 	// cloak 
-	if ( !me->m_Shared.IsStealthed() )
+	if ( !me->m_Shared.InCond( TF_COND_STEALTHED ) )
 	{
 		me->PressAltFireButton();
 	}

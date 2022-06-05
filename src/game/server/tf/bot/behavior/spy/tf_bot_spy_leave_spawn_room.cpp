@@ -111,7 +111,7 @@ ActionResult< CTFBot >	CTFBotSpyLeaveSpawnRoom::Update( CTFBot *me, float interv
 		CTFPlayer *victim = NULL;
 
 		CUtlVector< CTFPlayer * > enemyVector;
-		CollectPlayers( &enemyVector, GetEnemyTeam( me->GetTeamNumber() ), COLLECT_ONLY_LIVING_PLAYERS );
+		CollectPlayers( &enemyVector, ( me->GetTeamNumber() == TF_TEAM_BLUE ? TF_TEAM_RED : TF_TEAM_BLUE ), COLLECT_ONLY_LIVING_PLAYERS );
 
 		// randomly shuffle our enemies
 		CUtlVector< CTFPlayer * > shuffleVector;

@@ -59,11 +59,13 @@ ActionResult< CTFBot >	CTFBotDeliverFlag::OnStart( CTFBot *me, Action< CTFBot > 
 	{
 		m_upgradeLevel = 0;
 		m_upgradeTimer.Start( tf_mvm_bot_flag_carrier_interval_to_1st_upgrade.GetFloat() );
+#if 0
 		if ( TFObjectiveResource() )
 		{
 			TFObjectiveResource()->SetBaseMvMBombUpgradeTime( gpGlobals->curtime );
 			TFObjectiveResource()->SetNextMvMBombUpgradeTime( gpGlobals->curtime + m_upgradeTimer.GetRemainingTime() );
 		}
+#endif
 		
 	}
 
@@ -396,6 +398,7 @@ ActionResult< CTFBot > CTFBotPushToCapturePoint::Update( CTFBot *me, float inter
 //-----------------------------------------------------------------------------------------
 EventDesiredResult< CTFBot > CTFBotPushToCapturePoint::OnNavAreaChanged( CTFBot *me, CNavArea *newArea, CNavArea *oldArea )
 {
+#if 0
 	// does the area we are entering have a prerequisite?
 	if ( newArea && newArea->HasPrerequisite( me ) )
 	{
@@ -418,6 +421,7 @@ EventDesiredResult< CTFBot > CTFBotPushToCapturePoint::OnNavAreaChanged( CTFBot 
 			}
 		}
 	}
+#endif
 
 	return TryContinue();
 }

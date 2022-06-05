@@ -28,7 +28,7 @@ ActionResult< CTFBot >	CTFBotSpySap::OnStart( CTFBot *me, Action< CTFBot > *prio
 	me->StopLookingAroundForEnemies();
 
 	// uncloak so we can sap
-	if ( me->m_Shared.IsStealthed() )
+	if ( me->m_Shared.InCond( TF_COND_STEALTHED ) )
 	{
 		me->PressAltFireButton();
 	}
@@ -94,7 +94,7 @@ ActionResult< CTFBot >	CTFBotSpySap::Update( CTFBot *me, float interval )
 		me->Weapon_Switch( mySapper );
 
 		// uncloak
-		if ( me->m_Shared.IsStealthed() )
+		if ( me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			me->PressAltFireButton();
 		}
@@ -192,7 +192,7 @@ QueryResultType CTFBotSpySap::ShouldAttack( const INextBot *meBot, const CKnownE
 
 	if ( !me->m_Shared.InCond( TF_COND_DISGUISED ) &&
 		 !me->m_Shared.InCond( TF_COND_DISGUISING ) &&
-		 !me->m_Shared.IsStealthed() )
+		 !me->m_Shared.InCond( TF_COND_STEALTHED ) )
 	{
 		// our cover is blown!
 		return ANSWER_YES;
@@ -237,7 +237,7 @@ bool CTFBotSpySap::AreAllDangerousSentriesSapped( CTFBot *me ) const
 		if ( enemyObject && enemyObject->ObjectType() == OBJ_SENTRYGUN && !enemyObject->HasSapper() && me->IsEnemy( enemyObject ) )
 		{
 			// this is an active enemy sentry, are we in range and line of fire?
-			if ( me->IsRangeLessThan( enemyObject, SENTRY_MAX_RANGE ) && me->IsLineOfFireClear( enemyObject ) )
+			if ( me->IsRangeLessThan( enemyObject, 1100.0f ) && me->IsLineOfFireClear( enemyObject ) )
 			{
 				return false;
 			}

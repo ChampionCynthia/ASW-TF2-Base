@@ -61,6 +61,8 @@ public:
 	DECLARE_SERVERCLASS();
 	DECLARE_DATADESC();
 
+	IMPLEMENT_AUTO_LIST_GET();
+
 	virtual bool	IsBaseObject( void ) const { return true; }
 
 	virtual void	BaseObjectThink( void );

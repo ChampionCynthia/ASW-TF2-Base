@@ -23,9 +23,9 @@ public:
 	CTFBotHintEngineerNest( void );
 	virtual ~CTFBotHintEngineerNest() { }
 
-	virtual void Spawn() OVERRIDE;
+	virtual void Spawn();
 
-	virtual HintType GetHintType() const OVERRIDE { return HINT_ENGINEER_NEST; }
+	virtual HintType GetHintType() const { return HINT_ENGINEER_NEST; }
 
 	virtual int UpdateTransmitState()
 	{

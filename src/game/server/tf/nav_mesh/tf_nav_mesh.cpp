@@ -91,7 +91,7 @@ public:
 		if ( wallCount >= 1 )
 		{
 			// good cover, are we also right next to enemy incursion areas?
-			const CUtlVector< CTFNavArea * > &invasionVector = area->GetEnemyInvasionAreaVector( GetEnemyTeam( m_teamToAmbush ) );
+			const CUtlVector< CTFNavArea * > &invasionVector = area->GetEnemyInvasionAreaVector( ( m_teamToAmbush == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE );
 
 			// don't use areas that are in plain sight of large amounts of incoming enemy space
 			NavAreaCollector collector( true );
@@ -151,7 +151,7 @@ void CMD_SelectAmbushAreas( void )
 
 	CTFNavArea *searchSourceArea = static_cast< CTFNavArea * >( player->GetLastKnownArea() );
 
-	int teamToAmbush = GetEnemyTeam( player->GetTeamNumber() );
+	int teamToAmbush = ( player->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
 
 	CUtlVector< CTFNavArea * > ambushAreaVector;
 	ScanSelectAmbushAreas selector( &ambushAreaVector, teamToAmbush, searchSourceArea->GetIncursionDistance( teamToAmbush ) + 300.0f );
@@ -490,11 +490,13 @@ void CTFNavMesh::Update( void )
 			RecomputeInternalData();
 		}
 
+#if 0
 		if ( TFGameRules()->GetGameType() == TF_GAMETYPE_ESCORT && m_watchCartTimer.IsElapsed() )
 		{
 			// the cart may have moved, recompute new sniper spots
 			m_watchCartTimer.Start( 3.0f );
 		}
+#endif
 	}
 
 	m_priorBotCount = TheNextBots().GetNextBotCount();
@@ -542,10 +544,12 @@ void CTFNavMesh::OnRoundRestart( void )
 	// nasty hack
 	TheTFBots().OnRoundRestart();
 
+#if 0
 	if ( TFGameRules() && TFGameRules()->IsMannVsMachineMode() )
 	{
 		RecomputeInternalData();
 	}
+#endif
 
 	DevMsg( "CTFNavMesh: %d nav areas in mesh.\n", GetNavAreaCount() );
 }
@@ -762,7 +766,7 @@ void CTFNavMesh::ComputeBlockedAreas( void )
 				// we need to UN-block these areas to account for legacy func_brushes
 				// used inside of cosmetic doors as a collision proxy that have marked
 				// these areas as blocked
-				area->UnblockArea( blockedTeam );
+				area->UnblockArea( /*blockedTeam*/ );
 			}
 		}
 	}
@@ -836,7 +840,7 @@ void CTFNavMesh::CollectControlPointAreas( void )
 	}
 }
 
-
+#if 0
 //-------------------------------------------------------------------------
 // For MvM mode. Mark all nav areas where the bomb can drop and the invaders can reach it.
 void CTFNavMesh::ComputeLegalBombDropAreas( void )
@@ -926,7 +930,6 @@ void CTFNavMesh::ComputeLegalBombDropAreas( void )
 		}
 	}
 }
-
 
 //-------------------------------------------------------------------------
 // For MvM mode. Mark all nav areas where the bomb can drop and the invaders can reach it.
@@ -1050,7 +1053,7 @@ void CTFNavMesh::ComputeBombTargetDistance()
 		}
 	}
 }
-
+#endif
 
 //-------------------------------------------------------------------------
 void CTFNavMesh::RecomputeInternalData( void )
@@ -1166,7 +1169,7 @@ void CTFNavMesh::OnObjectChanged()
 
 		if ( obj->ObjectType() == OBJ_SENTRYGUN )
 		{
-			if ( !obj->IsDying() && !obj->IsCarried() )
+			if ( !obj->IsDying() /*&& !obj->IsCarried()*/ )
 				ActiveSentries.AddToTail( obj );
 		}
 	}
@@ -1185,13 +1188,13 @@ void CTFNavMesh::OnObjectChanged()
 			// Check all active sentries against this area.
 			FOR_EACH_VEC( ActiveSentries, oit )
 			{
-				const CBaseObject* obj = ActiveSentries[ oit ];
+				/*const*/ CBaseObject* obj = ActiveSentries[ oit ];
 
 				// If this area in range of this sentry?
 				Vector close;
 				area->GetClosestPointOnArea( obj->GetAbsOrigin(), &close );
 
-				if ( ( obj->GetAbsOrigin() - close ).IsLengthLessThan( SENTRY_MAX_RANGE ) )
+				if ( ( obj->GetAbsOrigin() - close ).IsLengthLessThan( 1100.0f ) )
 				{
 					// Can this sentry reach this area?
 					if ( area->IsPartiallyVisible( obj->GetAbsOrigin() + Vector( 0, 0, 30.0f ), obj ) )
@@ -1438,7 +1441,7 @@ void CTFNavMesh::ComputeIncursionDistances( void )
 		Warning( "Can't compute incursion distances from the Blue spawn room(s). Bots will perform poorly. This is caused by either a missing func_respawnroom, or missing info_player_teamspawn entities within the func_respawnroom.\n" );
 	}
 
-	if ( !TFGameRules()->IsMannVsMachineMode() )
+//	if ( !TFGameRules()->IsMannVsMachineMode() )
 	{
 		// In Raid mode, the Red (bot) team has no spawn room.
 		// So, we'll assume the Red incursion distance is the inverse of the Blue incursion distance for now.
@@ -1506,10 +1509,12 @@ void CTFNavMesh::ComputeIncursionDistances( CTFNavArea *spawnArea, int team )
 #endif // TF_RAID_MODE
 
 		// TODO: Ditto for Mann Vs Machine mode
+#if 0
 		if ( TFGameRules()->IsMannVsMachineMode() )
 		{
 			bIgnoreBlockedAreas = true;
 		}
+#endif
 
 		if ( !bIgnoreBlockedAreas )
 		{
