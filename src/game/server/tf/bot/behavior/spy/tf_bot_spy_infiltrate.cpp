@@ -54,7 +54,7 @@ ActionResult< CTFBot >	CTFBotSpyInfiltrate::Update( CTFBot *me, float interval )
 	}
 
 	// cloak when we first enter an area of active combat
-	if ( !me->m_Shared.IsStealthed() && 
+	if ( !me->m_Shared.InCond( TF_COND_STEALTHED ) && 
 		 !isInMySpawn && 
 		 myArea->IsInCombat() && 
 		 !m_hasEnteredCombatZone )
@@ -99,7 +99,7 @@ ActionResult< CTFBot >	CTFBotSpyInfiltrate::Update( CTFBot *me, float interval )
 
 					if ( victimArea->GetIncursionDistance( victimTeam ) > myArea->GetIncursionDistance( victimTeam ) )
 					{
-						if ( me->m_Shared.IsStealthed() )
+						if ( me->m_Shared.InCond( TF_COND_STEALTHED ) )
 						{
 							return SuspendFor( new CTFBotRetreatToCover( new CTFBotSpyAttack( victim ) ), "Hiding to decloak before going after a backstab victim" );
 						}
@@ -198,8 +198,8 @@ bool CTFBotSpyInfiltrate::FindHidingSpot( CTFBot *me )
 		return false;
 	}
 
-	int myTeam = me->GetTeamNumber();
-	const CUtlVector< CTFNavArea * > *enemySpawnExitVector = TheTFNavMesh()->GetSpawnRoomExitAreas( GetEnemyTeam( myTeam ) );
+	int enemyTeam = ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE;
+	const CUtlVector< CTFNavArea * > *enemySpawnExitVector = TheTFNavMesh()->GetSpawnRoomExitAreas( enemyTeam );
 
 #ifdef TF_RAID_MODE
 	if ( TFGameRules()->IsRaidMode() )

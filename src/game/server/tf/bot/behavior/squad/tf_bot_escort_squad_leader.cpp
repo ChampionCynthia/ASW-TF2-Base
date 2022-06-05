@@ -73,6 +73,7 @@ ActionResult< CTFBot > CTFBotEscortSquadLeader::Update( CTFBot *me, float interv
 		return Done( "Squad leader is dead" );
 	}
 
+#if 0
 	if ( TFGameRules() && TFGameRules()->IsMannVsMachineMode() && leader == me )
 	{
 		const char* pszNowLeader = "I'm now the squad leader! Going for the flag!";
@@ -85,6 +86,7 @@ ActionResult< CTFBot > CTFBotEscortSquadLeader::Update( CTFBot *me, float interv
 		// capture the flag
 		return ChangeTo( new CTFBotFetchFlag, pszNowLeader );
 	}
+#endif
 
 	// if we're using a melee weapon, close and attack with it while staying near the leader
 	CTFWeaponBase *myWeapon = me->m_Shared.GetActiveTFWeapon();

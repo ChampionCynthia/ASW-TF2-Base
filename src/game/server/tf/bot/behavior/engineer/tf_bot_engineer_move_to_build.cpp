@@ -77,6 +77,7 @@ void CTFBotEngineerMoveToBuild::CollectBuildAreas( CTFBot *me )
 			pointEnemyIncursion += zoneArea->GetIncursionDistance( enemyTeam );
 		}
 	}
+#if 0
 	else if ( TFGameRules()->GetGameType() == TF_GAMETYPE_ESCORT )
 	{
 		CTeamTrainWatcher *trainWatcher;
@@ -103,6 +104,7 @@ void CTFBotEngineerMoveToBuild::CollectBuildAreas( CTFBot *me )
 			}
 		}
 	}
+#endif
 	else
 	{
 		// collect all areas overlapping the point
@@ -147,12 +149,14 @@ void CTFBotEngineerMoveToBuild::CollectBuildAreas( CTFBot *me )
 			if ( visibleArea->GetIncursionDistance( myTeam ) < 0 || visibleArea->GetIncursionDistance( enemyTeam ) < 0 )
 				continue;
 
+#if 0
 			if ( TFGameRules()->IsInKothMode() )
 			{
 				// ignore areas the enemy can reach first
 				if ( visibleArea->GetIncursionDistance( myTeam ) >= visibleArea->GetIncursionDistance( enemyTeam ) )
 					continue;
 			}
+#endif
 
 // incursion flow is badly behaved at cap #1, stage #2 in dustbowl
 // 			else
@@ -174,7 +178,7 @@ void CTFBotEngineerMoveToBuild::CollectBuildAreas( CTFBot *me )
 
 				// ignore areas too far from the point for the sentry gun to reach
 				const float tolerance = 1.1f;
-				if ( ( visibleArea->GetCenter() - pointCentroid ).IsLengthGreaterThan( SENTRY_MAX_RANGE * tolerance ) )
+				if ( ( visibleArea->GetCenter() - pointCentroid ).IsLengthGreaterThan( 1100.0f * tolerance ) )
 					continue;
 			}
 
@@ -286,10 +290,13 @@ void CTFBotEngineerMoveToBuild::SelectBuildLocation( CTFBot *me )
 		}
 	}
 
+#if 0
 	if ( !HushAsserts() )
 	{
 		Assert( !"Failed to find a build location" );
 	}
+#endif
+
 	m_sentryBuildLocation = me->GetAbsOrigin();
 }
 
@@ -361,9 +368,9 @@ ActionResult< CTFBot >	CTFBotEngineerMoveToBuild::Update( CTFBot *me, float inte
 	}
 
 	// offensive engineers need to place a forward teleporter
-	if ( TFGameRules()->GetGameType() == TF_GAMETYPE_CP && !TFGameRules()->IsInKothMode() && me->GetTeamNumber() == TF_TEAM_BLUE )
+	if ( TFGameRules()->GetGameType() == TF_GAMETYPE_CP /*&& !TFGameRules()->IsInKothMode()*/ && me->GetTeamNumber() == TF_TEAM_BLUE )
 	{
-		CObjectTeleporter *myTeleportExit = (CObjectTeleporter *)me->GetObjectOfType( OBJ_TELEPORTER, MODE_TELEPORTER_EXIT );
+		CObjectTeleporter *myTeleportExit = (CObjectTeleporter *)me->GetObjectOfType( OBJ_TELEPORTER_EXIT );
 		int myTeam = me->GetTeamNumber();
 
 		if ( myTeleportExit )
@@ -392,7 +399,7 @@ ActionResult< CTFBot >	CTFBotEngineerMoveToBuild::Update( CTFBot *me, float inte
 		}
 		else
 		{
-			CObjectTeleporter *myTeleportEntrance = (CObjectTeleporter *)me->GetObjectOfType( OBJ_TELEPORTER, MODE_TELEPORTER_ENTRANCE );
+			CObjectTeleporter *myTeleportEntrance = (CObjectTeleporter *)me->GetObjectOfType( OBJ_TELEPORTER_ENTRANCE );
 			CTFNavArea *myArea = me->GetLastKnownArea();
 
 			bool shouldBuildExit = true;

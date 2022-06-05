@@ -132,6 +132,8 @@ public:
 	DECLARE_CLASS( CCaptureFlag, CTFItem );
 	DECLARE_NETWORKCLASS();
 
+	IMPLEMENT_AUTO_LIST_GET();
+
 	CCaptureFlag();
 
 	unsigned int	GetItemID( void );

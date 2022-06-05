@@ -86,7 +86,7 @@ public:
 			{
 				// for now, assume Engineers want to go fetch ammo boxes unless their dispenser is fully upgraded
 				// unless we have no sentry yet, then we need to leech off of buddy's dispenser to get started
-				if ( !m_me->IsPlayerClass( TF_CLASS_ENGINEER ) || ( (CBaseObject *)candidate )->GetUpgradeLevel() >= 3 || !m_me->GetObjectOfType( OBJ_SENTRYGUN ) )
+				if ( !m_me->IsPlayerClass( TF_CLASS_ENGINEER ) /*|| ( (CBaseObject *)candidate )->GetUpgradeLevel() >= 3*/ || !m_me->GetObjectOfType( OBJ_SENTRYGUN ) )
 				{
 					CBaseObject	*dispenser = (CBaseObject *)candidate;
 					if ( !dispenser->IsBuilding() && !dispenser->IsDisabled() )
@@ -223,7 +223,7 @@ ActionResult< CTFBot >	CTFBotGetAmmo::OnStart( CTFBot *me, Action< CTFBot > *pri
 	// if I'm a spy, cloak and disguise
 	if ( me->IsPlayerClass( TF_CLASS_SPY ) )
 	{
-		if ( !me->m_Shared.IsStealthed() )
+		if ( !me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			me->PressAltFireButton();
 		}

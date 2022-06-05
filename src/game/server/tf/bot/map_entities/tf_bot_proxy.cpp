@@ -40,9 +40,9 @@ LINK_ENTITY_TO_CLASS( bot_proxy, CTFBotProxy );
 //------------------------------------------------------------------------------
 CTFBotProxy::CTFBotProxy( void )
 {
-	V_strcpy_safe( m_botName, "TFBot" );
-	V_strcpy_safe( m_teamName, "auto" );
-	V_strcpy_safe( m_className, "auto" );
+	strcpy( m_botName, "TFBot" );
+	strcpy( m_teamName, "auto" );
+	strcpy( m_className, "auto" );
 	m_bot = NULL;
 	m_moveGoal = NULL;
 	SetThink( NULL );
@@ -62,7 +62,7 @@ void CTFBotProxy::InputSetTeam( inputdata_t &inputdata )
 	const char *teamName = inputdata.value.String();
 	if ( teamName && teamName[0] )
 	{
-		V_strcpy_safe( m_teamName, teamName );
+		strcpy( m_teamName, teamName );
 
 		// if m_bot exists, tell it to change team
 		if ( m_bot != NULL )
@@ -79,7 +79,7 @@ void CTFBotProxy::InputSetClass( inputdata_t &inputdata )
 	const char *className = inputdata.value.String();
 	if ( className && className[0] )
 	{
-		V_strcpy_safe( m_className, className );		
+		strcpy( m_className, className );		
 
 		// if m_bot exists, tell it to change class
 		if ( m_bot != NULL )

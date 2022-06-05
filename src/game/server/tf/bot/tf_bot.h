@@ -466,6 +466,7 @@ public:
 	float GetUberDeployDelayDuration();
 
 	bool IsCapturingPoint( void );
+	float GetAliveDuration( void ) const;
 
 private:
 	CTFBotLocomotion	*m_locomotor;
@@ -558,6 +559,8 @@ private:
 	CHandle< CCaptureFlag > m_hFollowingFlagTarget;
 
 	CUtlVector< const EventChangeAttributes_t* > m_eventChangeAttributes;
+
+	IntervalTimer m_aliveTimer;
 
 	bool IsThreatAimingTowardMe( CBaseEntity *threat, float cosTolerance = 0.8f ) const;	// return true if the given threat is aiming in our direction
 };
@@ -1095,5 +1098,9 @@ public:
 	int m_team;
 };
 
+inline float CTFBot::GetAliveDuration( void ) const
+{
+	return m_aliveTimer.GetElapsedTime();
+}
 
 #endif // TF_BOT_H

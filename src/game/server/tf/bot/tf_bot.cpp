@@ -356,8 +356,8 @@ const char *GetRandomBotName( void )
 //-----------------------------------------------------------------------------------------------------
 void CreateBotName( int iTeam, int iClassIndex, CTFBot::DifficultyType skill, char* pBuffer, int iBufferSize )
 {
-	char szBotNameBuffer[256];
-	char szEnemyOrFriendlyString[256];
+	// char szBotNameBuffer[256];
+	// char szEnemyOrFriendlyString[256];
 
 	const char *pBotName = "";
 	const char *pFriendlyOrEnemyTitle = "";
@@ -955,11 +955,14 @@ const char *CTFBot::GetNextSpawnClassname( void ) const
 	{
 		ClassSelectionInfo *desiredClassInfo = &desiredRoster[ i ];
 
+#if 0
 		if ( TFGameRules()->CanBotChooseClass( const_cast< CTFBot * >( this ), desiredClassInfo->m_class ) == false )
 		{
 			// not allowed to use this class
 			continue;
 		}
+#endif
+
 		// just in case we hit the class limits, we want to make sure we select a class that is allowed
 		allowedClassForBotRosterVector.AddToTail( desiredClassInfo->m_class );
 
@@ -1114,7 +1117,12 @@ CTFBot::CTFBot()
 
 	ClearSniperSpots();
 
-	ResetDamageHistory();
+	m_aliveTimer.Invalidate();
+
+	for( int t=0; t<MAX_DAMAGE_TEAMS; ++t )
+	{
+		m_damageHistory[t].team = TEAM_INVALID;
+	}
 
 	ListenForGameEvent( "teamplay_point_startcapture" );
 	ListenForGameEvent( "teamplay_point_captured" );
@@ -1147,6 +1155,7 @@ void CTFBot::Spawn()
 {
 	BaseClass::Spawn();
 
+	m_aliveTimer.Start();
 	m_spawnArea = NULL;
 	m_justLostPointTimer.Invalidate();
 	m_squad = NULL;
@@ -2842,7 +2851,7 @@ void CTFBot::UpdateLookingAroundForEnemies( void )
 	UpdateLookingAroundForIncomingPlayers( LOOK_FOR_ENEMIES );
 }
 
-
+#if 0
 //---------------------------------------------------------------------------------------------
 class CFindVantagePoint : public ISearchSurroundingAreasFunctor
 {
@@ -2886,11 +2895,11 @@ public:
 // Return a nearby area where we can see a member of the enemy team
 CTFNavArea *CTFBot::FindVantagePoint( float maxTravelDistance ) const
 {
-	CFindVantagePoint find( GetTeamNumber() == TF_TEAM_BLUE ? TF_TEAM_RED : TF_TEAM_BLUE );
+	CFindVantagePoint find( ( GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE );
 	SearchSurroundingAreas( GetLastKnownArea(), GetAbsOrigin(), find, maxTravelDistance );
 	return find.m_vantageArea;
 }
-
+#endif
 
 //-----------------------------------------------------------------------------------------------------
 /**
@@ -3277,8 +3286,10 @@ void CTFBot::EquipBestWeaponForThreat( const CKnownEntity *threat )
 bool CTFBot::EquipLongRangeWeapon( void )
 {
 	// no secondary weapons in MvM
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 		return false;
+#endif
 
 	if ( IsPlayerClass( TF_CLASS_SOLDIER ) || 
 		 IsPlayerClass( TF_CLASS_DEMOMAN ) ||

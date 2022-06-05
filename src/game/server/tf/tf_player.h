@@ -118,6 +118,7 @@ public:
 	void				FireBullet( const FireBulletsInfo_t &info, bool bDoEffects, int nDamageType, int nCustomDamageType = TF_DMG_CUSTOM_NONE );
 	void				ImpactWaterTrace( trace_t &trace, const Vector &vecStart );
 	void				NoteWeaponFired();
+	virtual bool			IsFiringWeapon( void ) const;					// return true if this player is currently firing their weapon
 
 	bool				HasItem( void );					// Currently can have only one item at a time.
 	void				SetItem( CTFItem *pItem );
@@ -165,6 +166,8 @@ public:
 
 	virtual void		OnMyWeaponFired( CBaseCombatWeapon *weapon );	// call this when this player fires a weapon to allow other systems to react
 	virtual float		GetTimeSinceWeaponFired( void ) const;			// returns the time, in seconds, since this player fired a weapon
+	bool IsThreatAimingTowardMe( CBaseEntity *threat, float cosTolerance = 0.8f ) const;	// return true if the given threat is aiming in our direction
+	bool IsThreatFiringAtMe( CBaseEntity *threat ) const;		// return true if the given threat is aiming in our direction and firing its weapon
 	virtual bool		IsInCombat( void ) const;
 
 	virtual void		GetStepSoundVelocities( float *velwalk, float *velrun );
@@ -250,6 +253,9 @@ public:
 	void DetonateOwnedObjectsOfType( int iType );
 	void StartBuildingObjectOfType( int iType );
 
+	void OnSapperPlaced( void );						// invoked when we place a sapper on an enemy building
+	bool IsPlacingSapper( void ) const;					// return true if we are a spy who placed a sapper on a building in the last few moments
+
 	CTFTeam *GetTFTeam( void );
 	CTFTeam *GetOpposingTFTeam( void );
 
@@ -329,6 +335,8 @@ public:
 	CBaseObject	*GetObjectOfType( int iObjectType ) const;
 	int	GetObjectCount( void ) const;
 
+	float			MedicGetChargeLevel( CTFWeaponBase **pRetMedigun = NULL );
+
 public:
 
 	CTFPlayerShared m_Shared;
@@ -407,9 +415,9 @@ public:
 	void				HandleCommand_JoinClass( const char *pClassName );
 	void				HandleCommand_JoinTeam_NoMenus( const char *pTeamName );
 
-private:
-
 	int					GetAutoTeam( void );
+
+private:
 
 	// Creation/Destruction.
 	// void				InitClass( void ); // Moved to public
@@ -462,6 +470,9 @@ private:
 	bool				GetResponseSceneFromConcept( int iConcept, char *chSceneBuffer, int numSceneBufferBytes );
 
 private:
+
+	CountdownTimer		m_placedSapperTimer;
+
 	// Map introductions
 	int					m_iIntroStep;
 	CHandle<CIntroViewpoint> m_hIntroView;
@@ -591,4 +602,18 @@ inline bool CTFPlayer::IsInCombat( void ) const
 	return GetTimeSinceWeaponFired() < 2.0f;
 }
 
+inline void CTFPlayer::OnSapperPlaced( /*CBaseEntity *sappedObject*/ )
+{
+	m_placedSapperTimer.Start( 3.0f );
+}
+
+inline bool CTFPlayer::IsPlacingSapper( void ) const
+{
+	return !m_placedSapperTimer.IsElapsed();
+}
+
+inline bool CTFPlayer::IsFiringWeapon( void ) const
+{
+	return m_weaponFiredTimer.HasStarted() && m_weaponFiredTimer.IsLessThen( 1.0f );
+}
 #endif	// TF_PLAYER_H

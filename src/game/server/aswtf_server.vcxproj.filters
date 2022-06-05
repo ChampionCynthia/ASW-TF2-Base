@@ -2066,6 +2066,60 @@
     <ClCompile Include="tf\nav_mesh\tf_path_follower.cpp">
       <Filter>Source Files\TF\TFNavMesh</Filter>
     </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_attack.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_behavior.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_dead.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_destroy_enemy_sentry.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_escort.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_get_ammo.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_get_health.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_melee_attack.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_move_to_vantage_point.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_mvm_deploy_bomb.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_retreat_to_cover.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_scenario_monitor.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_seek_and_destroy.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_tactical_monitor.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_taunt.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_use_item.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_use_teleporter.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="tf\bot\behavior\tf_bot_approach_object.cpp">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\shared\achievement_saverestore.h">
@@ -4218,6 +4272,60 @@
     </ClInclude>
     <ClInclude Include="tf\nav_mesh\tf_path_follower.h">
       <Filter>Source Files\TF\TFNavMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_attack.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_behavior.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_dead.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_destroy_enemy_sentry.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_escort.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_get_ammo.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_get_health.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_melee_attack.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_move_to_vantage_point.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_mvm_deploy_bomb.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_retreat_to_cover.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_scenario_monitor.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_seek_and_destroy.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_tactical_monitor.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_taunt.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_use_item.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_use_teleporter.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="tf\bot\behavior\tf_bot_approach_object.h">
+      <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

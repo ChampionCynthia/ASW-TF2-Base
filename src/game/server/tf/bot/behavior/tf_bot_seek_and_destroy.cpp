@@ -58,6 +58,7 @@ ActionResult< CTFBot >	CTFBotSeekAndDestroy::Update( CTFBot *me, float interval 
 		return Done( "Behavior duration elapsed" );
 	}
 
+#if 0
 	if ( TFGameRules()->IsInTraining() )
 	{
 		// if the trainee has started capturing the point, assist them
@@ -67,6 +68,7 @@ ActionResult< CTFBot >	CTFBotSeekAndDestroy::Update( CTFBot *me, float interval 
 		}
 	}
 	else
+#endif
 	{
 		if ( me->IsCapturingPoint() )
 		{

@@ -3435,4 +3435,60 @@ void CTFGameRules::CollectDefendPoints( CBasePlayer *player, CUtlVector< CTeamCo
 		}
 	}
 }
+
+//-----------------------------------------------------------------------------
+// Purpose: Compute internal vectors of health and ammo locations
+//-----------------------------------------------------------------------------
+void CTFGameRules::ComputeHealthAndAmmoVectors( void )
+{
+	m_ammoVector.RemoveAll();
+	m_healthVector.RemoveAll();
+
+	CBaseEntity *pEnt = gEntList.FirstEnt();
+	while( pEnt )
+	{
+		if ( pEnt->ClassMatches( "func_regenerate" ) || pEnt->ClassMatches( "item_healthkit*" ) )
+		{
+			m_healthVector.AddToTail( pEnt );
+		}
+
+		if ( pEnt->ClassMatches( "func_regenerate" ) || pEnt->ClassMatches( "item_ammopack*" ) )
+		{
+			m_ammoVector.AddToTail( pEnt );
+		}
+
+		pEnt = gEntList.NextEnt( pEnt );
+	}
+
+	m_areHealthAndAmmoVectorsReady = true;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Return vector of health entities
+//-----------------------------------------------------------------------------
+const CUtlVector< CHandle< CBaseEntity > > &CTFGameRules::GetHealthEntityVector( void )
+{
+	// lazy-populate health and ammo vector since some maps (Dario!) move these entities around between stages
+	if ( !m_areHealthAndAmmoVectorsReady )
+	{
+		ComputeHealthAndAmmoVectors();
+	}
+
+	return m_healthVector;
+}
+
+
+//-----------------------------------------------------------------------------
+// Purpose: Return vector of ammo entities
+//-----------------------------------------------------------------------------
+const CUtlVector< CHandle< CBaseEntity > > &CTFGameRules::GetAmmoEntityVector( void )
+{
+	// lazy-populate health and ammo vector since some maps (Dario!) move these entities around between stages
+	if ( !m_areHealthAndAmmoVectorsReady )
+	{
+		ComputeHealthAndAmmoVectors();
+	}
+
+	return m_ammoVector;
+}
 #endif

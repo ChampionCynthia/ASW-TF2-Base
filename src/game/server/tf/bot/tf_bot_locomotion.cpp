@@ -36,7 +36,7 @@ void CTFBotLocomotion::Update( void )
 	}
 }
 
-
+#if 0
 //-----------------------------------------------------------------------------------------
 // Move directly towards the given position
 void CTFBotLocomotion::Approach( const Vector &pos, float goalWeight )
@@ -52,7 +52,7 @@ void CTFBotLocomotion::Approach( const Vector &pos, float goalWeight )
 
 	BaseClass::Approach( pos, goalWeight );
 }
-
+#endif
 
 //-----------------------------------------------------------------------------------------
 // Distance at which we will die if we fall
@@ -112,7 +112,7 @@ bool CTFBotLocomotion::IsEntityTraversable( CBaseEntity *obstacle, TraverseWhenT
 	return PlayerLocomotion::IsEntityTraversable( obstacle, when );
 }
 
-
+#if 0
 void CTFBotLocomotion::Jump( void )
 {
 	BaseClass::Jump();
@@ -135,3 +135,4 @@ void CTFBotLocomotion::Jump( void )
 		}
 	}
 }
+#endif

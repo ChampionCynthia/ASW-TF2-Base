@@ -118,10 +118,12 @@ bool CTFBotGetHealth::IsPossible( CTFBot *me )
 	}
 #endif // TF_RAID_MODE
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		return false;
 	}
+#endif
 
 	float healthRatio = (float)me->GetHealth() / (float)me->GetMaxHealth();
 
@@ -155,7 +157,7 @@ bool CTFBotGetHealth::IsPossible( CTFBot *me )
 	CBaseEntity *health = healthVector[0];
 	for( int i=0; i<healthVector.Count(); ++i )
 	{
-		if ( healthVector[i]->GetTeamNumber() != GetEnemyTeam( me->GetTeamNumber() ) )
+		if ( healthVector[i]->GetTeamNumber() != ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE )
 		{
 			health = healthVector[i];
 			break;
@@ -217,7 +219,7 @@ ActionResult< CTFBot >	CTFBotGetHealth::OnStart( CTFBot *me, Action< CTFBot > *p
 	// if I'm a spy, cloak and disguise
 	if ( me->IsPlayerClass( TF_CLASS_SPY ) )
 	{
-		if ( !me->m_Shared.IsStealthed() )
+		if ( !me->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			me->PressAltFireButton();
 		}

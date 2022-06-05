@@ -106,6 +106,8 @@ END_DATADESC();
 
 LINK_ENTITY_TO_CLASS( item_teamflag, CCaptureFlag );
 
+IMPLEMENT_AUTO_LIST( ICaptureFlagAutoList );
+
 //=============================================================================
 //
 // CTF Flag functions.

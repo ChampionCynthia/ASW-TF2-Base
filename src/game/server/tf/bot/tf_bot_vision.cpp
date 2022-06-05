@@ -20,6 +20,7 @@ ConVar tf_bot_sniper_choose_target_interval( "tf_bot_sniper_choose_target_interv
 // Update internal state
 void CTFBotVision::Update( void )
 {
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		// Throttle vision update rate of robots in MvM for perf at the expense of reaction times
@@ -30,6 +31,7 @@ void CTFBotVision::Update( void )
 
 		m_scanTimer.Start( RandomFloat( 0.9f, 1.1f ) );
 	}
+#endif
 
 	IVision::Update();
 
@@ -39,7 +41,7 @@ void CTFBotVision::Update( void )
 
 	// forget spies we have lost sight of
 	CUtlVector< CTFPlayer * > playerVector;
-	CollectPlayers( &playerVector, GetEnemyTeam( me->GetTeamNumber() ), COLLECT_ONLY_LIVING_PLAYERS );
+	CollectPlayers( &playerVector, ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE, COLLECT_ONLY_LIVING_PLAYERS );
 
 	for( int i=0; i<playerVector.Count(); ++i )
 	{
@@ -110,7 +112,7 @@ void CTFBotVision::UpdatePotentiallyVisibleNPCVector( void )
 		// collect list of active buildings
 		m_potentiallyVisibleNPCVector.RemoveAll();
 
-		bool bShouldSeeTeleporter = !TFGameRules()->IsMannVsMachineMode() || GetBot()->GetEntity()->GetTeamNumber() != TF_TEAM_PVE_INVADERS;
+		bool bShouldSeeTeleporter = true; // !TFGameRules()->IsMannVsMachineMode() || GetBot()->GetEntity()->GetTeamNumber() != TF_TEAM_PVE_INVADERS;
 		for ( int i=0; i<IBaseObjectAutoList::AutoList().Count(); ++i )
 		{
 			CBaseObject* pObj = static_cast< CBaseObject* >( IBaseObjectAutoList::AutoList()[i] );
@@ -122,7 +124,7 @@ void CTFBotVision::UpdatePotentiallyVisibleNPCVector( void )
 			{
 				m_potentiallyVisibleNPCVector.AddToTail( pObj );
 			}
-			else if ( bShouldSeeTeleporter && pObj->ObjectType() == OBJ_TELEPORTER )
+			else if ( bShouldSeeTeleporter && ( ( pObj->ObjectType() == OBJ_TELEPORTER_ENTRANCE ) || ( pObj->ObjectType() == OBJ_TELEPORTER_EXIT ) ) )
 			{
 				m_potentiallyVisibleNPCVector.AddToTail( pObj );
 			}
@@ -268,9 +270,9 @@ bool CTFBotVision::IsIgnored( CBaseEntity *subject ) const
 		}
 
 		if ( enemy->m_Shared.InCond( TF_COND_BURNING ) ||
-			 enemy->m_Shared.InCond( TF_COND_URINE ) ||
-			 enemy->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ||
-			 enemy->m_Shared.InCond( TF_COND_BLEEDING ) )
+//			 enemy->m_Shared.InCond( TF_COND_URINE ) ||
+			 enemy->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ) // ||
+//			 enemy->m_Shared.InCond( TF_COND_BLEEDING ) )
 		{
 			// always notice players with these conditions
 			return false;
@@ -278,12 +280,14 @@ bool CTFBotVision::IsIgnored( CBaseEntity *subject ) const
 
 		// An upgrade in MvM grants AE stealth where the player can fire
 		// while in stealth, and for a short period after it drops
+#if 0
 		if ( enemy->m_Shared.InCond( TF_COND_STEALTHED_USER_BUFF_FADING ) )
 		{
 			return true;
 		}
+#endif
 
-		if ( enemy->m_Shared.IsStealthed() )
+		if ( enemy->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			if ( enemy->m_Shared.GetPercentInvisible() < 0.75f )
 			{
@@ -321,16 +325,18 @@ bool CTFBotVision::IsIgnored( CBaseEntity *subject ) const
 			{
 				// unless we're in MvM where buildings can have really large health pools,
 				// so an engineer can die and run back in time to repair their stuff
+#if 0
 				if ( TFGameRules() && TFGameRules()->IsMannVsMachineMode() )
 				{
 					return false;
 				}
+#endif
 
 				return true;
 			}
 			
 			// ignore carried objects
-			if ( object->IsPlacing() || object->IsCarried() )
+			if ( object->IsPlacing() /*|| object->IsCarried()*/ )
 			{
 				return true;
 			}
@@ -357,9 +363,9 @@ bool CTFBotVision::IsVisibleEntityNoticed( CBaseEntity *subject ) const
 		CTFPlayer *player = static_cast< CTFPlayer * >( subject );
 
 		if ( player->m_Shared.InCond( TF_COND_BURNING ) ||
-			 player->m_Shared.InCond( TF_COND_URINE ) ||
-			 player->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ||
-			 player->m_Shared.InCond( TF_COND_BLEEDING ) )
+//			 player->m_Shared.InCond( TF_COND_URINE ) ||
+			 player->m_Shared.InCond( TF_COND_STEALTHED_BLINK ) ) //||
+//			 player->m_Shared.InCond( TF_COND_BLEEDING ) )
 		{
 			// always notice players with these conditions
 			if ( player->m_Shared.InCond( TF_COND_STEALTHED ) )
@@ -379,13 +385,15 @@ bool CTFBotVision::IsVisibleEntityNoticed( CBaseEntity *subject ) const
 
 		// An upgrade in MvM grants AE stealth where the player can fire
 		// while in stealth, and for a short period after it drops
+#if 0
 		if ( player->m_Shared.InCond( TF_COND_STEALTHED_USER_BUFF_FADING ) )
 		{
 			me->ForgetSpy( player );
 			return false;
 		}
+#endif
 
-		if ( player->m_Shared.IsStealthed() )
+		if ( player->m_Shared.InCond( TF_COND_STEALTHED ) )
 		{
 			if ( player->m_Shared.GetPercentInvisible() < 0.75f )
 			{
@@ -399,6 +407,7 @@ bool CTFBotVision::IsVisibleEntityNoticed( CBaseEntity *subject ) const
 			return false;
 		}
 
+#if 0
 		if ( TFGameRules()->IsMannVsMachineMode() )	// in MvM mode, forget spies as soon as they are fully disguised
 		{
 			CTFBot::SuspectedSpyInfo_t* pSuspectInfo = me->IsSuspectedSpy( player );
@@ -412,6 +421,7 @@ bool CTFBotVision::IsVisibleEntityNoticed( CBaseEntity *subject ) const
 				}
 			}
 		}
+#endif
 
 		if ( me->IsKnownSpy( player ) )
 		{
@@ -419,7 +429,7 @@ bool CTFBotVision::IsVisibleEntityNoticed( CBaseEntity *subject ) const
 			return true;
 		}
 
-		if ( !TFGameRules()->IsMannVsMachineMode() )	// ignore in MvM mode
+//		if ( !TFGameRules()->IsMannVsMachineMode() )	// ignore in MvM mode
 		{
 			if ( player->IsPlacingSapper() )
 			{

@@ -250,6 +250,8 @@ void CTFWeaponBaseGun::FireBullet( CTFPlayer *pPlayer )
 		IsCurrentAttackACrit() );
 }
 
+// Original 2008 code moved to tf_weaponbase.h for TFBots. -Cynthia
+#if 0
 class CTraceFilterIgnoreTeammates : public CTraceFilterSimple
 {
 public:
@@ -275,6 +277,7 @@ public:
 
 	int m_iIgnoreTeam;
 };
+#endif
 
 //-----------------------------------------------------------------------------
 // Purpose: Return the origin & angles for a projectile fired from the player's gun

@@ -52,6 +52,7 @@
 #include "bot/tf_bot.h"
 #include "bot/tf_bot_manager.h"
 #include "NextBotUtil.h"
+#include "tf_obj_sentrygun.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -898,6 +899,7 @@ void CTFPlayer::Spawn()
 	CollisionProp()->SetSurroundingBoundsType( USE_SPECIFIED_BOUNDS, &mins, &maxs );
 
 	m_calledForMedicTimer.Invalidate();
+	m_placedSapperTimer.Invalidate();
 	m_weaponFiredTimer.Invalidate();
 }
 
@@ -6209,4 +6211,95 @@ CBaseObject	*CTFPlayer::GetObjectOfType( int iObjectType ) const
 int	CTFPlayer::GetObjectCount( void ) const
 {
 	return m_aObjects.Count();
+}
+
+//-----------------------------------------------------------------------------------------------------
+// Return true if the given threat is aiming in our direction
+bool CTFPlayer::IsThreatAimingTowardMe( CBaseEntity *threat, float cosTolerance ) const
+{
+	CTFPlayer *player = ToTFPlayer( threat );
+	Vector to = GetAbsOrigin() - threat->GetAbsOrigin();
+	float threatRange = to.NormalizeInPlace();
+	Vector forward;
+
+	if ( player == NULL )
+	{
+		CObjectSentrygun *sentry = dynamic_cast< CObjectSentrygun * >( threat );
+		if ( sentry )
+		{
+			// are we in range?
+			if ( threatRange < 1100.0f )
+			{
+				// is it pointing at us?
+				AngleVectors( sentry->GetTurretAngles(), &forward );
+
+				if ( DotProduct( to, forward ) > cosTolerance )
+				{
+					return true;
+				}
+			}
+		}
+
+		// not a player, not a sentry, not a threat?
+		return false;
+	}
+
+	// is the player pointing at me?
+	player->EyeVectors( &forward );
+
+	if ( DotProduct( to, forward ) > cosTolerance )
+	{
+		return true;
+	}
+
+	return false;
+}
+
+//-----------------------------------------------------------------------------------------------------
+// Return true if the given threat is aiming in our direction and firing its weapon
+bool CTFPlayer::IsThreatFiringAtMe( CBaseEntity *threat ) const
+{
+	if ( IsThreatAimingTowardMe( threat ) )
+	{
+		CTFPlayer *player = ToTFPlayer( threat );
+
+		if ( player )
+		{
+			return player->IsFiringWeapon();
+		}
+
+		CObjectSentrygun *sentry = dynamic_cast< CObjectSentrygun * >( threat );
+		if ( sentry )
+		{
+			return sentry->GetTimeSinceLastFired() < 1.0f;
+		}
+	}
+
+	return false;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+float CTFPlayer::MedicGetChargeLevel( CTFWeaponBase **pRetMedigun )
+{
+	if ( IsPlayerClass(TF_CLASS_MEDIC) )
+	{
+		CTFWeaponBase *pWpn = ( CTFWeaponBase *)Weapon_OwnsThisID( TF_WEAPON_MEDIGUN );
+
+		if ( pWpn == NULL )
+			return 0;
+
+		CWeaponMedigun *pMedigun = dynamic_cast <CWeaponMedigun*>( pWpn );
+
+		if ( pRetMedigun )
+		{
+			*pRetMedigun = pMedigun;
+		}
+
+		if ( pMedigun )
+			return pMedigun->GetChargeLevel();
+	}
+
+	return 0;
 }

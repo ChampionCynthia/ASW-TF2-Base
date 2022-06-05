@@ -266,6 +266,16 @@ void CTFWeaponBuilder::PrimaryAttack( void )
 
 				StartBuilding();
 
+				if ( m_iObjectType == OBJ_ATTACHMENT_SAPPER )
+				{
+					// tell players a sapper was just placed (so bots can react)
+					CUtlVector< CTFPlayer * > playerVector;
+					CollectPlayers( &playerVector, TEAM_ANY, COLLECT_ONLY_LIVING_PLAYERS );
+
+					for( int i=0; i<playerVector.Count(); ++i )
+						playerVector[i]->OnSapperPlaced();
+				}
+
 				// Should we switch away?
 				if ( iFlags & OF_ALLOW_REPEAT_PLACEMENT )
 				{

@@ -1827,6 +1827,10 @@ public:
 
 	CGlobalEvent	*m_pEvent;
 
+#if defined( TF_DLL )
+	virtual bool ShouldBlockNav() const { return true; }
+#endif
+
 	// VSCRIPT
 	HSCRIPT GetScriptInstance();
 	bool ValidateScriptScope();
