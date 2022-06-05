@@ -6281,6 +6281,22 @@ bool CTFPlayer::IsThreatFiringAtMe( CBaseEntity *threat ) const
 //-----------------------------------------------------------------------------
 // Purpose: 
 //-----------------------------------------------------------------------------
+CBaseEntity *CTFPlayer::MedicGetHealTarget( void )
+{
+	if ( IsPlayerClass(TF_CLASS_MEDIC) )
+	{
+		CWeaponMedigun *pWeapon = dynamic_cast <CWeaponMedigun*>( GetActiveWeapon() );
+
+		if ( pWeapon )
+			return pWeapon->GetHealTarget();
+	}
+
+	return NULL;
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
 float CTFPlayer::MedicGetChargeLevel( CTFWeaponBase **pRetMedigun )
 {
 	if ( IsPlayerClass(TF_CLASS_MEDIC) )

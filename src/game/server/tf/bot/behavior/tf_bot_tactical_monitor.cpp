@@ -33,7 +33,7 @@
 #include "bot/map_entities/tf_bot_hint_sentrygun.h"
 
 #include "tf_obj_sentrygun.h"
-#include "tf_item_system.h"
+// #include "tf_item_system.h"
 
 extern ConVar tf_bot_health_ok_ratio;
 extern ConVar tf_bot_health_critical_ratio;
@@ -93,7 +93,7 @@ void CTFBotTacticalMonitor::MonitorArmedStickyBombs( CTFBot *me )
 							continue;
 						}
 
-						if ( sticky->GetTeamNumber() != GetEnemyTeam( knownVector[k].GetEntity()->GetTeamNumber() ) )
+						if ( sticky->GetTeamNumber() != ( knownVector[k].GetEntity()->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE )
 						{
 							// "known" is either a spectator, or on our team
 							continue;
@@ -123,7 +123,7 @@ void CTFBotTacticalMonitor::AvoidBumpingEnemies( CTFBot *me )
 	const float avoidRange = 200.0f;
 
 	CUtlVector< CTFPlayer * > enemyVector;
-	CollectPlayers( &enemyVector, GetEnemyTeam( me->GetTeamNumber() ), COLLECT_ONLY_LIVING_PLAYERS );
+	CollectPlayers( &enemyVector, ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE, COLLECT_ONLY_LIVING_PLAYERS );
 
 	CTFPlayer *closestEnemy = NULL;
 	float closestRangeSq = avoidRange * avoidRange;
@@ -132,7 +132,7 @@ void CTFBotTacticalMonitor::AvoidBumpingEnemies( CTFBot *me )
 	{
 		CTFPlayer *enemy = enemyVector[i];
 
-		if ( enemy->m_Shared.IsStealthed() || enemy->m_Shared.InCond( TF_COND_DISGUISED ) )
+		if ( enemy->m_Shared.InCond( TF_COND_STEALTHED ) || enemy->m_Shared.InCond( TF_COND_DISGUISED ) )
 			continue;
 
 		float rangeSq = ( enemy->GetAbsOrigin() - me->GetAbsOrigin() ).LengthSqr();
@@ -205,11 +205,13 @@ ActionResult< CTFBot >	CTFBotTacticalMonitor::Update( CTFBot *me, float interval
 		me->GetLocomotionInterface()->ClearStuckStatus( "In preround" );
 	}
 
+#if 0
 	Action< CTFBot > *result = me->OpportunisticallyUseWeaponAbilities();
 	if ( result )
 	{
 		return SuspendFor( result, "Opportunistically using buff item" );
 	}
+#endif
 
 	if ( TFGameRules()->InSetup() )
 	{
@@ -253,11 +255,13 @@ ActionResult< CTFBot >	CTFBotTacticalMonitor::Update( CTFBot *me, float interval
 	// check if we need to get to cover
 	QueryResultType shouldRetreat = me->GetIntentionInterface()->ShouldRetreat( me );
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		// never retreat in MvM mode
 		shouldRetreat = ANSWER_NO;
 	}
+#endif
 
 	if ( shouldRetreat == ANSWER_YES )
 	{
@@ -284,10 +288,12 @@ ActionResult< CTFBot >	CTFBotTacticalMonitor::Update( CTFBot *me, float interval
 
 	bool isAvailable = ( me->GetIntentionInterface()->ShouldHurry( me ) != ANSWER_YES );
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() && me->HasTheFlag() )
 	{
 		isAvailable = false;
 	}
+#endif
 
 	// collect ammo and health kits, unless we're in a big hurry
 	if ( isAvailable && m_maintainTimer.IsElapsed() )
@@ -318,10 +324,12 @@ ActionResult< CTFBot >	CTFBotTacticalMonitor::Update( CTFBot *me, float interval
 
 		bool shouldDestroySentries = true;
 
+#if 0
 		if ( TFGameRules()->IsMannVsMachineMode() )
 		{
 			shouldDestroySentries = false;
 		}
+#endif
 
 		// destroy enemy sentry guns we've encountered
 		if ( shouldDestroySentries && me->GetEnemySentry() && CTFBotDestroyEnemySentry::IsPossible( me ) )
@@ -379,6 +387,7 @@ EventDesiredResult< CTFBot > CTFBotTacticalMonitor::OnOtherKilled( CTFBot *me, C
 //-----------------------------------------------------------------------------------------
 EventDesiredResult< CTFBot > CTFBotTacticalMonitor::OnNavAreaChanged( CTFBot *me, CNavArea *newArea, CNavArea *oldArea )
 {
+#if 0
 	// does the area we are entering have a prerequisite?
 	if ( newArea && newArea->HasPrerequisite( me ) && !me->HasAttribute( CTFBot::AGGRESSIVE ) )
 	{
@@ -401,7 +410,7 @@ EventDesiredResult< CTFBot > CTFBotTacticalMonitor::OnNavAreaChanged( CTFBot *me
 			}
 		}
 	}
-
+#endif
 
 	return TryContinue();
 }
@@ -423,14 +432,14 @@ EventDesiredResult< CTFBot > CTFBotTacticalMonitor::OnCommandString( CTFBot *me,
 	}
 	else if ( FStrEq( command, "cloak" ) )
 	{
-		if (  me->IsPlayerClass( TF_CLASS_SPY ) && me->m_Shared.IsStealthed() == false )
+		if (  me->IsPlayerClass( TF_CLASS_SPY ) && me->m_Shared.InCond( TF_COND_STEALTHED ) == false )
 		{
 			me->PressAltFireButton();
 		}
 	}
 	else if ( FStrEq( command, "uncloak" ) )
 	{
-		if ( me->IsPlayerClass( TF_CLASS_SPY ) && me->m_Shared.IsStealthed() == true )
+		if ( me->IsPlayerClass( TF_CLASS_SPY ) && me->m_Shared.InCond( TF_COND_STEALTHED ) == true )
 		{
 			me->PressAltFireButton();
 		}
@@ -441,7 +450,7 @@ EventDesiredResult< CTFBot > CTFBotTacticalMonitor::OnCommandString( CTFBot *me,
 		{
 			if ( me->CanDisguise() )
 			{
-				me->m_Shared.Disguise( GetEnemyTeam( me->GetTeamNumber() ), RandomInt( TF_FIRST_NORMAL_CLASS, TF_LAST_NORMAL_CLASS-1 ) );
+				me->m_Shared.Disguise( ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE, RandomInt( TF_FIRST_NORMAL_CLASS, TF_LAST_NORMAL_CLASS-1 ) );
 			}
 		}
 	}
@@ -582,7 +591,7 @@ bool CTFBotTacticalMonitor::ShouldOpportunisticallyTeleport( CTFBot *me ) const
 	// if I'm an engineer who hasn't placed his teleport entrance yet, don't use friend's teleporter
 	if ( me->IsPlayerClass( TF_CLASS_ENGINEER ) )
 	{
-		CBaseObject *teleporterEntrance = me->GetObjectOfType( OBJ_TELEPORTER, MODE_TELEPORTER_ENTRANCE );
+		CBaseObject *teleporterEntrance = me->GetObjectOfType( OBJ_TELEPORTER_ENTRANCE );
 
 		return ( teleporterEntrance != NULL );
 	}
@@ -622,7 +631,7 @@ CObjectTeleporter *CTFBotTacticalMonitor::FindNearbyTeleporter( CTFBot *me )
 
 	for( int j=0; j<objVector.Count(); ++j )
 	{
-		if ( objVector[j]->GetType() == OBJ_TELEPORTER )
+		if ( objVector[j]->GetType() == OBJ_TELEPORTER_ENTRANCE )
 		{
 			CObjectTeleporter *teleporter = (CObjectTeleporter *)objVector[j];
 
@@ -630,7 +639,7 @@ CObjectTeleporter *CTFBotTacticalMonitor::FindNearbyTeleporter( CTFBot *me )
 
 			CNavArea *teleporterArea = teleporter->GetLastKnownArea();
 
-			if ( teleporter->IsEntrance() && teleporter->IsReady() && teleporterArea )
+			if ( /*teleporter->IsEntrance() &&*/ teleporter->GetState() == TELEPORTER_STATE_READY && teleporterArea )
 			{
 				// we've found a functional teleporter entrance - is it in our nearby area set?
 				for( int i=0; i<nearbyAreaVector.Count(); ++i )

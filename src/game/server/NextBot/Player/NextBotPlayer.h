@@ -97,10 +97,10 @@ public:
 
 	virtual void PressMeleeButton( float duration = -1.0f ) = 0;
 	virtual void ReleaseMeleeButton( void ) = 0;
-
+#if !defined( TF_DLL )
 	virtual void PressSpecialFireButton( float duration = -1.0f ) = 0;
 	virtual void ReleaseSpecialFireButton( void ) = 0;
-
+#endif
 	virtual void PressUseButton( float duration = -1.0f ) = 0;
 	virtual void ReleaseUseButton( void ) = 0;
 
@@ -188,8 +188,10 @@ public:
 	virtual void PressMeleeButton( float duration = -1.0f );
 	virtual void ReleaseMeleeButton( void );
 
+#if !defined( TF_DLL )
 	virtual void PressSpecialFireButton( float duration = -1.0f );
 	virtual void ReleaseSpecialFireButton( void );
+#endif
 
 	virtual void PressUseButton( float duration = -1.0f );
 	virtual void ReleaseUseButton( void );

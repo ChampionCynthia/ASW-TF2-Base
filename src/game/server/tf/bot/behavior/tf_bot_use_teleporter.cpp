@@ -37,8 +37,11 @@ bool CTFBotUseTeleporter::IsTeleporterAvailable( void ) const
 {
 	if ( m_teleporter != NULL )
 	{
+		// ??? -Cynthia
+#if 0
 		if ( !m_teleporter->IsReady() )
 			return false;
+#endif
 
 		if ( m_teleporter->GetState() == TELEPORTER_STATE_READY )
 			return true;
@@ -74,6 +77,8 @@ ActionResult< CTFBot >	CTFBotUseTeleporter::Update( CTFBot *me, float interval )
 		return Done( "Missing teleporter exit" );
 	}
 
+	// HACK: Avoids Engineers teleporting all the time when the Entrance and Exit are near. -Cynthia
+#if 0
 	if ( m_teleporter->IsSendingPlayer( me ) )
 	{
 		// note that we have been teleported, because it takes a few frames
@@ -81,14 +86,16 @@ ActionResult< CTFBot >	CTFBotUseTeleporter::Update( CTFBot *me, float interval )
 		m_isInTransit = true;
 	}
 
+
 	if ( m_isInTransit )
+#endif
 	{
 		if ( me->IsRangeLessThan( teleporterExit, 25.0f ) )
 		{
 			return Done( "Successful teleport" );
 		}
 	}
-	else if ( !IsTeleporterAvailable() && m_how == USE_IF_READY )
+	/*else*/ if ( !IsTeleporterAvailable() && m_how == USE_IF_READY )
 	{
 		return Done( "Teleporter is not available" );
 	}

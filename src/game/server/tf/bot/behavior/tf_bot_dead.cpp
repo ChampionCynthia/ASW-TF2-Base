@@ -40,7 +40,7 @@ ActionResult< CTFBot >	CTFBotDead::Update( CTFBot *me, float interval )
 		}
 		else if ( me->HasAttribute( CTFBot::BECOME_SPECTATOR_ON_DEATH ) )
 		{
-			me->ChangeTeam( TEAM_SPECTATOR, false, true );
+			me->ChangeTeam( TEAM_SPECTATOR /*, false, true*/ );
 			return Done();
 		}
 	}

@@ -1064,8 +1064,8 @@ void CTFNavMesh::RecomputeInternalData( void )
 	ComputeBlockedAreas();			// relies on DecorateMesh() being complete
 	ComputeIncursionDistances();
 	ComputeInvasionAreas();
-	ComputeLegalBombDropAreas();
-	ComputeBombTargetDistance();	// for MvM
+//	ComputeLegalBombDropAreas();
+//	ComputeBombTargetDistance();	// for MvM
 
 	if ( m_recomputeReason == RESET || m_recomputeReason == SETUP_FINISHED )
 	{
