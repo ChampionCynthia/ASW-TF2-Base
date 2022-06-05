@@ -36,6 +36,8 @@
 #include "tf_team.h"
 #include "tf_gamestats.h"
 #include "tf_playerclass.h"
+#include "NextBotManager.h"
+#include "tf_weapon_invis.h"
 #endif
 
 ConVar tf_spy_invis_time( "tf_spy_invis_time", "1.0", FCVAR_DEVELOPMENTONLY | FCVAR_REPLICATED, "Transition time in and out of spy invisibility", true, 0.1, true, 5.0 );
@@ -1206,6 +1208,15 @@ void CTFPlayerShared::FadeInvis( float flInvisFadeTime )
 	}
 
 	m_flInvisChangeCompleteTime = gpGlobals->curtime + flInvisFadeTime;
+
+#ifdef GAME_DLL
+	// inform the bots
+	CTFWeaponInvis *pInvis = dynamic_cast< CTFWeaponInvis * >( m_pOuter->Weapon_OwnsThisID( TF_WEAPON_INVIS ) );
+	if ( pInvis )
+	{
+		TheNextBots().OnWeaponFired( m_pOuter, pInvis );
+	}
+#endif
 }
 
 //-----------------------------------------------------------------------------

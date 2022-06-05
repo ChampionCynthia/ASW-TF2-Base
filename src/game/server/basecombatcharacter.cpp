@@ -44,7 +44,9 @@
 #include "hl2_gamerules.h"
 #endif
 
-
+#ifdef NEXTBOTS
+#include "NextBotManager.h"
+#endif
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -1429,6 +1431,11 @@ void CBaseCombatCharacter::Event_Killed( const CTakeDamageInfo &info )
 			BecomeRagdoll( info, forceVector );
 		}
 	}
+
+#ifdef NEXTBOTS
+	// inform bots
+	TheNextBots().OnKilled( this, info );
+#endif
 }
 
 void CBaseCombatCharacter::Event_Dying( void )
