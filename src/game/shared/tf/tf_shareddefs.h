@@ -124,6 +124,8 @@ enum
 extern const char *g_aPlayerClassNames[];				// localized class names
 extern const char *g_aPlayerClassNames_NonLocalized[];	// non-localized class names
 
+int GetClassIndexFromString( const char *pClassName, int nLastClassIndex = TF_LAST_NORMAL_CLASS );
+
 //-----------------------------------------------------------------------------
 // For entity_capture_flags to use when placed in the world
 //-----------------------------------------------------------------------------

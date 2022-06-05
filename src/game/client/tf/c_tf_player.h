@@ -267,6 +267,9 @@ private:
 	float				m_flHealerChargeLevel;
 	int					m_iOldHealth;
 
+	int					m_nBotSkill;
+	bool				m_bIsABot;
+
 	CNetworkVar( int, m_iPlayerModelIndex );
 
 	// Look At

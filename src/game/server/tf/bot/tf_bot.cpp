@@ -475,17 +475,7 @@ CON_COMMAND_F( tf_bot_add, "Add a bot.", FCVAR_GAMEDLL )
 
 	// cvar can override classname
 	classname = FStrEq( tf_bot_force_class.GetString(), "" ) ? classname : tf_bot_force_class.GetString();
-	// int iClassIndex = classname ? GetClassIndexFromString( classname ) : TF_CLASS_UNDEFINED;
-
-	int iClassIndex = TF_CLASS_UNDEFINED;
-	for ( int i=1; i < TF_CLASS_COUNT_ALL; i++ )
-	{
-		if ( stricmp( GetPlayerClassData( i )->m_szClassName, classname ) == 0 )
-		{
-			iClassIndex = i;
-			break;
-		}
-	}
+	int iClassIndex = classname ? GetClassIndexFromString( classname ) : TF_CLASS_UNDEFINED;
 
 	int iTeam = TEAM_UNASSIGNED;
 	if ( FStrEq( teamname, "red" ) )

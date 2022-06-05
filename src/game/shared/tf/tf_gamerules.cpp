@@ -3377,7 +3377,8 @@ void CTFGameRules::CollectCapturePoints( CBasePlayer *player, CUtlVector< CTeamC
 		for( int i=0; i<pMaster->GetNumPoints(); ++i )
 		{
 			CTeamControlPoint *point = pMaster->GetControlPoint( i );
-			if ( point && pMaster->GetCurrentRound()->IsControlPointInRound( point ) )
+//			if ( point && pMaster->GetCurrentRound()->IsControlPointInRound( point ) )
+			if ( point && ( !pMaster->GetCurrentRound() || pMaster->GetCurrentRound()->IsControlPointInRound( point ) ) )
 			{
 				if ( ObjectiveResource()->GetOwningTeam( point->GetPointIndex() ) == player->GetTeamNumber() )
 					continue;
@@ -3413,7 +3414,7 @@ void CTFGameRules::CollectDefendPoints( CBasePlayer *player, CUtlVector< CTeamCo
 		for( int i=0; i<pMaster->GetNumPoints(); ++i )
 		{
 			CTeamControlPoint *point = pMaster->GetControlPoint( i );
-			if ( point && pMaster->GetCurrentRound()->IsControlPointInRound( point ) )
+			if ( point && ( !pMaster->GetCurrentRound() || pMaster->GetCurrentRound()->IsControlPointInRound( point ) ) )
 			{
 				if ( ObjectiveResource()->GetOwningTeam( point->GetPointIndex() ) != player->GetTeamNumber() )
 					continue;
