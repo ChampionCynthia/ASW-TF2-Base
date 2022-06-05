@@ -112,6 +112,10 @@
 #include "asw_gamerules.h"
 #endif
 
+#if defined( NEXTBOTS )
+#include "NextBotManager.h"
+#endif
+
 // Activate SDK gamerules
 #if !defined( TF_DLL )
 #include "sdk_gamerules.h"
@@ -1218,6 +1222,11 @@ void CServerGameDLL::ServerActivate( edict_t *pEdictList, int edictCount, int cl
 #ifndef _XBOX
 	// load the Navigation Mesh for this map
 	TheNavMesh->Load();
+	TheNavMesh->OnServerActivate();
+#endif
+
+#ifdef NEXTBOTS
+	TheNextBots().OnMapLoaded();
 #endif
 
 #if !defined( TF_DLL )
@@ -1293,6 +1302,10 @@ void CServerGameDLL::GameFrame( bool simulating )
 
 
 	TheNavMesh->Update();
+
+#ifdef NEXTBOTS
+	TheNextBots().Update();
+#endif
 
 	{
 		VPROF( "gamestatsuploader->UpdateConnection" );

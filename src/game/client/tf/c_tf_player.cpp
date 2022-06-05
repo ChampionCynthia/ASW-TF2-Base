@@ -942,6 +942,9 @@ IMPLEMENT_CLIENTCLASS_DT( C_TFPlayer, DT_TFPlayer, CTFPlayer )
 
 	RecvPropBool(RECVINFO(m_bSaveMeParity)),
 
+	RecvPropBool(RECVINFO(m_bIsABot)),
+	RecvPropInt(RECVINFO(m_nBotSkill)),
+
 	// This will create a race condition will the local player, but the data will be the same so.....
 	RecvPropInt( RECVINFO( m_nWaterLevel ) ),
 	RecvPropEHandle( RECVINFO( m_hRagdoll ) ),

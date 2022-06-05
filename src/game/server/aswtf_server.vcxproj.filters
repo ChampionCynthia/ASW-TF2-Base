@@ -4315,6 +4315,9 @@
     <ClInclude Include="tf\bot\behavior\tf_bot_approach_object.h">
       <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClInclude>
+    <ClInclude Include="functorutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\lib\public\bonesetup.lib">
