@@ -154,10 +154,10 @@ ActionResult< CTFBot >	CTFBotDefendPoint::Update( CTFBot *me, float interval )
 		return SuspendFor( new CTFBotSeekAndDestroy( uberChargeTime ), "Attacking because I'm uber'd!" );
 	}
 
-	/*if ( point && point->IsLocked() )
+	if ( point && !TeamplayGameRules()->TeamMayCapturePoint( me->GetTeamNumber(), point->GetPointIndex() ) )
 	{
 		return SuspendFor( new CTFBotSeekAndDestroy, "Seek and destroy until the point unlocks" );
-	}*/
+	}
 
 	if ( m_isAllowedToRoam && me->GetTimeLeftToCapture() > tf_bot_defense_must_defend_time.GetFloat() )
 	{

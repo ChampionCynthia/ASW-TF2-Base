@@ -375,7 +375,7 @@ void CTFBotGenerator::SpawnBot( void )
 		{
 			iTeam = bot->GetAutoTeam();
 		}
-		bot->ChangeTeam( iTeam, false, false );
+		bot->ChangeTeam( iTeam /*, false, false*/ );
 		
 		const char* pClassName =  m_bBotChoosesClass ? bot->GetNextSpawnClassname() : m_className.ToCStr();
 		bot->HandleCommand_JoinClass( pClassName );

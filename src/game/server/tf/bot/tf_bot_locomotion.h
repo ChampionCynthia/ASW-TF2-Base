@@ -22,7 +22,7 @@ public:
 
 	virtual void Update( void );								// (EXTEND) update internal state
 
-	virtual void Approach( const Vector &pos, float goalWeight = 1.0f );	// move directly towards the given position
+//	virtual void Approach( const Vector &pos, float goalWeight = 1.0f );	// move directly towards the given position
 
 	virtual float GetMaxJumpHeight( void ) const;				// return maximum height of a jump
 	virtual float GetDeathDropHeight( void ) const;			// distance at which we will die if we fall
@@ -35,7 +35,7 @@ public:
 	//
 	// ILocomotion modifiers
 	//
-	virtual void Jump( void );								// initiate a simple undirected jump in the air
+//	virtual void Jump( void );								// initiate a simple undirected jump in the air
 
 protected:
 	virtual void AdjustPosture( const Vector &moveGoal ) { }	// never crouch to navigate

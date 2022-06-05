@@ -96,8 +96,10 @@ Action< CTFBot > *CTFBotScenarioMonitor::DesiredScenarioAndClassAction( CTFBot *
 	case CTFBot::MISSION_SEEK_AND_DESTROY:
 		break;
 
+#if 0
 	case CTFBot::MISSION_DESTROY_SENTRIES:
 		return new CTFBotMissionSuicideBomber;
+#endif
 
 	case CTFBot::MISSION_SNIPER:
 		return new CTFBotSniperLurk;
@@ -180,6 +182,7 @@ Action< CTFBot > *CTFBotScenarioMonitor::DesiredScenarioAndClassAction( CTFBot *
 	}
 #endif // TF_RAID_MODE	
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() )
 	{
 		if ( me->IsPlayerClass( TF_CLASS_SPY ) )
@@ -224,6 +227,7 @@ Action< CTFBot > *CTFBotScenarioMonitor::DesiredScenarioAndClassAction( CTFBot *
 		// capture the flag
 		return new CTFBotFetchFlag;
 	}
+#endif
 
 	if ( me->IsPlayerClass( TF_CLASS_SPY ) )
 	{
@@ -253,6 +257,7 @@ Action< CTFBot > *CTFBotScenarioMonitor::DesiredScenarioAndClassAction( CTFBot *
 		// capture the flag
 		return new CTFBotFetchFlag;
 	}
+#if 0
 	else if ( TFGameRules()->GetGameType() == TF_GAMETYPE_ESCORT )
 	{
 		// push the cart
@@ -267,6 +272,7 @@ Action< CTFBot > *CTFBotScenarioMonitor::DesiredScenarioAndClassAction( CTFBot *
 			return new CTFBotPayloadGuard;
 		}
 	}
+#endif
 	else if ( TFGameRules()->GetGameType() == TF_GAMETYPE_CP )
 	{
 		// if we have a point we can capture - do it

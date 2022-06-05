@@ -770,7 +770,7 @@ void CTFBot::PressAltFireButton( float duration )
 	BaseClass::PressAltFireButton( duration );
 }
 
-
+#if 0
 //-----------------------------------------------------------------------------------------------------
 void CTFBot::PressSpecialFireButton( float duration )
 {
@@ -784,6 +784,7 @@ void CTFBot::PressSpecialFireButton( float duration )
 
 	BaseClass::PressSpecialFireButton( duration );
 }
+#endif
 
 
 //-----------------------------------------------------------------------------------------------------
@@ -1408,15 +1409,17 @@ bool CTFBot::ShouldGib( const CTakeDamageInfo &info )
 
 	return BaseClass::ShouldGib( info );
 }
-
+#endif
 
 //-----------------------------------------------------------------------------------------------------
 bool CTFBot::IsAllowedToPickUpFlag( void ) const
 {
+#if 0
 	if ( !BaseClass::IsAllowedToPickUpFlag() )
 	{
 		return false;
 	}
+#endif
 
 	// only the leader of a squad can pick up the flag
 	if ( IsInASquad() && !GetSquad()->IsLeader( const_cast< CTFBot * >( this ) ) )
@@ -1425,7 +1428,6 @@ bool CTFBot::IsAllowedToPickUpFlag( void ) const
 	// mission bots can't pick up the flag
 	return !IsOnAnyMission();
 }
-#endif
 
 //-----------------------------------------------------------------------------------------------------
 void CTFBot::InitClass( void )

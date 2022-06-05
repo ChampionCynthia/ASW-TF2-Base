@@ -65,9 +65,9 @@ public:
 	virtual void		Touch( CBaseEntity *pOther );
 	virtual void		AvoidPlayers( CUserCmd *pCmd );				// some game types allow players to pass through each other, this method pushes them apart
 	virtual void		UpdateOnRemove( void );
-	virtual int			ShouldTransmit( const CCheckTransmitInfo *pInfo );
-	virtual void		ChangeTeam( int iTeamNum, bool bAutoTeam, bool bSilent, bool bAutoBalance = false );
-	virtual bool		ShouldGib( const CTakeDamageInfo &info );
+//	virtual int			ShouldTransmit( const CCheckTransmitInfo *pInfo );
+//	virtual void		ChangeTeam( int iTeamNum, bool bAutoTeam, bool bSilent, bool bAutoBalance = false );
+//	virtual bool		ShouldGib( const CTakeDamageInfo &info );
 
 	virtual int			DrawDebugTextOverlays(void);
 
@@ -85,7 +85,7 @@ public:
 
 	virtual void PressFireButton( float duration = -1.0f );
 	virtual void PressAltFireButton( float duration = -1.0f );
-	virtual void PressSpecialFireButton( float duration = -1.0f );
+//	virtual void PressSpecialFireButton( float duration = -1.0f );
 
 	// INextBot
 	virtual CTFBotLocomotion	*GetLocomotionInterface( void ) const	{ return m_locomotor; }
@@ -156,7 +156,7 @@ public:
 	void DelayedThreatNotice( CHandle< CBaseEntity > who, float noticeDelay );	// notice the given threat after the given number of seconds have elapsed
 	void UpdateDelayedThreatNotices( void );
 
-	CTFNavArea *FindVantagePoint( float maxTravelDistance = 2000.0f ) const;	// return a nearby area where we can see a member of the enemy team
+//	CTFNavArea *FindVantagePoint( float maxTravelDistance = 2000.0f ) const;	// return a nearby area where we can see a member of the enemy team
 
 	const char *GetNextSpawnClassname( void ) const;
 

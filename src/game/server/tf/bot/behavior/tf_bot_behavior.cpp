@@ -121,19 +121,23 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 	}
 
 	// Should I accept taunt from my partner?
+#if 0
 	if ( me->FindPartnerTauntInitiator() )
 	{
 		return SuspendFor( new CTFBotTaunt, "Responding to teammate partner taunt" );
 	}
+#endif
 
 	// make sure our vision FOV matches the player's
 	me->GetVisionInterface()->SetFieldOfView( me->GetFOV() );
 
 	// teammates in training have infinite ammo
+#if 0
 	if ( TFGameRules()->IsInTraining() && me->GetTeamNumber() == TF_TEAM_BLUE )
 	{
 		me->GiveAmmo( 1000, TF_AMMO_METAL, true );
 	}
+#endif
 
 	// track aim velocity ourselves, since body aim "steady" is too loose
 	float deltaYaw = me->EyeAngles().y - m_priorYaw;
@@ -160,6 +164,7 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 // 		}
 	}
 
+#if 0
 	if ( TFGameRules()->IsMannVsMachineMode() && me->GetTeamNumber() == TF_TEAM_PVE_INVADERS )
 	{
 		// infinite ammo
@@ -214,6 +219,7 @@ ActionResult< CTFBot >	CTFBotMainAction::Update( CTFBot *me, float interval )
 			me->GetLocomotionInterface()->Jump();
 		}
 	}
+#endif
 
 	// spies always want to be disguised
 	if ( !me->IsFiringWeapon() && !me->m_Shared.InCond( TF_COND_DISGUISED ) && !me->m_Shared.InCond( TF_COND_DISGUISING ) )
@@ -1626,9 +1632,9 @@ void CTFBotMainAction::Dodge( CTFBot *me )
 	if ( threat && threat->IsVisibleRecently() )
 	{
 		bool isShotClear = true;
-
-		CTFWeaponBase *myGun = (CTFWeaponBase *)me->Weapon_GetSlot( TF_WPN_TYPE_PRIMARY );
 #if 0
+		CTFWeaponBase *myGun = (CTFWeaponBase *)me->Weapon_GetSlot( TF_WPN_TYPE_PRIMARY );
+
 		if ( myGun && myGun->IsWeapon( TF_WEAPON_COMPOUND_BOW ) )
 		{
 			CTFCompoundBow *myBow = (CTFCompoundBow *)myGun;

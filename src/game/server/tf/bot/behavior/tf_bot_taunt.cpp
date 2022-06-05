@@ -27,12 +27,14 @@ ActionResult< CTFBot > CTFBotTaunt::Update( CTFBot *me, float interval )
 	{
 		if ( m_didTaunt )
 		{
+			// No such things as long taunts in 2008! -Cynthia
+#if 0
 			// Stop taunting after a while
 			if ( m_tauntEndTimer.IsElapsed() && me->m_Shared.GetTauntIndex() == TAUNT_LONG )
 			{
 				me->EndLongTaunt();
 			}
-
+#endif
 			if ( me->m_Shared.InCond( TF_COND_TAUNTING ) == false )
 			{
 				return Done( "Taunt finished" );
@@ -40,7 +42,8 @@ ActionResult< CTFBot > CTFBotTaunt::Update( CTFBot *me, float interval )
 		}
 		else
 		{
-			me->HandleTauntCommand();
+			//me->HandleTauntCommand();
+			me->Taunt();
 			// Start a timer to end our taunt in case we're still going after awhile
 			m_tauntEndTimer.Start( RandomFloat( 3.f, 5.f ) );	
 			

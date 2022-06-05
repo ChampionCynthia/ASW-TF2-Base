@@ -38,7 +38,7 @@ ActionResult< CTFBot >	CTFBotSeekAndDestroy::OnStart( CTFBot *me, Action< CTFBot
 	RecomputeSeekPath( me );
 
 	CTeamControlPoint *point = me->GetMyControlPoint();
-	m_isPointLocked = ( point && point->IsLocked() );
+	m_isPointLocked = ( point && !TeamplayGameRules()->TeamMayCapturePoint( me->GetTeamNumber(), point->GetPointIndex() ) );
 
 	// restart the timer if we have one
 	if ( m_giveUpTimer.HasStarted() )
@@ -79,7 +79,7 @@ ActionResult< CTFBot >	CTFBotSeekAndDestroy::Update( CTFBot *me, float interval 
 		{
 			CTeamControlPoint *point = me->GetMyControlPoint();
 
-			if ( point && !point->IsLocked() )
+			if ( point && TeamplayGameRules()->TeamMayCapturePoint( me->GetTeamNumber(), point->GetPointIndex() ) )
 			{
 				return Done( "The point just unlocked" );
 			}
@@ -183,10 +183,10 @@ CTFNavArea *CTFBotSeekAndDestroy::ChooseGoalArea( CTFBot *me )
 {
 	CUtlVector< CTFNavArea * > goalVector;
 
-	TheTFNavMesh()->CollectSpawnRoomThresholdAreas( &goalVector, GetEnemyTeam( me->GetTeamNumber() ) );
+	TheTFNavMesh()->CollectSpawnRoomThresholdAreas( &goalVector, ( me->GetTeamNumber() == TF_TEAM_BLUE ) ? TF_TEAM_RED : TF_TEAM_BLUE );
 
 	CTeamControlPoint *point = me->GetMyControlPoint();
-	if ( point && !point->IsLocked() )
+	if ( point && TeamplayGameRules()->TeamMayCapturePoint( me->GetTeamNumber(), point->GetPointIndex() ) )
 	{
 		// add current control point as a seek goal
 		const CUtlVector< CTFNavArea * > *controlPointAreas = TheTFNavMesh()->GetControlPointAreas( point->GetPointIndex() );

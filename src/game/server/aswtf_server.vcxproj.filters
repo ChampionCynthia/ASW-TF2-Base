@@ -2090,12 +2090,6 @@
     <ClCompile Include="tf\bot\behavior\tf_bot_melee_attack.cpp">
       <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClCompile>
-    <ClCompile Include="tf\bot\behavior\tf_bot_move_to_vantage_point.cpp">
-      <Filter>Source Files\TF\TFBots\Behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="tf\bot\behavior\tf_bot_mvm_deploy_bomb.cpp">
-      <Filter>Source Files\TF\TFBots\Behavior</Filter>
-    </ClCompile>
     <ClCompile Include="tf\bot\behavior\tf_bot_retreat_to_cover.cpp">
       <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClCompile>
@@ -4295,12 +4289,6 @@
       <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClInclude>
     <ClInclude Include="tf\bot\behavior\tf_bot_melee_attack.h">
-      <Filter>Source Files\TF\TFBots\Behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="tf\bot\behavior\tf_bot_move_to_vantage_point.h">
-      <Filter>Source Files\TF\TFBots\Behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="tf\bot\behavior\tf_bot_mvm_deploy_bomb.h">
       <Filter>Source Files\TF\TFBots\Behavior</Filter>
     </ClInclude>
     <ClInclude Include="tf\bot\behavior\tf_bot_retreat_to_cover.h">

@@ -335,6 +335,7 @@ public:
 	CBaseObject	*GetObjectOfType( int iObjectType ) const;
 	int	GetObjectCount( void ) const;
 
+	CBaseEntity		*MedicGetHealTarget( void );
 	float			MedicGetChargeLevel( CTFWeaponBase **pRetMedigun = NULL );
 
 public:

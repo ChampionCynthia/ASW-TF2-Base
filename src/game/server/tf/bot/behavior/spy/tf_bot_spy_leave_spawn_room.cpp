@@ -9,8 +9,29 @@
 #include "bot/behavior/spy/tf_bot_spy_leave_spawn_room.h"
 #include "bot/behavior/spy/tf_bot_spy_hide.h"
 
+// In tf_populator_spawners, which is MvM. Relocated here
+// since it'sonly referenced here outside MvM.
+// extern bool IsSpaceToSpawnHere( const Vector &where );
+//--------------------------------------------------------------------------------------------------------------
+/**
+ * Return true if a player has room to spawn at the given position
+ */
+bool IsSpaceToSpawnHere( const Vector &where )
+{
+	// make sure a player will fit here
+	trace_t result;
+	float bloat = 5.0f;
+	UTIL_TraceHull( where, where, VEC_HULL_MIN - Vector( bloat, bloat, 0 ), VEC_HULL_MAX + Vector( bloat, bloat, bloat ), MASK_SOLID | CONTENTS_PLAYERCLIP, NULL, COLLISION_GROUP_PLAYER_MOVEMENT, &result );
 
-extern bool IsSpaceToSpawnHere( const Vector &where );
+#if 0
+	if ( tf_debug_placement_failure.GetBool() && result.fraction < 1.0f )
+	{
+		NDebugOverlay::Cross3D( where, 5.0f, 255, 100, 0, true, 99999.9f );
+	}
+#endif
+
+	return result.fraction >= 1.0;
+}
 
 //---------------------------------------------------------------------------------------------
 bool TeleportNearVictim( CTFBot *me, CTFPlayer *victim, int attempt )
