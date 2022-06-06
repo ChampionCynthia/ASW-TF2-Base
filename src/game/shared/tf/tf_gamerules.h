@@ -111,6 +111,11 @@ public:
 
 #ifdef GAME_DLL
 public:
+
+#ifdef NEXTBOTS
+	virtual void	LevelShutdown( void );
+#endif
+
 	// Override this to prevent removal of game specific entities that need to persist
 	virtual bool	RoundCleanupShouldIgnore( CBaseEntity *pEnt );
 	virtual bool	ShouldCreateEntity( const char *pszClassName );

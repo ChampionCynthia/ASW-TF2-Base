@@ -42,7 +42,10 @@
 	#include "AI_ResponseSystem.h"
 	#include "hl2orange.spa.h"
 	#include "hltvdirector.h"
-#endif
+#ifdef NEXTBOTS
+#include "tf_bot_manager.h"
+#endif // NEXTBOTS
+#endif // GAME_DLL
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -444,6 +447,13 @@ bool CTFGameRules::FlagsMayBeCapped( void )
 
 #ifdef GAME_DLL
 
+#ifdef NEXTBOTS
+void CTFGameRules::LevelShutdown( void )
+{
+	TheTFBots().LevelShutdown();
+}
+#endif
+
 //-----------------------------------------------------------------------------
 // Purpose: Determines whether we should allow mp_timelimit to trigger a map change
 //-----------------------------------------------------------------------------
@@ -722,6 +732,9 @@ void CTFGameRules::SetupOnRoundStart( void )
 	}
 #ifdef GAME_DLL
 	m_szMostRecentCappers[0] = 0;
+
+	// Allows the recomputation of health and ammo for TFBots on round reset. -Cynthia
+	m_areHealthAndAmmoVectorsReady = false;
 #endif
 }
 
@@ -3353,7 +3366,7 @@ const char *CTFGameRules::GetVideoFileForMap( bool bWithExtension /*= true*/ )
 }
 #endif
 
-#if defined( TF_DLL )
+#if defined( GAME_DLL )
 //-----------------------------------------------------------------------------
 // Populate vector with set of control points the player needs to capture
 void CTFGameRules::CollectCapturePoints( CBasePlayer *player, CUtlVector< CTeamControlPoint * > *captureVector ) const
