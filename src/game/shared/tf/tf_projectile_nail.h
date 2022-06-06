@@ -24,6 +24,8 @@ public:
 	CTFProjectile_Syringe();
 	~CTFProjectile_Syringe();
 
+	virtual void	Precache( void );
+
 	// Creation.
 	static CTFProjectile_Syringe *Create( const Vector &vecOrigin, const QAngle &vecAngles, CBaseEntity *pOwner = NULL, CBaseEntity *pScorer = NULL, bool bCritical = false );	
 
