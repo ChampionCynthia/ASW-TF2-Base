@@ -85,6 +85,9 @@
     <Filter Include="Source Files\TF\TFBots\Map Entities">
       <UniqueIdentifier>{eec0aac1-663f-4a45-8092-7d2529eb07c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CD">
+      <UniqueIdentifier>{2da4e229-ff65-470d-a68e-a15cff41ecc8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="client_base.vpc">
@@ -2206,6 +2209,12 @@
     </ClCompile>
     <ClCompile Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.cpp">
       <Filter>Source Files\TF\TFBots\Map Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="cd.cpp">
+      <Filter>CD</Filter>
+    </ClCompile>
+    <ClCompile Include="cdThread.cpp">
+      <Filter>CD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4668,6 +4677,15 @@
     </ClInclude>
     <ClInclude Include="tf\bot_npc\map_entities\c_tf_bot_hint_engineer_nest.h">
       <Filter>Source Files\TF\TFBots\Map Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="cd.h">
+      <Filter>CD</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_internal.h">
+      <Filter>CD</Filter>
+    </ClInclude>
+    <ClInclude Include="ithread.h">
+      <Filter>CD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

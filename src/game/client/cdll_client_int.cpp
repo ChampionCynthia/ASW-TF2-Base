@@ -136,6 +136,12 @@
 
 #endif
 
+#if defined( TF_CLIENT_DLL )
+#include "cd.h"
+#include "cd_internal.h"
+#include "ithread.h"
+#endif
+
 #include "tier1/UtlDict.h"
 #include "keybindinglistener.h"
 
@@ -1246,6 +1252,11 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CGlobalVarsBase *pGloba
 	// This is a fullscreen element, so only lives on slot 0!!!
 	m_pHudCloseCaption = GET_FULLSCREEN_HUDELEMENT( CHudCloseCaption );
 
+#if defined( TF_CLIENT_DLL )
+	COM_TimestampedLog( "CCDThread::Init" );
+	cdThread->Init();
+#endif
+
 	COM_TimestampedLog( "ClientDLL Init - Finish" );
 	return true;
 }
@@ -1322,6 +1333,10 @@ void CHLClient::Shutdown( void )
 	VGui_Shutdown();
 	
 	ClearKeyValuesCache();
+
+#if defined( TF_CLIENT_DLL )
+	cdThread->Shutdown();
+#endif
 
 #ifndef NO_STEAM
 	g_SteamAPIContext.Clear();
@@ -2590,6 +2605,9 @@ void CHLClient::FrameStageNotify( ClientFrameStage_t curStage )
 			SetBeamCreationAllowed( true );
 			C_BaseEntity::CheckCLInterpChanged();
 			engine->SetLocalPlayerIsResolvable( __FILE__, __LINE__, false );
+#if defined( TF_CLIENT_DLL )
+			cdaudio->Frame();
+#endif
 		}
 		break;
 	}

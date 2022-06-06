@@ -1,0 +1,5 @@
+nolod 1
+nomip 1
+nonice 1
+startframe 0
+endframe 3

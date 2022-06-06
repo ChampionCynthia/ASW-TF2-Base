@@ -186,7 +186,7 @@
 			"enabled"				"1"
 			"tabPosition"			"0"
 			"scaleImage"			"1"
-			"image"					"common/swarm_cycle"
+			"image"					"common/aswtf_cycle"
 		}
 			
 		"LblInstalling"
