@@ -235,6 +235,10 @@ void CTFWeaponBase::Precache()
 {
 	BaseClass::Precache();
 
+#ifdef GAME_DLL
+	PrecacheEffect( "TF_EjectBrass" );
+#endif
+
 	if ( GetMuzzleFlashModel() )
 	{
 		PrecacheModel( GetMuzzleFlashModel() );

@@ -55,8 +55,8 @@ public:
 	CTFBaseProjectile();
 	~CTFBaseProjectile();
 
-	void	Precache( void );
-	void	Spawn( void );
+	virtual void	Precache( void );
+	void			Spawn( void );
 
 	virtual int   GetWeaponID( void ) const { return m_iWeaponID; }
 	void		  SetWeaponID( int iID ) { m_iWeaponID = iID; }

@@ -44,6 +44,14 @@ CTFProjectile_Syringe::~CTFProjectile_Syringe()
 {
 }
 
+void CTFProjectile_Syringe::Precache( void )
+{
+#ifdef GAME_DLL
+	PrecacheEffect( SYRINGE_DISPATCH_EFFECT );
+#endif
+	BaseClass::Precache();
+}
+
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------

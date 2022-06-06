@@ -70,6 +70,8 @@ enum target_ranges
 
 #define VECTOR_CONE_TF_SENTRY		Vector( 0.1, 0.1, 0 )
 
+#define SENTRY_MUZZLE_EFFECT		"TF_3rdPersonMuzzleFlash_SentryGun"
+
 //-----------------------------------------------------------------------------
 // Purpose: Only send the LocalWeaponData to the player carrying the weapon
 //-----------------------------------------------------------------------------
@@ -338,6 +340,9 @@ void CObjectSentrygun::Precache()
 	PrecacheParticleSystem( "sentrydamage_2" );
 	PrecacheParticleSystem( "sentrydamage_3" );
 	PrecacheParticleSystem( "sentrydamage_4" );
+
+	// Alien Swarm: precache hard-coded effect. -Cynthia
+	PrecacheEffect( SENTRY_MUZZLE_EFFECT );
 }
 
 //-----------------------------------------------------------------------------
@@ -1037,7 +1042,7 @@ bool CObjectSentrygun::Fire()
 		data.m_nAttachmentIndex = iAttachment;
 		data.m_fFlags = m_iUpgradeLevel;
 		data.m_vOrigin = vecSrc;
-		DispatchEffect( "TF_3rdPersonMuzzleFlash_SentryGun", data );
+		DispatchEffect( SENTRY_MUZZLE_EFFECT, data );
 
 		switch( m_iUpgradeLevel )
 		{
