@@ -67,6 +67,10 @@ ConVar ai_use_visibility_cache( "ai_use_visibility_cache", "1" );
 #define ShouldUseVisibilityCache() true
 #endif
 
+#ifdef NEXTBOTS
+ConVar nb_last_area_update_tolerance( "nb_last_area_update_tolerance", "4.0", FCVAR_CHEAT, "Distance a character needs to travel in order to invalidate cached area" ); // 4.0 tested as sweet spot (for wanderers, at least). More resulted in little benefit, less quickly diminished benefit [7/31/2008 tom]
+#endif
+
 BEGIN_DATADESC( CBaseCombatCharacter )
 	DEFINE_UTLVECTOR( m_hTriggerFogList, FIELD_EHANDLE ),
 	DEFINE_FIELD( m_hLastFogTrigger, FIELD_EHANDLE ),
@@ -3398,8 +3402,8 @@ void CBaseCombatCharacter::UpdateLastKnownArea( void )
 		return;
 	}
 
-	/*
-	if ( z_last_area_update_tolerance.GetFloat() > 0.0f )
+#ifdef NEXTBOTS
+	if ( nb_last_area_update_tolerance.GetFloat() > 0.0f )
 	{
 		// skip this test if we're not standing on the world (ie: elevators that move us)
 		if ( GetGroundEntity() == NULL || GetGroundEntity()->IsWorld() )
@@ -3407,10 +3411,10 @@ void CBaseCombatCharacter::UpdateLastKnownArea( void )
 			if ( m_lastNavArea && m_NavAreaUpdateMonitor.IsMarkSet() && !m_NavAreaUpdateMonitor.TargetMoved( this ) )
 				return;
 
-			m_NavAreaUpdateMonitor.SetMark( this, z_last_area_update_tolerance.GetFloat() );
+			m_NavAreaUpdateMonitor.SetMark( this, nb_last_area_update_tolerance.GetFloat() );
 		}
 	}
-	*/
+#endif
 
 	// find the area we are directly standing in
 	CNavArea *area = TheNavMesh->GetNearestNavArea( this, GETNAVAREA_CHECK_GROUND | GETNAVAREA_CHECK_LOS, 50.0f );
