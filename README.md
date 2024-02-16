@@ -168,3 +168,11 @@ format fine, and pretty much all TF2 textures are using the compatible 7.4 versi
       - Needs further investigation.
   * Some HUD elements are weirdly positioned or stretched, such as tooltips when hovering teammates.
   * Some HUD elements are broken, such as the Capture The Flag UI and the Engineer's metal count.
+
+## Deferred Bugs ##
+  * The maps are completely dark since the static lighting isn't used anymore and the dynamic 
+    lighting is not configured on them. The lighting must be redone from scratch.
+  * Player and weapon models have weird buggy rendering; they reflect bumpmaps or normalmaps 
+    from around the map for some reason. Some viewmodels are "see-through".
+  * Player models, weapon models and Engineer buildings have excessive rimlighting.
+  * Spy's invisibility no longer works.
