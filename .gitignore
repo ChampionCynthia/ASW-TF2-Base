@@ -60,7 +60,9 @@ build/*.dem
 build/console.log
 build/demoheader.tmp
 build/modelsounds.cache
+build/serverconfig.vdf
 build/stats.txt
+build/textwindow_temp.html
 build/tf2_playerstats.dmx
 build/voice_ban.dt
 
