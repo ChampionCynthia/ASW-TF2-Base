@@ -248,6 +248,10 @@ exit 1
     <ClCompile Include="..\shared\achievement_saverestore.cpp" />
     <ClCompile Include="..\shared\achievementmgr.cpp" />
     <ClCompile Include="..\shared\activitylist.cpp" />
+    <ClCompile Include="..\shared\deferred\CDefLight.cpp" />
+    <ClCompile Include="..\shared\deferred\CDefLightContainer.cpp" />
+    <ClCompile Include="..\shared\deferred\CDefLightGlobal.cpp" />
+    <ClCompile Include="..\shared\deferred\deferred_shared_common.cpp" />
     <ClCompile Include="..\shared\Multiplayer\multiplayer_animstate.cpp" />
     <ClCompile Include="..\shared\playerclass_info_parse.cpp" />
     <ClCompile Include="..\shared\predicted_viewmodel.cpp" />
@@ -439,6 +443,7 @@ exit 1
     </ClCompile>
     <ClCompile Include="..\shared\debugoverlay_shared.cpp" />
     <ClCompile Include="..\shared\decals.cpp" />
+    <ClCompile Include="deferred\cdeferred_manager_server.cpp" />
     <ClCompile Include="doors.cpp" />
     <ClCompile Include="..\..\public\dt_send.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -973,6 +978,11 @@ exit 1
     <ClInclude Include="..\shared\achievementmgr.h" />
     <ClInclude Include="..\shared\activitylist.h" />
     <ClInclude Include="..\shared\ai_activity.h" />
+    <ClInclude Include="..\shared\deferred\CDefLight.h" />
+    <ClInclude Include="..\shared\deferred\CDefLightContainer.h" />
+    <ClInclude Include="..\shared\deferred\CDefLightGlobal.h" />
+    <ClInclude Include="..\shared\deferred\deferred_shared_common.h" />
+    <ClInclude Include="..\shared\deferred\ssemath_ext.h" />
     <ClInclude Include="..\shared\Multiplayer\multiplayer_animstate.h" />
     <ClInclude Include="..\shared\playerclass_info_parse.h" />
     <ClInclude Include="..\shared\predicted_viewmodel.h" />
@@ -1134,6 +1144,8 @@ exit 1
     <ClInclude Include="CRagdollMagnet.h" />
     <ClInclude Include="cvisibilitymonitor.h" />
     <ClInclude Include="..\shared\debugoverlay_shared.h" />
+    <ClInclude Include="deferred\cdeferred_manager_server.h" />
+    <ClInclude Include="deferred\deferred_server_common.h" />
     <ClInclude Include="doors.h" />
     <ClInclude Include="..\..\public\edict.h" />
     <ClInclude Include="..\..\public\editor_sendcommand.h" />

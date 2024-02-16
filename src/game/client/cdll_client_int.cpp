@@ -139,6 +139,10 @@
 #include "tier1/UtlDict.h"
 #include "keybindinglistener.h"
 
+// @Deferred - Biohazard
+// For cookie string table
+#include "deferred/deferred_shared_common.h"
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -1793,6 +1797,7 @@ void CHLClient::LevelInitPreEntity( char const* pMapName )
 	// HACK: Bogus, but the logic is too complicated in the engine
 	if (g_bLevelInitialized)
 		return;
+	
 	g_bLevelInitialized = true;
 
 	engine->TickProgressBar();
@@ -1895,6 +1900,9 @@ void CHLClient::ResetStringTablePointers()
 	g_pStringTableMaterials = NULL;
 	g_pStringTableInfoPanel = NULL;
 	g_pStringTableClientSideChoreoScenes = NULL;
+	
+// @Deferred - Biohazard
+	g_pStringTable_LightCookies = NULL;
 }
 
 //-----------------------------------------------------------------------------
@@ -2164,6 +2172,13 @@ void CHLClient::InstallStringTableCallback( const char *tableName )
 		networkstringtable->SetAllowClientSideAddString( g_pStringTableExtraParticleFiles, true );
 		// When the particle system list changes, we need to know immediately
 		g_pStringTableExtraParticleFiles->SetStringChangedCallback( NULL, OnPrecacheParticleFile );
+	}
+	// @Deferred - Biohazard
+	else if ( !Q_strcasecmp( tableName, COOKIE_STRINGTBL_NAME ) )
+	{
+		g_pStringTable_LightCookies = networkstringtable->FindTable( tableName );
+
+		g_pStringTable_LightCookies->SetStringChangedCallback( NULL, OnCookieTableChanged );
 	}
 	else
 	{

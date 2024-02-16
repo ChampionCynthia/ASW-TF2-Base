@@ -1,38 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="VPC Scripts">
-      <UniqueIdentifier>{5645912c-db9d-4ad4-9e0e-e6135b54caad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{efba57cb-15cd-4334-a6cb-58b8be155006}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="External Header Files">
-      <UniqueIdentifier>{8a9432cd-52be-46a7-b655-141c547375e0}</UniqueIdentifier>
+      <UniqueIdentifier>{3019c4a1-87ee-4f48-8de7-ec06e2c6a484}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{75095ff4-12bb-46a8-af82-4beedc323eeb}</UniqueIdentifier>
+      <UniqueIdentifier>{963a1077-6984-4f2f-8320-0919cbd16308}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="shaderlib.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\vpc_scripts\source_lib_base.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\vpc_scripts\source_lib_win32_base.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\vpc_scripts\source_lib_win32_debug.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\vpc_scripts\source_lib_win32_release.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
-    <None Include="..\..\vpc_scripts\version.vpc">
-      <Filter>VPC Scripts</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseShader.cpp">
@@ -46,112 +22,79 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\public\tier0\basetypes.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\commonmacros.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\dbg.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\fasttimer.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\appframework\IAppSystem.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\icommandline.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\icvar.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\ImageLoader.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\imaterial.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\imaterialsystem.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\imaterialsystemhardwareconfig.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\imaterialvar.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\imesh.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\IShader.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\ishaderapi.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\IShaderSystem.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\itexture.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\materialsystem\materialsystem_config.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\MATHLIB.H">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\memdbgoff.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\memdbgon.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier0\platform.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\protected_things.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\string_t.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier1\strtools.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier1\utlmemory.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\tier1\utlvector.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vector.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vector2d.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vector4d.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vmatrix.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vplane.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\public\vstdlib\vstdlib.h">
-      <Filter>External Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\public\shaderlib\BaseShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\public\shaderlib\commandbuilder.h">
+    <ClInclude Include="..\..\public\tier0\basetypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\commonmacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\public\shaderlib\cshader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier0\dbg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier0\fasttimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\appframework\IAppSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vstdlib\ICommandLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\icvar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\ImageLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\imaterial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\imaterialsystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\imaterialsystemhardwareconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\imaterialvar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\imesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\IShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\ishaderapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IShaderSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\itexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\materialsystem\materialsystem_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\MATHLIB.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier0\memdbgoff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier0\memdbgon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier0\platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\protected_things.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\public\shaderlib\ShaderDLL.h">
@@ -161,6 +104,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shaderlib_cvar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\string_t.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vstdlib\strtools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier1\utlmemory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\tier1\utlvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vector2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vector4d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vmatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vplane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\public\vstdlib\vstdlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
