@@ -152,9 +152,6 @@ format fine, and pretty much all TF2 textures are using the compatible 7.4 versi
   * World weapon models are misaligned when attached to player models.
   * The Shovel gets stuck in the ground when a Soldier wielding it is killed.
   * Dominations/revenges show up with ERRORNAMEs in the kill feed.
-  * decals_mod2x incompatibilities (conflict between blood on walls and explosion decals)
-      - Alien Swarm uses Left 4 Dead 2-formatted decals_mod2x for blood decals.
-      - But it also seems to use the Orange Box-formatted decals_mod2x for TF2 explosion effects.
   * Weapons are not properly hidden when taunting.
       - Weapon visibility seems to be handled client-side on Source 2007.
       - AE_WPN_HIDE and AE_WPN_UNHIDE animation events are properly registered 

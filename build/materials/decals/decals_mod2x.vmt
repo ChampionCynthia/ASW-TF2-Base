@@ -1,6 +1,6 @@
-DecalModulate
+"DecalModulate"
 {
-$basetexture "Decals/decals_mod2x"
-$decal 1
-$translucent 1
+	"$basetexture" "Decals/decals_mod2x"
+	"$decal" 1
+	"$translucent" 1
 }
