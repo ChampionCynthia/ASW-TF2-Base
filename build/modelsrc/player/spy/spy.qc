@@ -440,7 +440,7 @@ $illumposition 0 -1.68 40.09
 $eyeposition 0 78.222 0
 
 $cdmaterials "models\player\spy\hwm"
-$cdmaterials "\..\..\effects"
+$cdmaterials "models\effects"
 $cdmaterials "models\player\spy\"
 $cdmaterials ""
 

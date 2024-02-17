@@ -510,7 +510,7 @@ $illumposition 6.828 13.521 40.495
 
 $eyeposition 0 78.915 0
 
-$cdmaterials "..\..\effects"
+$cdmaterials "models\effects"
 $cdmaterials "models\player\medic\"
 $cdmaterials ""
 
