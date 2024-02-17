@@ -759,6 +759,7 @@ void CTFPlayer::Spawn()
 
 	m_flSpawnTime = gpGlobals->curtime;
 	UpdateModel();
+	SetRenderMode( kRenderNormal );
 
 	SetMoveType( MOVETYPE_WALK );
 	BaseClass::Spawn();
@@ -4756,10 +4757,10 @@ void CTFPlayer::CreateRagdollEntity( bool bGib, bool bBurning )
 	SetMoveType( MOVETYPE_NONE );
 
 	// Add additional gib setup.
-	/*if ( bGib )
+	if ( bGib )
 	{
-		m_nRenderFX = kRenderFxRagdoll;
-	}*/
+		SetRenderMode( kRenderNone );
+	}
 
 	// Save ragdoll handle.
 	m_hRagdoll = pRagdoll;
