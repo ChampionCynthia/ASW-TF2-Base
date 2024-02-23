@@ -40,7 +40,12 @@ extern IFileSystem *filesystem;
 
 static ConVar	cl_phys_timescale( "cl_phys_timescale", "1.0", FCVAR_CHEAT, "Sets the scale of time for client-side physics (ragdolls)" );
 static ConVar	cl_phys_maxticks( "cl_phys_maxticks", IsX360() ? "2" : "0", FCVAR_NONE, "Sets the MAX number of physics ticks allowed for client-side physics (ragdolls)" );
+ConVar	cl_ragdoll_use_sv_gravity( "cl_ragdoll_use_sv_gravity", "1", FCVAR_CHEAT, "If set, use sv_gravity for client-side ragdolls instead of cl_ragdoll_gravity." );
+#ifdef TF_CLIENT_DLL
+ConVar	cl_ragdoll_gravity( "cl_ragdoll_gravity", "800", FCVAR_CHEAT, "Sets the gravity client-side ragdolls" );
+#else
 ConVar	cl_ragdoll_gravity( "cl_ragdoll_gravity", "386", FCVAR_CHEAT, "Sets the gravity client-side ragdolls" );
+#endif // TF_CLIENT_DLL
 
 // blocked entity detecting
 static ConVar cl_phys_block_fraction("cl_phys_block_fraction", "0.1");
@@ -205,7 +210,18 @@ void PhysicsLevelInit( void )
 	// TODO: need to get the right factory function here
 	//physenv->SetDebugOverlay( appSystemFactory );
 	physenv->SetGravity( Vector(0, 0, -sv_gravity.GetFloat() ) );
-	physenv->SetAlternateGravity( Vector(0, 0, -cl_ragdoll_gravity.GetFloat() ) );
+
+	// Pre-L4D Source uses GetCurrentGravity() for the whole physics system.
+	// L4D replaced it with sv_gravity + cl_ragdoll_gravity.
+	// I added cl_ragdoll_use_sv_gravity to use sv_gravity for everything again. -Cynthia
+	if( cl_ragdoll_use_sv_gravity.GetBool() )
+	{
+		physenv->SetAlternateGravity( Vector(0, 0, -sv_gravity.GetFloat() ) );
+	}
+	else
+	{
+		physenv->SetAlternateGravity( Vector(0, 0, -cl_ragdoll_gravity.GetFloat() ) );
+	}
 	
 	// NOTE: Always run client physics at a rate >= 45Hz - helps keep ragdolls stable
 	const float defaultPhysicsTick = 1.0f / 60.0f; // 60Hz to stay in sync with x360 framerate of 30Hz
