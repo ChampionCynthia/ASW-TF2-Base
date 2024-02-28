@@ -18,7 +18,11 @@
 #include "clientmode_shared.h"
 #include "c_baseplayer.h"
 #include "c_team.h"
+#if defined( TF_CLIENT_DLL )
+#include "tf_shareddefs.h"
+#else
 #include "shareddefs.h"
+#endif
 
 #include "hud_basedeathnotice.h"
 
@@ -392,7 +396,7 @@ void CHudBaseDeathNotice::FireGameEvent( IGameEvent *event )
 	} 
 //DaFox; SDK Fix
 //Tony; this is tf2 specific, it should be moved to hud_tfdeathnotice!!
-#if defined ( TF_DLL )
+#if defined ( TF_CLIENT_DLL )
 	else if ( FStrEq( "teamplay_point_captured", pszEventName ) )
 	{
 		GetLocalizedControlPointName( event, m_DeathNotices[iMsg].Victim.szName, ARRAYSIZE( m_DeathNotices[iMsg].Victim.szName ) );
@@ -512,7 +516,7 @@ void CHudBaseDeathNotice::FireGameEvent( IGameEvent *event )
 		{
 			// Can't find it, so use the default skull & crossbones icon
 			//DaFox; SDK Fix
-#if defined ( TF_DLL )
+#if defined ( TF_CLIENT_DLL )
 			m_DeathNotices[iMsg].iconDeath = GetIcon( "d_skull_tf", m_DeathNotices[iMsg].bLocalPlayerInvolved );
 #else
 			m_DeathNotices[iMsg].iconDeath = GetIcon( "d_skull", m_DeathNotices[iMsg].bLocalPlayerInvolved );

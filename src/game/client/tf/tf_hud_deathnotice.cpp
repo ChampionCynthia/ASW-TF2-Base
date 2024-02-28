@@ -156,8 +156,28 @@ void CTFHudDeathNotice::OnGameEvent( IGameEvent *event, DeathNoticeItem &msg )
 		{
 			// if this death involved a player dominating another player or getting revenge on another player, add an additional message
 			// mentioning that
-			int iKillerID = engine->GetPlayerForUserID( event->GetInt( "attacker" ) );
-			int iVictimID = engine->GetPlayerForUserID( event->GetInt( "userid" ) );
+			// Alien Swarm change: you must iterate over all player IDs now.
+			int t_Attacker = event->GetInt( "attacker" );
+			int t_userID   = event->GetInt( "userid" );
+			int iKillerID = 0; //engine->GetPlayerForUserID( event->GetInt( "attacker" ) );
+			int iVictimID = 0; //engine->GetPlayerForUserID( event->GetInt( "userid" ) );
+
+			for (int i = 1; i<=gpGlobals->maxClients; i++ )
+			{
+				C_BasePlayer *pPlayer = UTIL_PlayerByIndex( i );
+
+				if ( !pPlayer )
+					continue;
+
+				if ( pPlayer->GetUserID() == t_userID )
+				{
+					iVictimID = i;
+				}
+				if ( pPlayer->GetUserID() == t_Attacker )
+				{
+					iKillerID = i;
+				}
+			}
 		
 			if ( event->GetInt( "dominated" ) > 0 )
 			{
